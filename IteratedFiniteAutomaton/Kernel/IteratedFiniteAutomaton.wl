@@ -1,0 +1,12 @@
+Package["WolframInstitute`IteratedFiniteAutomaton`"]
+
+PackageExport[IteratedFiniteAutomaton]
+PackageExport[IteratedFiniteAutomatonPeriodicStop]
+PackageExport[IteratedFiniteAutomatonStateTransitions]
+PackageExport[IteratedFiniteAutomatonStateGraph]
+PackageExport[IteratedFiniteAutomatonColors]
+PackageExport[IteratedFiniteAutomatonFromStates]
+PackageExport[IteratedFiniteAutomatonFromWreath]
+PackageExport[IteratedFiniteAutomatonEvolve]
+
+ClearAll["WolframInstitute`IteratedFiniteAutomaton`**`*", "WolframInstitute`IteratedFiniteAutomaton`*"]
