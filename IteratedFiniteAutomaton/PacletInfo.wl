@@ -9,7 +9,8 @@ PacletObject[<|
     "PrimaryContext" -> "WolframInstitute`IteratedFiniteAutomaton`",
     "Extensions" -> {
         {"Kernel", "Root" -> "Kernel",
-         "Context" -> {"WolframInstitute`IteratedFiniteAutomaton`"}}
+         "Context" -> {"WolframInstitute`IteratedFiniteAutomaton`"}},
+        {"Documentation", "Root" -> "Documentation", "Language" -> "English"}
     }
 |>]
 
