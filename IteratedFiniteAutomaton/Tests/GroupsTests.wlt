@@ -1,0 +1,151 @@
+addingMachine = {62, {2, 2}};
+grigorchuk = {8950703898, {5, 2}};
+lamplighter = {156, {2, 2}};
+
+(* the adding machine generates Z, acting on T_L as a single 2^L-cycle *)
+
+VerificationTest[
+	AutomatonWordOrders[addingMachine, {1}, Range[8]],
+	2 ^ Range[8]
+]
+
+VerificationTest[
+	Table[AutomatonElementCount[addingMachine, r, 6], {r, 4}],
+	2 Range[4] + 1
+]
+
+VerificationTest[
+	Table[Length @ AutomatonGroupBall[addingMachine, r, 6], {r, 3}],
+	2 Range[3]
+]
+
+VerificationTest[
+	AutomatonAbelianQ[addingMachine, 4],
+	True
+]
+
+(* the word ball is the ball in the free group on s generators: 2s (2s - 1)^(n - 1) words of
+   length n, independent of the automaton *)
+
+VerificationTest[
+	Table[Length @ AutomatonWordBall[addingMachine, r], {r, 3}],
+	Accumulate @ Table[4 * 3 ^ (n - 1), {n, 3}]
+]
+
+VerificationTest[
+	Table[Length @ AutomatonWordBall[grigorchuk, r], {r, 3}],
+	Accumulate @ Table[10 * 9 ^ (n - 1), {n, 3}]
+]
+
+VerificationTest[
+	AllTrue[AutomatonWordBall[grigorchuk, 3], word |-> NoneTrue[Partition[word, 2, 1], First[#] == -Last[#] &]],
+	True
+]
+
+(* the Grigorchuk group: four involutions and the identity, with |ab| = 16 *)
+
+VerificationTest[
+	Table[First @ AutomatonWordOrders[grigorchuk, {s}, {6}], {s, 5}],
+	{2, 2, 2, 2, 1}
+]
+
+VerificationTest[
+	Last @ AutomatonWordOrders[grigorchuk, {1, 2}, Range[5, 8]],
+	16
+]
+
+VerificationTest[
+	AutomatonAbelianQ[grigorchuk, 4],
+	False
+]
+
+(* the nucleus stabilizes exactly because the Grigorchuk automaton is contracting *)
+
+VerificationTest[
+	Length /@ AutomatonNucleus[grigorchuk, 2, 6, 5],
+	{11, 5, 5, 5, 5, 5, 5}
+]
+
+(* orders are nondecreasing in the level, and the lamplighter shows they can plateau and then
+   resume, which is why the torsion-free test is only a candidate filter *)
+
+VerificationTest[
+	AutomatonWordOrders[lamplighter, {1}, Range[8]],
+	{2, 4, 4, 8, 8, 8, 8, 16}
+]
+
+VerificationTest[
+	AllTrue[AutomatonWordBall[grigorchuk, 2], word |-> OrderedQ @ AutomatonWordOrders[grigorchuk, word, Range[6]]],
+	True
+]
+
+VerificationTest[
+	{AutomatonTorsionFreeCandidateQ[addingMachine, 2, {5, 7}],
+	 AutomatonTorsionFreeCandidateQ[grigorchuk, 2, {5, 7}],
+	 AutomatonTorsionFreeCandidateQ[lamplighter, 2, {5, 7}]},
+	{True, False, False}
+]
+
+(* words act by composition, and an inverse letter by the inverse permutation *)
+
+VerificationTest[
+	AllTrue[Range[5],
+		s |-> AutomatonWordPermutation[grigorchuk, 5, {s, -s}] === Range[2 ^ 5]],
+	True
+]
+
+VerificationTest[
+	AutomatonWordPermutation[AutomatonLevelPermutations[grigorchuk, 5], {1, 2, -1}] ===
+		AutomatonWordPermutation[grigorchuk, 5, {1, 2, -1}],
+	True
+]
+
+(* the wreath recursion and IteratedFiniteAutomatonFromWreath are mutually inverse; rule lists
+   are compared through their code, since the two order the transitions differently *)
+
+VerificationTest[
+	AllTrue[InvertibleAutomatonCodes[{2, 2}],
+		m |-> AutomatonCodeFromRule[IteratedFiniteAutomatonFromWreath[AutomatonWreathRecursion[{m, {2, 2}}], 1]["Rule"]] === {m, {2, 2}}],
+	True
+]
+
+(* the printable form is the presentation as published: a = sigma, b = (a, c), c = (a, d), d = (1, b) *)
+
+VerificationTest[
+	AutomatonWreathRecursion[grigorchuk, Method -> "String"],
+	{"a = \[Sigma](e, e)", "b = (a, c)", "c = (a, d)", "d = (e, b)", "e = (e, e)"}
+]
+
+(* sections: the table covers every generator and every inverse generator at every symbol *)
+
+VerificationTest[
+	Length @ AutomatonSectionTable[grigorchuk],
+	2 * 5 * 2
+]
+
+VerificationTest[
+	AllTrue[Tuples[{0, 1}, 3],
+		treeWord |-> AutomatonSection[grigorchuk, {2}, treeWord] ===
+			Fold[First @ AutomatonWordSection[AutomatonSectionTable[grigorchuk], #1, #2] &, {2}, treeWord]],
+	True
+]
+
+(* the BGKMNSS number is a bijection from the 3-state binary automata onto 1, ..., 5832 *)
+
+VerificationTest[
+	Sort[BGKMNSSNumber[{#, {3, 2}}] & /@ InvertibleAutomatonCodes[{3, 2}]],
+	Range[5832]
+]
+
+VerificationTest[
+	AllTrue[IteratedFiniteAutomatonSample[{3, 2}, 30],
+		m |-> BGKMNSSNumber[{m, {3, 2}}] === BGKMNSSNumber[AutomatonRuleFromCode[{m, {3, 2}}]]],
+	True
+]
+
+(* the fingerprint stratifies by commutativity and ball growth *)
+
+VerificationTest[
+	AutomatonGroupFingerprint[addingMachine, 6],
+	<|"Code" -> 62, "Abelian" -> True, "BallGrowth" -> 2 Range[4] + 1|>
+]
