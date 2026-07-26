@@ -28,7 +28,7 @@ Needs["WolframInstitute`IteratedFiniteAutomaton`"]
 
 | Notebook | Description | Link |
 |---|---|---|
-| Wolfram and wreath recursion | Converting between the automaton formalisms | Wolfram Cloud |
+| Wolfram and wreath recursion | Converting between the automaton formalisms | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Formalisms.nb) |
 | Periodicity of the iteration | Periods of the evolution and orders of group elements | Wolfram Cloud |
 | Automata on the rooted tree | Space-time diagrams and tree portraits | Wolfram Cloud |
 | Burnside problem | An infinite torsion group from a 5-state automaton | Wolfram Cloud |
