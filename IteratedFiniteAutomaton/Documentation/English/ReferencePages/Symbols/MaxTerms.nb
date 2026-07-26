@@ -1,0 +1,550 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     20161,        541]
+NotebookOptionsPosition[     13258,        395]
+NotebookOutlinePosition[     14840,        435]
+CellTagsIndexPosition[     14761,        430]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["MaxTerms", "ObjectName",
+ CellID->369513811,ExpressionUUID->"3fa40732-5160-4469-a6eb-33169f466ba9"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"b7ee9f7d-87c7-4f9e-8a25-2298e76ccb49"],
+ Cell[BoxData[
+ "MaxTerms"], "InlineFormula",ExpressionUUID->
+  "5fa76360-3362-42bc-b211-078f2521d946"],
+ " \[LineSeparator]",
+ "is an option for the group-ring searches specifying the largest number of \
+nonzero terms a candidate element may have."
+}], "Usage",
+ CellID->197920198,ExpressionUUID->"7eb6298e-6181-4b3a-b1a6-6128f78a1bab"],
+
+Cell[TextData[{
+ "The default is ",
+ Cell[BoxData[
+  ButtonBox["Infinity",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Infinity"]], "InlineFormula",ExpressionUUID->
+  "b9ab2004-607f-4c32-a739-5136f5a44b38"],
+ ", which searches the whole support."
+}], "Notes",
+ CellID->483883203,ExpressionUUID->"22066ff5-38d1-4ce1-b27f-aa50cb351208"],
+
+Cell["\<\
+Bounding the number of terms shrinks the candidate set, so it can only lose \
+survivors, never gain them; a nonempty result under a bound is still a \
+genuine find.\
+\>", "Notes",
+ CellID->486766446,ExpressionUUID->"42044ed2-5a9f-4f40-aaa1-fda6b83634cc"],
+
+Cell[TextData[{
+ "It is accepted by ",
+ Cell[BoxData[
+  ButtonBox["GroupRingIdempotentSurvival",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+GroupRingIdempotentSurvival"]], "InlineFormula",ExpressionUUID->
+  "c8cee392-70ff-4239-bc47-bc25aae52b6b"],
+ " and ",
+ Cell[BoxData[
+  ButtonBox["GroupRingZeroDivisorSurvival",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+GroupRingZeroDivisorSurvival"]], "InlineFormula",ExpressionUUID->
+  "31bbd51d-c8bd-42b6-9556-0eb5a910e8f3"],
+ "."
+}], "Notes",
+ CellID->520141346,ExpressionUUID->"a3fd5824-31bd-41cf-8512-6a8074c1c6b4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->442081526,ExpressionUUID->"97009265-9c4d-4b58-8e16-5868b5f192fb"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["GroupRingZeroDivisorSurvival",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+GroupRingZeroDivisorSurvival"]], "InlineFormula",ExpressionUUID->
+  "c81389e0-4875-414a-ae6a-5161cf47b27d"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"75922f44-c11f-4fc9-ab0e-86f7e8bd307f"],
+ Cell[BoxData[
+  ButtonBox["GroupRingIdempotentSurvival",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+GroupRingIdempotentSurvival"]], "InlineFormula",ExpressionUUID->
+  "6f2e656b-4a4a-4b98-a561-f58d043f6708"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"e94f4a3f-de4d-42f9-9c03-53a0632f1ddf"],
+ Cell[BoxData[
+  ButtonBox["GroupRingLeftAnnihilator",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+GroupRingLeftAnnihilator"]], "InlineFormula",ExpressionUUID->
+  "e0b83e79-741a-45b4-ba34-774e062b1480"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"0bc1b0b8-b5b7-48b8-b753-e5cd3f549b88"],
+ Cell[BoxData[
+  ButtonBox["AutomatonGroupBall",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/AutomatonGroupBall"]]\
+, "InlineFormula",ExpressionUUID->"23b4f5a7-a5ef-471d-8183-fad9b60e5a65"]
+}], "SeeAlso",
+ CellID->148069322,ExpressionUUID->"2a26076f-b22c-4e7c-865e-998ff6bc6bf2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",
+ CellID->472542405,ExpressionUUID->"199a0c22-9315-4ae0-aea2-9b3e6fcc80ac"],
+
+Cell[TextData[ButtonBox["Iterated Finite Automata",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:WolframInstitute/IteratedFiniteAutomaton/guide/\
+IteratedFiniteAutomaton"]], "MoreAbout",
+ CellID->139412819,ExpressionUUID->"71da3471-66f1-4aba-bea9-414a2c64f252"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->940947202,ExpressionUUID->"98852caa-0b40-461b-adca-051c624cf3c0"],
+
+Cell[TextData[ButtonBox["A. Zuk, \"Iterated Finite Automata\", Wolfram \
+Community (WSRI26)",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://community.wolfram.com/groups/-/m/t/3761828"], 
+   None}]], "RelatedLinks",
+ CellID->384465570,ExpressionUUID->"4ccd5729-5795-4ed7-a74e-886ceb406728"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples Initialization", "ExamplesInitializationSection",
+ CellID->899245886,ExpressionUUID->"1dda342f-e762-4e6d-aeea-52f8b0d5a75d"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<WolframInstitute`IteratedFiniteAutomaton`\>\"", 
+  "]"}]], "ExampleInitialization",
+ CellID->823993606,ExpressionUUID->"fa2c497d-e71a-482b-a345-3b3f4721264f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox[
+      RowBox[{"Basic", " ", "Examples"}], "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->254133808,ExpressionUUID->"7864ea91-1a2e-4ba8-82fd-eef340897caf"],
+
+Cell["The default searches the whole support:", "ExampleText",
+ CellID->867543605,ExpressionUUID->"a357235c-d279-490d-927b-87aac51db4b7"],
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "GroupRingZeroDivisorSurvival", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->365545416,ExpressionUUID->"1150189a-706c-453a-814d-6b45d838a0c0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Modulus", "\[Rule]", "2"}], ",", 
+   RowBox[{"MaxTerms", "\[Rule]", "\[Infinity]"}], ",", 
+   RowBox[{"Method", "\[Rule]", "Automatic"}]}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->265326855,ExpressionUUID->"9fedf9b9-4f6c-4bd2-800f-278a2f3cc08e"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"b4a95a64-9b27-48ae-a605-99b85daaf501"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->808320016,ExpressionUUID->"cdff2eb8-0829-4a74-accf-a8b4926396b1"],
+
+Cell["\<\
+Restricting the Grigorchuk zero-divisor search to two terms drops the one \
+survivor that needs four:\
+\>", "ExampleText",
+ CellID->132062410,ExpressionUUID->"e25f1d13-37f1-43cb-b9ac-27e91bf91651"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Length", "[", 
+    RowBox[{
+     RowBox[{"GroupRingZeroDivisorSurvival", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"8950703898", ",", 
+         RowBox[{"{", 
+          RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", "1", ",", 
+       RowBox[{"Range", "[", 
+        RowBox[{"3", ",", "8"}], "]"}], ",", 
+       RowBox[{"MaxTerms", "\[Rule]", "2"}]}], "]"}], "[", "\"\<Survivors\>\"",
+      "]"}], "]"}], ",", 
+   RowBox[{"Length", "[", 
+    RowBox[{
+     RowBox[{"GroupRingZeroDivisorSurvival", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"8950703898", ",", 
+         RowBox[{"{", 
+          RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", "1", ",", 
+       RowBox[{"Range", "[", 
+        RowBox[{"3", ",", "8"}], "]"}]}], "]"}], "[", "\"\<Survivors\>\"", 
+     "]"}], "]"}]}], "}"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->461772774,ExpressionUUID->"bbc620f7-e879-4a21-910c-2a2badbf64c7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"7", ",", "8"}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->207432855,ExpressionUUID->"a8b9ffbe-fb58-4337-b8ac-9eaeee4db03c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->971208415,ExpressionUUID->"d4bfd394-7738-42cd-893f-8b76972ff986"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Scope", "ExampleSection",ExpressionUUID->
+   "4c2863c8-90c9-43f8-b35d-e420d4251c9f"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->177656065,ExpressionUUID->"896c545d-957d-41f7-b453-6b7b1a63fdfa"],
+
+Cell["The same bound halves the idempotent search:", "ExampleText",
+ CellID->946933133,ExpressionUUID->"be4bec00-0ee1-436d-a755-722108e9279f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Length", "[", 
+    RowBox[{
+     RowBox[{"GroupRingIdempotentSurvival", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"8950703898", ",", 
+         RowBox[{"{", 
+          RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", "1", ",", 
+       RowBox[{"Range", "[", 
+        RowBox[{"3", ",", "7"}], "]"}], ",", 
+       RowBox[{"Modulus", "\[Rule]", "3"}], ",", 
+       RowBox[{"MaxTerms", "\[Rule]", "2"}]}], "]"}], "[", "\"\<Survivors\>\"",
+      "]"}], "]"}], ",", 
+   RowBox[{"Length", "[", 
+    RowBox[{
+     RowBox[{"GroupRingIdempotentSurvival", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"8950703898", ",", 
+         RowBox[{"{", 
+          RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", "1", ",", 
+       RowBox[{"Range", "[", 
+        RowBox[{"3", ",", "7"}], "]"}], ",", 
+       RowBox[{"Modulus", "\[Rule]", "3"}]}], "]"}], "[", "\"\<Survivors\>\"",
+      "]"}], "]"}]}], "}"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->366975056,ExpressionUUID->"f5599b79-1ee5-4354-ae91-98011e610508"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"8", ",", "16"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->362320463,ExpressionUUID->"124e7d4e-2cc7-46cc-8b86-53e61e70775f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Properties & Relations", "ExampleSection",ExpressionUUID->
+   "baf8e833-d665-4b1d-87b4-1ad4a3c24dda"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->841943912,ExpressionUUID->"80414e58-ec3b-44ac-a76b-cff0dc61e417"],
+
+Cell["Every survivor respects the bound:", "ExampleText",
+ CellID->103848357,ExpressionUUID->"665d7c27-b325-4297-a8b7-103eab0d7019"],
+
+Cell[BoxData[
+ RowBox[{"Union", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Length", "[", "element", "]"}], "\[LessEqual]", "2"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"element", ",", 
+      RowBox[{
+       RowBox[{"GroupRingZeroDivisorSurvival", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"8950703898", ",", 
+           RowBox[{"{", 
+            RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", "1", ",", 
+         RowBox[{"Range", "[", 
+          RowBox[{"3", ",", "8"}], "]"}], ",", 
+         RowBox[{"MaxTerms", "\[Rule]", "2"}]}], "]"}], 
+       "[", "\"\<Survivors\>\"", "]"}]}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->349713816,ExpressionUUID->"f7cabf83-6329-4a45-998f-26c244ffe5fa"],
+
+Cell[BoxData[
+ RowBox[{"{", "True", "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->208372737,ExpressionUUID->"1c0bc44b-2e07-4e0f-baa0-2fd48a434a99"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->260999283,ExpressionUUID->"70076073-9b89-4939-a283-0171bc99ff3a"],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["0.2.0", "HistoryData",
+  CellTags->"New",ExpressionUUID->"4fd862cb-2fb1-4d79-a0f6-4a3ff617dece"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"06c24f66-1351-499b-8bec-6d8f6ee70d1c"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->
+  "9113a837-323b-41ab-859a-756d47ccf8df"]
+}], "History",
+ CellID->658659851,ExpressionUUID->"815dc0a8-5565-4c09-8223-7559b44db343"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->776681333,ExpressionUUID->"22675726-58d5-4355-a6dd-e03919ccdfd2"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->760629469,ExpressionUUID->"89031ab1-3e87-4f0e-9ae2-d7b0a581dacb"],
+
+Cell["WolframInstitute/IteratedFiniteAutomaton", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->804577783,ExpressionUUID->"e13b2239-4bfb-4122-8faa-c22b54c216f0"],
+
+Cell["WolframInstitute`IteratedFiniteAutomaton`", "Categorization",
+ CellLabel->"Context",
+ CellID->613593197,ExpressionUUID->"4409f253-1bb7-4628-8b7b-504bc0121c49"],
+
+Cell["WolframInstitute/IteratedFiniteAutomaton/ref/MaxTerms", "Categorization",
+ CellLabel->"URI",
+ CellID->637937189,ExpressionUUID->"f7b88457-51a4-4282-b6d0-20fb109cdec5"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->519032618,ExpressionUUID->"9a533c93-f4ef-43a0-a1b0-deec77114b18"],
+
+Cell["option", "Keywords",
+ CellID->240726582,ExpressionUUID->"cdb562cf-950b-44b4-9ee6-562386bc82a4"],
+
+Cell["support", "Keywords",
+ CellID->792638131,ExpressionUUID->"763ddac1-7c5e-461c-9dae-a62cbd684e1b"],
+
+Cell["search", "Keywords",
+ CellID->655237503,ExpressionUUID->"99b87ffc-b145-4948-ba4b-1e25e9ba3c6d"],
+
+Cell["group ring", "Keywords",
+ CellID->402876897,ExpressionUUID->"9e337c1f-640a-48cd-a8ef-1fc8e6efcfef"]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{900, 800},
+TaggingRules->{
+ "Paclet" -> "WolframInstitute/IteratedFiniteAutomaton", 
+  "Metadata" -> {
+   "context" -> "WolframInstitute`IteratedFiniteAutomaton`", 
+    "history" -> {"0.2.0", "", "", ""}, "index" -> True, 
+    "keywords" -> {"option", "support", "search", "group ring"}, "label" -> 
+    "WolframInstitute/ IteratedFiniteAutomaton Symbol", "language" -> "en", 
+    "metadescription" -> "", "paclet" -> 
+    "WolframInstitute/IteratedFiniteAutomaton", "specialkeywords" -> {}, 
+    "status" -> "None", "summary" -> 
+    "MaxTerms is an option for the group-ring searches specifying the largest \
+number of nonzero terms a candidate element may have.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "MaxTerms", "titlemodifier" -> "", 
+    "tutorialcollectionlinks" -> {}, "type" -> "Symbol", "uri" -> 
+    "WolframInstitute/IteratedFiniteAutomaton/ref/MaxTerms", "windowtitle" -> 
+    "MaxTerms"}},
+CellContext->"Global`",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (May 19, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"6e6f4c56-088c-4056-bce6-6c52be2b1589"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[8065, 240, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"d4bfd394-7738-42cd-893f-8b76972ff986",
+   CellTags->"ExtendedExamples",
+   CellID->971208415]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 14569, 423}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 105, 1, 70, "ObjectName",ExpressionUUID->"3fa40732-5160-4469-a6eb-33169f466ba9",
+ CellID->369513811],
+Cell[684, 25, 433, 9, 70, "Usage",ExpressionUUID->"7eb6298e-6181-4b3a-b1a6-6128f78a1bab",
+ CellID->197920198],
+Cell[1120, 36, 339, 9, 70, "Notes",ExpressionUUID->"22066ff5-38d1-4ce1-b27f-aa50cb351208",
+ CellID->483883203],
+Cell[1462, 47, 264, 5, 70, "Notes",ExpressionUUID->"42044ed2-5a9f-4f40-aaa1-fda6b83634cc",
+ CellID->486766446],
+Cell[1729, 54, 669, 19, 70, "Notes",ExpressionUUID->"a3fd5824-31bd-41cf-8512-6a8074c1c6b4",
+ CellID->520141346]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2435, 78, 109, 1, 70, "SeeAlsoSection",ExpressionUUID->"97009265-9c4d-4b58-8e16-5868b5f192fb",
+ CellID->442081526],
+Cell[2547, 81, 1533, 35, 70, "SeeAlso",ExpressionUUID->"2a26076f-b22c-4e7c-865e-998ff6bc6bf2",
+ CellID->148069322]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4117, 121, 117, 1, 70, "MoreAboutSection",ExpressionUUID->"199a0c22-9315-4ae0-aea2-9b3e6fcc80ac",
+ CellID->472542405],
+Cell[4237, 124, 260, 5, 70, "MoreAbout",ExpressionUUID->"71da3471-66f1-4aba-bea9-414a2c64f252",
+ CellID->139412819]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4534, 134, 119, 1, 70, "RelatedLinksSection",ExpressionUUID->"98852caa-0b40-461b-adca-051c624cf3c0",
+ CellID->940947202],
+Cell[4656, 137, 299, 6, 70, "RelatedLinks",ExpressionUUID->"4ccd5729-5795-4ed7-a74e-886ceb406728",
+ CellID->384465570]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4992, 148, 139, 1, 70, "ExamplesInitializationSection",ExpressionUUID->"1dda342f-e762-4e6d-aeea-52f8b0d5a75d",
+ CellID->899245886],
+Cell[5134, 151, 200, 3, 70, "ExampleInitialization",ExpressionUUID->"fa2c497d-e71a-482b-a345-3b3f4721264f",
+ CellID->823993606]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5371, 159, 442, 12, 70, "PrimaryExamplesSection",ExpressionUUID->"7864ea91-1a2e-4ba8-82fd-eef340897caf",
+ CellID->254133808],
+Cell[5816, 173, 137, 1, 70, "ExampleText",ExpressionUUID->"a357235c-d279-490d-927b-87aac51db4b7",
+ CellID->867543605],
+Cell[5956, 176, 185, 3, 70, "Input",ExpressionUUID->"1150189a-706c-453a-814d-6b45d838a0c0",
+ CellID->365545416],
+Cell[6144, 181, 307, 7, 70, "Output",ExpressionUUID->"9fedf9b9-4f6c-4bd2-800f-278a2f3cc08e",
+ CellID->265326855],
+Cell[6454, 190, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"cdff2eb8-0829-4a74-accf-a8b4926396b1",
+ CellID->808320016],
+Cell[6675, 196, 207, 4, 70, "ExampleText",ExpressionUUID->"e25f1d13-37f1-43cb-b9ac-27e91bf91651",
+ CellID->132062410],
+Cell[6885, 202, 969, 27, 70, "Input",ExpressionUUID->"bbc620f7-e879-4a21-910c-2a2badbf64c7",
+ CellID->461772774],
+Cell[7857, 231, 171, 4, 70, "Output",ExpressionUUID->"a8b9ffbe-fb58-4337-b8ac-9eaeee4db03c",
+ CellID->207432855]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8065, 240, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"d4bfd394-7738-42cd-893f-8b76972ff986",
+ CellTags->"ExtendedExamples",
+ CellID->971208415],
+Cell[CellGroupData[{
+Cell[8244, 246, 241, 5, 70, "ExampleSection",ExpressionUUID->"896c545d-957d-41f7-b453-6b7b1a63fdfa",
+ CellID->177656065],
+Cell[8488, 253, 142, 1, 70, "ExampleText",ExpressionUUID->"be4bec00-0ee1-436d-a755-722108e9279f",
+ CellID->946933133],
+Cell[8633, 256, 1067, 29, 70, "Input",ExpressionUUID->"f5599b79-1ee5-4354-ae91-98011e610508",
+ CellID->366975056],
+Cell[9703, 287, 172, 4, 70, "Output",ExpressionUUID->"124e7d4e-2cc7-46cc-8b86-53e61e70775f",
+ CellID->362320463]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9912, 296, 258, 5, 70, "ExampleSection",ExpressionUUID->"80414e58-ec3b-44ac-a76b-cff0dc61e417",
+ CellID->841943912],
+Cell[10173, 303, 132, 1, 70, "ExampleText",ExpressionUUID->"665d7c27-b325-4297-a8b7-103eab0d7019",
+ CellID->103848357],
+Cell[10308, 306, 760, 20, 70, "Input",ExpressionUUID->"f7cabf83-6329-4a45-998f-26c244ffe5fa",
+ CellID->349713816],
+Cell[11071, 328, 151, 3, 70, "Output",ExpressionUUID->"1c0bc44b-2e07-4e0f-baa0-2fd48a434a99",
+ CellID->208372737]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11271, 337, 110, 1, 70, "MetadataSection",ExpressionUUID->"70076073-9b89-4939-a283-0171bc99ff3a",
+ CellID->260999283],
+Cell[11384, 340, 479, 12, 70, "History",ExpressionUUID->"815dc0a8-5565-4c09-8223-7559b44db343",
+ CellID->658659851],
+Cell[CellGroupData[{
+Cell[11888, 356, 122, 1, 70, "CategorizationSection",ExpressionUUID->"22675726-58d5-4355-a6dd-e03919ccdfd2",
+ CellID->776681333],
+Cell[12013, 359, 134, 2, 70, "Categorization",ExpressionUUID->"89031ab1-3e87-4f0e-9ae2-d7b0a581dacb",
+ CellID->760629469],
+Cell[12150, 363, 168, 2, 70, "Categorization",ExpressionUUID->"e13b2239-4bfb-4122-8faa-c22b54c216f0",
+ CellID->804577783],
+Cell[12321, 367, 165, 2, 70, "Categorization",ExpressionUUID->"4409f253-1bb7-4628-8b7b-504bc0121c49",
+ CellID->613593197],
+Cell[12489, 371, 173, 2, 70, "Categorization",ExpressionUUID->"f7b88457-51a4-4282-b6d0-20fb109cdec5",
+ CellID->637937189]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[12699, 378, 110, 1, 70, "KeywordsSection",ExpressionUUID->"9a533c93-f4ef-43a0-a1b0-deec77114b18",
+ CellID->519032618],
+Cell[12812, 381, 101, 1, 70, "Keywords",ExpressionUUID->"cdb562cf-950b-44b4-9ee6-562386bc82a4",
+ CellID->240726582],
+Cell[12916, 384, 102, 1, 70, "Keywords",ExpressionUUID->"763ddac1-7c5e-461c-9dae-a62cbd684e1b",
+ CellID->792638131],
+Cell[13021, 387, 101, 1, 70, "Keywords",ExpressionUUID->"99b87ffc-b145-4948-ba4b-1e25e9ba3c6d",
+ CellID->655237503],
+Cell[13125, 390, 105, 1, 70, "Keywords",ExpressionUUID->"9e337c1f-640a-48cd-a8ef-1fc8e6efcfef",
+ CellID->402876897]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
