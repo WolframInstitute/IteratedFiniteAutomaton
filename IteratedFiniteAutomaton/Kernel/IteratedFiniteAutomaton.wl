@@ -39,4 +39,13 @@ PackageExport[GroupRingIdempotentSurvival]
 PackageExport[GroupRingZeroDivisorSurvival]
 PackageExport[MaxTerms]
 
+PackageExport[AutomatonTreePortrait]
+PackageExport[AutomatonBoundaryGraph]
+
+PackageExport[IteratedFiniteAutomatonSample]
+PackageExport[IteratedFiniteAutomatonInitialConditionSample]
+PackageExport[IteratedFiniteAutomatonsByRule]
+PackageExport[IteratedFiniteAutomatonsByInitialCondition]
+PackageExport[IteratedFiniteAutomatonsMatrix]
+
 ClearAll["WolframInstitute`IteratedFiniteAutomaton`**`*", "WolframInstitute`IteratedFiniteAutomaton`*"]

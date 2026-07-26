@@ -81,3 +81,20 @@ GroupRingIdempotentSurvival::usage = "GroupRingIdempotentSurvival[automaton, rad
 GroupRingLeftAnnihilator::usage = "GroupRingLeftAnnihilator[automaton, a, support, levels] gives a basis of the coefficient vectors b, in the basis support, with a . Sum_j b_j support_j = 0 in every level quotient in levels. The condition is linear in b, so this is a nullspace over F_p, p = OptionValue[Modulus].";
 
 GroupRingZeroDivisorSurvival::usage = "GroupRingZeroDivisorSurvival[automaton, radius, levels] searches over F_p, p = OptionValue[Modulus], for elements A supported on the radius ball whose left annihilator is nonempty in every level quotient in levels, and gives <|\"Code\", \"Support\", \"Counts\", \"Survivors\", \"Annihilators\"|>, pairing each surviving A with a witness B satisfying A B = 0 at every tested level.\nMaxTerms -> t restricts A to at most t nonzero terms.\nMethod -> \"Tower\" (the default) filters level by level using precomputed 0/1 matrices for left multiplication; Method -> \"Annihilator\" instead takes one nullspace per candidate, stacked across all levels at once.";
+
+(* Portraits and galleries.  The step count stays positional, as it is on
+   IteratedFiniteAutomaton itself, and defaults to Automatic = the tape length. *)
+
+AutomatonTreePortrait::usage = "AutomatonTreePortrait[automaton, s0, level] gives the prefix of the rooted tree down to depth level as a Graph, with each vertex colored by the section of the state s0 at that vertex and enlarged when that section permutes its symbols.";
+
+AutomatonBoundaryGraph::usage = "AutomatonBoundaryGraph[automaton, s0, level] gives the permutation of the k^level vertices at depth level induced by the state s0, drawn as its functional graph. The cycle structure visible in the picture is the order of s0 in Aut(T_level).";
+
+IteratedFiniteAutomatonSample::usage = "IteratedFiniteAutomatonSample[{s, k}, n] gives n + 1 codes spread evenly over the (s k)^(s k) automata on s states and k symbols.";
+
+IteratedFiniteAutomatonInitialConditionSample::usage = "IteratedFiniteAutomatonInitialConditionSample[k, length, n] gives n + 1 initial conditions of the given length, spread evenly over the k^length tapes on k symbols.";
+
+IteratedFiniteAutomatonsByRule::usage = "IteratedFiniteAutomatonsByRule[{s, k}, rules, init] gives one ArrayPlot of the evolution from init for each code in rules.\nIteratedFiniteAutomatonsByRule[{s, k}, rules, init, t] runs t steps instead of Length[init].";
+
+IteratedFiniteAutomatonsByInitialCondition::usage = "IteratedFiniteAutomatonsByInitialCondition[automaton, inits] gives one ArrayPlot of the evolution of the automaton for each initial condition in inits.\nIteratedFiniteAutomatonsByInitialCondition[automaton, inits, t] runs t steps instead of Length[init].";
+
+IteratedFiniteAutomatonsMatrix::usage = "IteratedFiniteAutomatonsMatrix[{s, k}, rules, inits] gives the matrix of ArrayPlots with one row per code in rules and one column per initial condition in inits.\nIteratedFiniteAutomatonsMatrix[{s, k}, rules, inits, t] runs t steps instead of Length[init].";
