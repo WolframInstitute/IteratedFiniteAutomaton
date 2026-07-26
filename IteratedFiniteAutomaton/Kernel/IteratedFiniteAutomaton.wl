@@ -31,4 +31,12 @@ PackageExport[AutomatonSection]
 PackageExport[AutomatonNucleus]
 PackageExport[BGKMNSSNumber]
 
+PackageExport[GroupRingLevelProduct]
+PackageExport[GroupRingLeftAnnihilator]
+PackageExport[GroupRingIdempotentQ]
+PackageExport[GroupRingIdempotentSearch]
+PackageExport[GroupRingIdempotentSurvival]
+PackageExport[GroupRingZeroDivisorSurvival]
+PackageExport[MaxTerms]
+
 ClearAll["WolframInstitute`IteratedFiniteAutomaton`**`*", "WolframInstitute`IteratedFiniteAutomaton`*"]

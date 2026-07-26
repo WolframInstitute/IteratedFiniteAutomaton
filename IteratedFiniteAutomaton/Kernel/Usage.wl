@@ -64,3 +64,20 @@ AutomatonWordSection::usage = "AutomatonWordSection[sections, word, x] gives {se
 AutomatonSection::usage = "AutomatonSection[automaton, word, treeWord] gives the section of word at the tree vertex treeWord.";
 
 AutomatonNucleus::usage = "AutomatonNucleus[automaton, radius, depth, refLevel] gives, for each d = 0, ..., depth, the sections at depth d of the words of length at most radius, kept distinct as automorphisms of T_refLevel. The list stabilizes exactly when the automaton is contracting, and its limit is the nucleus.";
+
+(* The group ring. An element is a list of {coefficient, word} pairs, so {} is 0 and
+   {{1, {}}} is 1; Modulus -> p computes over F_p and Modulus -> 0 over the integers. *)
+
+MaxTerms::usage = "MaxTerms is an option for the group-ring searches specifying the largest number of nonzero terms a candidate element may have. MaxTerms -> Infinity searches the whole support.";
+
+GroupRingLevelProduct::usage = "GroupRingLevelProduct[perms, a, b] gives the product of the group-ring elements a and b in the level quotient, as an Association from level permutation to coefficient, where perms = AutomatonLevelPermutations[automaton, level].\nGroupRingLevelProduct[automaton, level, a, b] builds perms first.\nThe product is <||> exactly when a b = 0 in the level quotient.";
+
+GroupRingIdempotentQ::usage = "GroupRingIdempotentQ[automaton, a, level] gives True if a (a - 1) = 0 in the group ring of the level quotient, so that a is idempotent there.";
+
+GroupRingIdempotentSearch::usage = "GroupRingIdempotentSearch[automaton, radius, coefficients, level] gives the idempotents of the group ring of the level quotient supported on words of length at most radius with coefficients drawn from coefficients, one per group-ring element and excluding 0 and 1.";
+
+GroupRingIdempotentSurvival::usage = "GroupRingIdempotentSurvival[automaton, radius, levels] searches over F_p, p = OptionValue[Modulus], for elements supported on the radius ball that are idempotent in every level quotient in levels, and gives <|\"Code\", \"Support\", \"Counts\", \"Survivors\"|>, where \"Counts\" records how many candidates remain after each level. An idempotent other than 0 and 1 is a zero divisor, so an empty \"Survivors\" refutes one radius over one field.\nMaxTerms -> t restricts candidates to at most t nonzero terms.";
+
+GroupRingLeftAnnihilator::usage = "GroupRingLeftAnnihilator[automaton, a, support, levels] gives a basis of the coefficient vectors b, in the basis support, with a . Sum_j b_j support_j = 0 in every level quotient in levels. The condition is linear in b, so this is a nullspace over F_p, p = OptionValue[Modulus].";
+
+GroupRingZeroDivisorSurvival::usage = "GroupRingZeroDivisorSurvival[automaton, radius, levels] searches over F_p, p = OptionValue[Modulus], for elements A supported on the radius ball whose left annihilator is nonempty in every level quotient in levels, and gives <|\"Code\", \"Support\", \"Counts\", \"Survivors\", \"Annihilators\"|>, pairing each surviving A with a witness B satisfying A B = 0 at every tested level.\nMaxTerms -> t restricts A to at most t nonzero terms.\nMethod -> \"Tower\" (the default) filters level by level using precomputed 0/1 matrices for left multiplication; Method -> \"Annihilator\" instead takes one nullspace per candidate, stacked across all levels at once.";
