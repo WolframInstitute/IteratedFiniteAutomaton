@@ -1,0 +1,1358 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     53013,       1349]
+NotebookOptionsPosition[     43059,       1151]
+NotebookOutlinePosition[     45017,       1197]
+CellTagsIndexPosition[     44937,       1192]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["IteratedFiniteAutomaton", "ObjectName",
+ CellID->349221021,ExpressionUUID->"8de47fe6-8210-4673-bb26-d838042a875e"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"c5b2598b-d9d2-4068-bb85-d0e627cecb31"],
+ Cell[BoxData[
+  RowBox[{"IteratedFiniteAutomaton", "[", 
+   StyleBox["rule", "TI"], ",", 
+   StyleBox["init", "TI"], ",", 
+   StyleBox["t", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+  "54814107-85bb-4127-a6e6-2c048971dafa"],
+ " \[LineSeparator]",
+ "generates the evolution of the iterated finite automaton with the specified \
+",
+ Cell[BoxData[
+  StyleBox["rule", "TI"]], "InlineFormula",ExpressionUUID->
+  "00425c0b-19ca-4f65-859e-1772f16ceb71"],
+ " from initial condition ",
+ Cell[BoxData[
+  StyleBox["init", "TI"]], "InlineFormula",ExpressionUUID->
+  "6f72895c-6bd0-4673-896d-71d80659ac62"],
+ " for ",
+ Cell[BoxData[
+  StyleBox["t", "TI"]], "InlineFormula",ExpressionUUID->
+  "5c6b273b-e28d-47dc-a664-cea113c5c0ae"],
+ " steps.",
+ "\n",
+ Cell["   ", "ModInfo",ExpressionUUID->"fe8b658b-b9d4-4fa4-9e01-f673d8bd699f"],
+ Cell[BoxData[
+  RowBox[{"IteratedFiniteAutomaton", "[", 
+   StyleBox["rule", "TI"], ",", 
+   SubscriptBox[
+    StyleBox["s", "TI"], "0"], ",", 
+   StyleBox["init", "TI"], ",", 
+   StyleBox["t", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+  "82c70419-ffca-4553-bfdf-31eb985c9475"],
+ " \[LineSeparator]",
+ "starts the automaton in state ",
+ Cell[BoxData[
+  SubscriptBox[
+   StyleBox["s", "TI"], "0"]], "InlineFormula",ExpressionUUID->
+  "0babb665-c800-42d2-a6b6-435f870c8453"],
+ ".",
+ "\n",
+ Cell["   ", "ModInfo",ExpressionUUID->"20349633-8423-4a55-a930-79547e65851d"],
+ Cell[BoxData[
+  RowBox[{"IteratedFiniteAutomaton", "[", 
+   StyleBox["rule", "TI"], ",", 
+   StyleBox["init", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+  "fac4707a-1da3-45ce-b70f-de579b08ea2d"],
+ " \[LineSeparator]",
+ "gives a single step of evolution.",
+ "\n",
+ Cell["   ", "ModInfo",ExpressionUUID->"cd884f96-1947-4fa1-9f8f-84bb3b8756b1"],
+ Cell[BoxData[
+  RowBox[{"IteratedFiniteAutomaton", "[", 
+   StyleBox["rule", "TI"], ",", 
+   SubscriptBox[
+    StyleBox["s", "TI"], "0"], "]"}]], "InlineFormula",ExpressionUUID->
+  "fa05c9eb-e8f8-4506-9608-cd44137dcb93"],
+ " \[LineSeparator]",
+ "is the operator form that can be applied to an initial condition."
+}], "Usage",
+ CellID->300236459,ExpressionUUID->"58dfc7db-c881-4a29-9a20-747d319ff543"],
+
+Cell[TextData[{
+ "The automaton reads a row of symbols from the left, starting in state ",
+ Cell[BoxData[
+  SubscriptBox[
+   StyleBox["s", "TI"], "0"]], "InlineFormula",ExpressionUUID->
+  "e68ae985-a6ee-4b24-88f6-b64a3047af86"],
+ ". At a cell holding symbol ",
+ Cell[BoxData[
+  StyleBox["i", "TI"]], "InlineFormula",ExpressionUUID->
+  "ac96e126-c949-40a4-837a-43570f691b76"],
+ " in state ",
+ Cell[BoxData[
+  StyleBox["s", "TI"]], "InlineFormula",ExpressionUUID->
+  "67af6932-fe44-4f1b-8cb4-9e73dbd901cb"],
+ ", the transition ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     StyleBox["s", "TI"], ",", 
+     StyleBox["i", "TI"]}], "}"}], "\[Rule]", 
+   RowBox[{"{", 
+    RowBox[{
+     StyleBox["f", "TI"], ",", 
+     StyleBox["o", "TI"]}], "}"}]}]], "InlineFormula",ExpressionUUID->
+  "6fa9b12c-757d-4e4a-8559-cc46c0462b22"],
+ " writes the symbol ",
+ Cell[BoxData[
+  StyleBox["o", "TI"]], "InlineFormula",ExpressionUUID->
+  "9a87d5f3-4653-4932-b8bb-f6c92c259b0e"],
+ " and moves to state ",
+ Cell[BoxData[
+  StyleBox["f", "TI"]], "InlineFormula",ExpressionUUID->
+  "8eb79492-279d-4922-8e90-40f41a1779d4"],
+ "."
+}], "Notes",
+ CellID->968849001,ExpressionUUID->"14fbb0fd-ba07-4357-b167-7d3cd0c68992"],
+
+Cell[TextData[{
+ "The ",
+ Cell[BoxData[
+  StyleBox["rule", "TI"]], "InlineFormula",ExpressionUUID->
+  "9038c7ea-839b-4752-ab2a-fc125c7f05bf"],
+ " is either an explicit list of transitions ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     StyleBox["s", "TI"], ",", 
+     StyleBox["i", "TI"]}], "}"}], "\[Rule]", 
+   RowBox[{"{", 
+    RowBox[{
+     StyleBox["f", "TI"], ",", 
+     StyleBox["o", "TI"]}], "}"}]}]], "InlineFormula",ExpressionUUID->
+  "ba571e18-f153-4918-8b70-594a1c0ac861"],
+ " or a numeric code ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{
+    StyleBox["code", "TI"], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      StyleBox["s", "TI"], ",", 
+      StyleBox["k", "TI"]}], "}"}]}], "}"}]], "InlineFormula",ExpressionUUID->
+  "87839b2d-1fc3-4d1b-9274-a13a36c8e4d7"],
+ " for an automaton with ",
+ Cell[BoxData[
+  StyleBox["s", "TI"]], "InlineFormula",ExpressionUUID->
+  "bf1577c8-5640-440b-886a-0f798699262d"],
+ " states and ",
+ Cell[BoxData[
+  StyleBox["k", "TI"]], "InlineFormula",ExpressionUUID->
+  "37de3485-6512-4f3a-acba-9c8d034549fe"],
+ " symbols."
+}], "Notes",
+ CellID->845442752,ExpressionUUID->"5f20a012-5077-4faf-a4ae-6f089f89a9e6"],
+
+Cell[TextData[{
+ "States are numbered 1, \[Ellipsis], ",
+ Cell[BoxData[
+  StyleBox["s", "TI"]], "InlineFormula",ExpressionUUID->
+  "82b02030-aad6-4022-9627-ca0d0e856ac4"],
+ "; symbols are 0, \[Ellipsis], ",
+ Cell[BoxData[
+  RowBox[{
+   StyleBox["k", "TI"], "-", "1"}]], "InlineFormula",ExpressionUUID->
+  "b344a2fc-8481-40cb-855c-884b83e949fc"],
+ ". The initial state defaults to 1."
+}], "Notes",
+ CellID->830254042,ExpressionUUID->"f6c26c2a-b7b1-4e9e-84aa-4abcf22d4a0c"],
+
+Cell[TextData[{
+ "With ",
+ Cell[BoxData[
+  StyleBox["t", "TI"]], "InlineFormula",ExpressionUUID->
+  "3e32d092-7b4e-41ee-977a-742a4cb412d9"],
+ " steps the result is a list of ",
+ Cell[BoxData[
+  RowBox[{
+   StyleBox["t", "TI"], "+", "1"}]], "InlineFormula",ExpressionUUID->
+  "79e5a4c3-eb4d-4e91-a982-b5011b4bb1dd"],
+ " rows including the initial condition, a spacetime evolution analogous to \
+",
+ Cell[BoxData[
+  ButtonBox["CellularAutomaton",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/CellularAutomaton"]], "InlineFormula",
+  ExpressionUUID->"a3c089be-ec68-4713-9933-ccd48af8366b"],
+ "."
+}], "Notes",
+ CellID->639620180,ExpressionUUID->"9e265b10-d540-4dc0-82ad-59a00c2c0a34"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->767690047,ExpressionUUID->"b6004c7a-1552-401b-a8a6-27c70a57dc0b"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonPeriodicStop",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonPeriodicStop"]], "InlineFormula",ExpressionUUID->
+  "fdc79858-b318-4384-bd94-f2f86e75a9e5"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"e154059f-a8a8-4d7f-8798-47a4f6c161eb"],
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonStateTransitions",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonStateTransitions"]], "InlineFormula",ExpressionUUID->
+  "c36c3fc8-4644-4dc7-b8b5-aa9f134144c7"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"b0f17217-d5ca-466b-9154-706c58c2f06c"],
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonStateGraph",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonStateGraph"]], "InlineFormula",ExpressionUUID->
+  "6f1176b1-7133-498d-91f3-833e435512cd"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"8ef7d98d-f147-47bb-9435-02f98b328064"],
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonColors",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonColors"]], "InlineFormula",ExpressionUUID->
+  "5de7365a-1dab-4511-981c-b84908b6e8da"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"2aed723b-ad57-40da-adf4-8e5002361612"],
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonFromStates",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonFromStates"]], "InlineFormula",ExpressionUUID->
+  "086947f5-d4da-4818-b695-b5ff11beaa8d"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"d386bacb-191e-4686-9b99-b7c4866df656"],
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonFromWreath",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonFromWreath"]], "InlineFormula",ExpressionUUID->
+  "27ad2de0-44c7-4bf6-80e2-45dc8ff1e0da"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"31fb16fe-e422-4b72-a3d6-71216f7dcaff"],
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonEvolve",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonEvolve"]], "InlineFormula",ExpressionUUID->
+  "1ff16461-b4ec-4bc2-ba70-903913543dcd"]
+}], "SeeAlso",
+ CellID->526828821,ExpressionUUID->"60997cd9-0746-4036-a0d5-b68bb129e77d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",
+ CellID->829175493,ExpressionUUID->"468ac6f2-7c43-4c6b-9cf5-0f15d79d03dd"],
+
+Cell[TextData[ButtonBox["Iterated Finite Automata",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:WolframInstitute/IteratedFiniteAutomaton/guide/\
+IteratedFiniteAutomaton"]], "MoreAbout",
+ CellID->230764913,ExpressionUUID->"106e74a7-9f09-46f3-9289-095b67ba066c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->592964761,ExpressionUUID->"18cce84b-cb09-4924-8f9e-3ada0b2f6665"],
+
+Cell[TextData[ButtonBox["A. Zuk, \"Iterated Finite Automata\", Wolfram \
+Community (WSRI26)",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://community.wolfram.com/groups/-/m/t/3761828"], 
+   None}]], "RelatedLinks",
+ CellID->200821433,ExpressionUUID->"2539b36b-3248-42d0-9e2e-f105ecc37484"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples Initialization", "ExamplesInitializationSection",
+ CellID->708970976,ExpressionUUID->"021ab05f-abe7-4772-8d05-df8b5ec3b4fd"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<WolframInstitute`IteratedFiniteAutomaton`\>\"", 
+  "]"}]], "ExampleInitialization",
+ CellID->527169402,ExpressionUUID->"8205fba0-b172-4da9-ac9b-9b68fa9bb1c2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox[
+      RowBox[{"Basic", " ", "Examples"}], "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->746420864,ExpressionUUID->"b2c96a02-26fe-481e-9ea4-c47e73009311"],
+
+Cell["\<\
+Define the two-state adding machine (binary odometer) and evolve it from the \
+zero row:\
+\>", "ExampleText",
+ CellID->235569827,ExpressionUUID->"8ef7089e-aa1e-4b9f-ba3c-72951d0920b7"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"addingMachine", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "0"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "0"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}]}]}], "}"}]}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->112108235,ExpressionUUID->"ef67da45-6e27-4755-a38c-5d84cd726b42"],
+
+Cell[BoxData[
+ RowBox[{"IteratedFiniteAutomaton", "[", 
+  RowBox[{"addingMachine", ",", 
+   RowBox[{"ConstantArray", "[", 
+    RowBox[{"0", ",", "5"}], "]"}], ",", "4"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->531765054,ExpressionUUID->"840309f6-1fdc-4a95-969b-ea781ff9a3f7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1", ",", "0", ",", "0"}], "}"}]}], 
+  "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->277390262,ExpressionUUID->"2d6bb384-ad9e-41c8-b6be-14382101278a"],
+
+Cell["\<\
+Successive rows read as binary numbers, least significant digit first:\
+\>", "ExampleText",
+ CellID->423603733,ExpressionUUID->"308cfdf3-5363-4d23-81ab-fe267e0c7d8a"],
+
+Cell[BoxData[
+ RowBox[{"Map", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", "row", "}"}], "\[Function]", 
+    RowBox[{"FromDigits", "[", 
+     RowBox[{
+      RowBox[{"Reverse", "[", "row", "]"}], ",", "2"}], "]"}]}], ",", 
+   RowBox[{"IteratedFiniteAutomaton", "[", 
+    RowBox[{"addingMachine", ",", 
+     RowBox[{"ConstantArray", "[", 
+      RowBox[{"0", ",", "8"}], "]"}], ",", "10"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->865483351,ExpressionUUID->"942ae297-290e-4022-9722-e4e996e5e8d9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",",
+    "8", ",", "9", ",", "10"}], "}"}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->146812229,ExpressionUUID->"bc0d0fb6-bd46-4880-b61b-d559b282aa6b"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"82977cc6-7cc9-4c66-ad0e-181395c47efd"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->498989005,ExpressionUUID->"ac944c1c-7002-4d28-ba08-cd9bf5d78beb"],
+
+Cell["\<\
+Specify an automaton by numeric code and plot the spacetime diagram:\
+\>", "ExampleText",
+ CellID->517458811,ExpressionUUID->"22bea4b7-2fe6-40f5-9037-d0b22f267ac4"],
+
+Cell[BoxData[
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{
+   RowBox[{"IteratedFiniteAutomaton", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"28126", ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "2"}], "}"}]}], "}"}], ",", 
+     RowBox[{"CenterArray", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "0", ",", "1"}], "}"}], ",", "60"}], 
+      "]"}], ",", "30"}], "]"}], ",", 
+   RowBox[{"ColorRules", "\[Rule]", 
+    RowBox[{"IteratedFiniteAutomatonColors", "[", "2", "]"}]}]}], 
+  "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->276409751,ExpressionUUID->"ddc1c350-6f7e-4cff-81b5-81ef22ac3b2b"],
+
+Cell[BoxData[
+ GraphicsBox[
+  RasterBox[SparseArray[
+   Automatic, {31, 60}, 1., {
+    1, {{0, 41, 81, 119, 162, 200, 242, 280, 321, 360, 400, 439, 482, 522, 
+      564, 608, 650, 691, 729, 769, 809, 851, 892, 933, 975, 1016, 1058, 1099,
+       1139, 1189, 1220, 1222}, CompressedData["
+1:eJxtlFl2glAQRDGOoOIIjqAoCgrOs3EVWYIbyC6zrnTR5x14yBd/1VW36uG8
+f3/eX4qi/BUUJUffXL5QKmvVut5stTtdo9cfDEdjezJ3l14Qbnf7w+l8ud4f
+z+/cV75YKle0aq3eaBpmr2/Zk+ncXSw9Pwg328PxdL7e7o8XCRZLFVWr6o1m
+yzD7A8ueOnPXX0HucCS12+P5IjUSU6s1vdFqQ20whN6MBP3VOthscfiGuy/J
+oWEORxCczRdLfxVudnu6e7ndX5K9LilSDCg67sIjRXJIxz8NIvFw5MyQY005
+9pTj0yD0wIXOup4v7EEtZY8Bji0I8lkYvFwz8MEe9Jgzg+G0Mj604cwEZsYS
+ycn8kliCUGDJ4Ad7ojgkpoqPdDqDIC+By0NmjpJFEJr2hMtjl+L8J0f0gqJh
+dB1gYbie9sm9RAVGKJlRxhJhc2wBY3ya4yRNYmAAjth0NTFs2aAIDT0xGt6h
+bA96Yv+IwRgRGUGS/jpdaPIbgEdgxGVoShYpsonHJ54BDHDfqbahyGnQd1zN
++ZKESIrtdIkxHwliPFvRIfeSXmRdx37QS9yg2G5ikzU6DkmEwXRRX/xkBElV
+Ax0I8sSRJdpkRBPnjwJTRLQAtyrsRtFAi/9VZNqa/gOLzZE7
+      "]}, CompressedData["
+1:eJztwUENACAMBLAjwcgsIYGENy7RNSG0rX3XGUneDAAAAAAAAAAAAJ9o7mcC
+dQ==
+     "]}], {{0, 0}, {60, 31}}, {0, 1}],
+  Frame->Automatic,
+  FrameLabel->{None, None},
+  FrameTicks->{{None, None}, {None, None}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+    "DefaultGraphicsInteraction" -> {
+     "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+      "Effects" -> {
+       "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+        "Droplines" -> {
+         "freeformCursorMode" -> True, 
+          "placement" -> {"x" -> "All", "y" -> "None"}}}}, "DefaultPlotStyle" -> 
+    Automatic}]], "Output",
+ CellLabel->"Out[4]=",
+ CellID->744704844,ExpressionUUID->"995eeb71-a48c-43d6-9b04-baec6f2fe158"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"0b075e6b-e5f6-4bfa-8607-a087391d6e00"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->624954397,ExpressionUUID->"d3b9e1fa-da90-4b0a-b03a-a61fe9e1c4f9"],
+
+Cell[TextData[{
+ "The operator form composes with ",
+ Cell[BoxData[
+  ButtonBox["Nest",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Nest"]], "InlineFormula",ExpressionUUID->
+  "a3a8604a-ce80-4ad3-851a-b0efa1a976eb"],
+ ":"
+}], "ExampleText",
+ CellID->408489475,ExpressionUUID->"ce0c006b-ca91-4abc-aafd-2249dc14a103"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"step", "=", 
+   RowBox[{"IteratedFiniteAutomaton", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}], "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "1"}], "}"}]}], ",", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}]}], ",", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "0"}], "}"}], "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "0"}], "}"}]}], ",", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "1"}], "}"}]}]}], "}"}], "]"}]}], ";"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->988932521,ExpressionUUID->"e841fbc5-ac59-4c17-a8e2-0c7141d1f0af"],
+
+Cell[BoxData[
+ RowBox[{"Nest", "[", 
+  RowBox[{"step", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}], ",", "5"}], 
+  "]"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->418881141,ExpressionUUID->"b1e2e1a2-6685-4544-a70d-5d8e0512c1eb"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "0", ",", "1", ",", "0"}], "}"}]], "Output",
+ CellLabel->"Out[6]=",
+ CellID->592954013,ExpressionUUID->"e74cfb11-1368-468c-8405-3579b901efc1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->144915512,ExpressionUUID->"0a2eaaf4-8ef3-4a79-b93e-fa21286acbf0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Scope", "ExampleSection",ExpressionUUID->
+   "6ad1b2fa-ea18-4403-8850-895a8efa1e30"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->544459072,ExpressionUUID->"138deb17-9d40-456c-9e4e-3703f0463b1f"],
+
+Cell[TextData[{
+ "The code fixes the alphabet size, so ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{
+    StyleBox["code", "TI"], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "3"}], "}"}]}], "}"}]], "InlineFormula",ExpressionUUID->
+  "9d6ec1be-7854-4dc8-b3bf-48512d1d700f"],
+ " is a two-state automaton on three symbols:"
+}], "ExampleText",
+ CellID->182860913,ExpressionUUID->"75f3da64-0c21-4a9e-997c-76a1e0128932"],
+
+Cell[BoxData[
+ RowBox[{"ArrayPlot", "[", 
+  RowBox[{
+   RowBox[{"IteratedFiniteAutomaton", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"576353", ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], "}"}], ",", 
+     RowBox[{"CenterArray", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], ",", "41"}], "]"}], ",", "30"}], 
+    "]"}], ",", 
+   RowBox[{"ColorRules", "\[Rule]", 
+    RowBox[{"IteratedFiniteAutomatonColors", "[", "3", "]"}]}]}], 
+  "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->770747751,ExpressionUUID->"4e9a4cc4-3272-4d61-8379-7b579ce766ba"],
+
+Cell[BoxData[
+ GraphicsBox[RasterBox[CompressedData["
+1:eJztm7FKA1EURBf8EBEEsQlYWe4HaGVrJ6TW3tbCxkYkir2NRRrBwjIIfoJg
+oyAqgkW+QIzYKRE2vuvM3DeB8MJwud73hpwds+zC1vZGf65pmvnJe3ny/vz8
+9Rq339f1682X+95b+747vjs7eGwvTodLV73RjzrX/62+lD7t77LtN2s9yvdp
++s7g8Gnx6LZdGbwe768+tDd7J2vnl8+u/6f6aB/Z9pu1HuU7ij/uj/WRbb9Z
++6N8R/HH/TlzV9bzRPVn+15H88f9OXNX1325/+/92fRo/rg/Z+6K/r+ytv5s
+eimOofimPj8qV5Q6h1Lnpj4/m16KYyq/A7PNj8oVqN/Ps87PpqvzTX1+VG6J
+7lPb/Gy6Ot/U50fllug+tc3PpqvzTX1+VG5hyzPq87Pp6nxTnx+VW9jyjPr8
+bLo639TnR+UWtnNTn59NV+eb+vyo3MJ2burzs+mlOIla2c6TzUcV353HODmJ
+0tnOk81HFd+dxzg5j6q3Ptv1l81f+87JeVS99dmuv2z+2ndOzpvPnD6y+WXf
+tThvPnP6yOaXfdfivPnM6WOp6290f+ucnDefOX3088t16qU4bD5z+ljKd+cx
+Ld33l3Pofn7ZegTn2fZVmx59/bXvWrr5nEP388vWzed8eim/7HsO3XzOofv+
+snXzOZ/eNXfZ99y6+ZxD9/0L6xGc94pdu35P0fN6jV0/AMxrkQ0=
+   "], {{0, 0}, {41, 31}}, {0, 1}],
+  Frame->Automatic,
+  FrameLabel->{None, None},
+  FrameTicks->{{None, None}, {None, None}},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+    "DefaultGraphicsInteraction" -> {
+     "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+      "Effects" -> {
+       "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+        "Droplines" -> {
+         "freeformCursorMode" -> True, 
+          "placement" -> {"x" -> "All", "y" -> "None"}}}}, "DefaultPlotStyle" -> 
+    Automatic}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->457220804,ExpressionUUID->"13303c46-7e5d-4a70-a3d7-0d7ed614f7f2"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"8ccf0139-980f-4ef2-8c22-6b18e1d4d100"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->853195151,ExpressionUUID->"f374e691-c4dd-49d9-a640-7f0fd44d142d"],
+
+Cell["\<\
+State 2 of the adding machine is absorbing and writes what it reads, so \
+starting there fixes every row:\
+\>", "ExampleText",
+ CellID->652783631,ExpressionUUID->"e1cf0f27-e1ab-4083-9416-ddc0c42909fd"],
+
+Cell[BoxData[
+ RowBox[{"IteratedFiniteAutomaton", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "0"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "0"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}]}]}], "}"}], ",", "2", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "1", ",", "1"}], "}"}], ",", "3"}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->713679042,ExpressionUUID->"197dfba6-5ca4-4ecd-a888-8d0fd2441a5d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "1", ",", "1"}], "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->122689980,ExpressionUUID->"0a93b1e2-5dc4-41e8-93d5-1e98f4b801cb"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Properties & Relations", "ExampleSection",ExpressionUUID->
+   "bf257a22-a6ef-45a3-a254-ef7ccb446a93"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->294382514,ExpressionUUID->"66c9882d-f55e-4933-a3f3-8514a2f1dd86"],
+
+Cell["\<\
+A rule whose transitions do not depend on the state acts on each cell \
+independently:\
+\>", "ExampleText",
+ CellID->416035860,ExpressionUUID->"7bf1d5d2-7ff0-4208-815b-fca757cba1bf"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IteratedFiniteAutomaton", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}], "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}]}], ",", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1", ",", "1", ",", "0", ",", "1"}], "}"}], ",", "3"}],
+    "]"}], "===", 
+  RowBox[{"NestList", "[", 
+   RowBox[{
+    RowBox[{"Function", "[", 
+     RowBox[{
+      RowBox[{"{", "row", "}"}], ",", 
+      RowBox[{"1", "-", "row"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1", ",", "1", ",", "0", ",", "1"}], "}"}], ",", "3"}],
+    "]"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->598296227,ExpressionUUID->"4dec08c8-28d4-4126-825f-a0a3c0e028d8"],
+
+Cell[BoxData["True"], "Output",
+ CellLabel->"Out[1]=",
+ CellID->859329676,ExpressionUUID->"6871a83f-dafd-477c-98c3-f9888f35fdac"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"ca3339d4-edc6-4d15-acfa-62cffaad8f49"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->475359830,ExpressionUUID->"3ac257db-b973-4996-a2f7-cb77ef7b0ce9"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonStateTransitions",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonStateTransitions"]], "InlineFormula",ExpressionUUID->
+  "4011caf7-6948-4daa-85ec-12a42b8fae48"],
+ " gives the same evolution with the transition taken at each cell attached:"
+}], "ExampleText",
+ CellID->896807693,ExpressionUUID->"043ca630-82c7-4308-b582-8269c202ca61"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"IteratedFiniteAutomatonStateTransitions", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"28126", ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "2"}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1", ",", "0", ",", "1"}], "}"}], ",", "4"}], "]"}], "\[LeftDoubleBracket]", 
+   RowBox[{"All", ",", "All", ",", "3", ",", "2"}], "\[RightDoubleBracket]"}],
+   "===", 
+  RowBox[{"IteratedFiniteAutomaton", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"28126", ",", 
+      RowBox[{"{", 
+       RowBox[{"3", ",", "2"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1", ",", "0", ",", "1"}], "}"}], ",", "4"}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->158329224,ExpressionUUID->"8b952bd6-3083-415f-a0d0-9d35881d05c9"],
+
+Cell[BoxData["True"], "Output",
+ CellLabel->"Out[2]=",
+ CellID->929026841,ExpressionUUID->"0fc29a0b-ca17-4a11-aaf5-474ef4458c44"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Neat Examples", "ExampleSection",ExpressionUUID->
+   "4dee1ea4-c76d-41ff-b75d-716c1e058a11"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->838489357,ExpressionUUID->"defbc6ab-454c-410e-be29-876ac2e11eb5"],
+
+Cell["\<\
+Six three-state automata on two symbols evolved from the same initial row:\
+\>", "ExampleText",
+ CellID->966073938,ExpressionUUID->"d3c379c1-8ff1-428c-aab3-32d577fed2c6"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"ArrayPlot", "[", 
+        RowBox[{
+         RowBox[{"IteratedFiniteAutomaton", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"code", ",", 
+             RowBox[{"{", 
+              RowBox[{"3", ",", "2"}], "}"}]}], "}"}], ",", 
+           RowBox[{"CenterArray", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"1", ",", "1", ",", "0", ",", "1"}], "}"}], ",", "61"}],
+             "]"}], ",", "40"}], "]"}], ",", 
+         RowBox[{"ColorRules", "\[Rule]", 
+          RowBox[{"IteratedFiniteAutomatonColors", "[", "2", "]"}]}], ",", 
+         RowBox[{"PlotLabel", "\[Rule]", "code"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"code", ",", 
+         RowBox[{"{", 
+          RowBox[{
+          "2745", ",", "2767", ",", "2802", ",", "2916", ",", "3000", ",", 
+           "4200"}], "}"}]}], "}"}]}], "]"}], ",", "3"}], "]"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "520"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->423514118,ExpressionUUID->"0645babd-ecbc-4ca2-bd14-9722cfd7ca37"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{InsetBox[
+      GraphicsBox[
+       RasterBox[SparseArray[
+        Automatic, {41, 61}, 1., {
+         1, {{0, 20, 40, 59, 80, 98, 119, 136, 158, 174, 196, 211, 234, 248, 
+           271, 284, 308, 320, 344, 355, 379, 391, 415, 426, 450, 460, 485, 
+           494, 519, 527, 553, 560, 586, 592, 619, 624, 651, 655, 683, 686, 
+           714, 717}, CompressedData["
+1:eJyNkNkRgkAQRFFKvO/7QhBBERRBEEVJwhBIwEjNSTzpZffDn5nurtq3MyNH
+t2uU5TjuHpdM3HmhWKm3uoOxKC+W681ufzhd/swY0TmkQzo5BjSOCjyfQUt7
+x2XAUtayWSzSmVsWijC6wSSh1lZMEEhFBU6SI1KaAyfJj8FPTmfASX7y/K8a
+TYACAzvuR/SHAIFxLfvdOz1g4NLm9tWabUDgxrrxrLUGEIizaau4lKsAIE6m
+qLxQKMF7lTi7NOdzeXhOXDOcitID2AxXIw==
+           "]}, CompressedData["
+1:eJztwTERACAMBLAHJ7WEBO6YUYqnimBNUvuuM5K8GQAAAAAA+NKV4wJ6
+          "]}], {{0, 0}, {61, 41}}, {0, 1}],
+       DefaultBaseStyle->{"PlotGraphics", "Graphics"},
+       DisplayFunction->Identity,
+       Frame->Automatic,
+       FrameLabel->{None, None},
+       FrameTicks->{{None, None}, {None, None}},
+       GridLinesStyle->Directive[
+         GrayLevel[0.5, 0.4]],
+       ImagePadding->{{0.5000000000000003, 0.5}, {0.5000000000000001, 
+        0.4999999999999716}},
+       Method->{
+        "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+         "DefaultGraphicsInteraction" -> {
+          "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+           "Effects" -> {
+            "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2},
+              "Droplines" -> {
+              "freeformCursorMode" -> True, 
+               "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+         "DefaultPlotStyle" -> Automatic},
+       PlotInteractivity:>True,
+       PlotLabel->FormBox["2745", TraditionalForm]], {193.5, -143.41756434426227},
+       ImageScaled[{0.5, 0.5}], {360., 259.83512868852455},
+      BaseStyle->{Graphics3DBoxOptions -> {SphericalRegion -> False}}], 
+     InsetBox[
+      GraphicsBox[
+       RasterBox[SparseArray[
+        Automatic, {41, 61}, 1., {
+         1, {{0, 44, 88, 131, 173, 214, 255, 295, 334, 372, 410, 447, 483, 
+           518, 553, 586, 621, 655, 687, 717, 749, 779, 811, 840, 869, 899, 
+           926, 949, 973, 1002, 1028, 1049, 1074, 1099, 1119, 1134, 1157, 
+           1179, 1193, 1213, 1231, 1234}, CompressedData["
+1:eJyNk2lygkAQhUk0xl1kERAQFBFkkZFFUcwlcgQv4F1zovQMqQQNlPOLKl7P
+e19P9yyvt8/rK8MwX22GeYFvq/3Wee/2+oPhaDxhpxwviDNJVuaqpi8Mc7my
+1vbGcbdelBwLytoApfmFrjbcZ6cPqlJvFx/ONJU+JalLibmlY9xQATo0dGsa
+NJuCa/UcynpKZD7FWZYsjQWLkqO4NNIaJUZeNKVoJUUTqE4Q8nr/OclP0uxc
+q6skHCXpsUaVSXCU5KdzHZuCg1GG1X/iDOf6QRiD+ihKONT1gyiFs4++Ag51
+fLRPHxsSIc8NUXbvx0ES7LMX398ODyGmBUZBuItgflUvFjIMy8USDK4CMBUV
+08bQh7/yMTeDNVgR3qTSzISXZBVsMGu1jyErSKppwdv+bWA0lXXb2/2A98dw
+s/PyOaB9fCzRBiwvSBpZ/xB6P5G/3RGvwK576ADuEMnCvDTYawcQgaXV6Q0n
+nCir1mYbRHGWF/rC/AZTcnjX
+           "]}, CompressedData["
+1:eJztwUENACAMBLAjwcgsIYGEN15RNBM829a+64wkbwYAAAAAAAAAAAC+aKlk
+AoE=
+          "]}], {{0, 0}, {61, 41}}, {0, 1}],
+       DefaultBaseStyle->{"PlotGraphics", "Graphics"},
+       DisplayFunction->Identity,
+       Frame->Automatic,
+       FrameLabel->{None, None},
+       FrameTicks->{{None, None}, {None, None}},
+       GridLinesStyle->Directive[
+         GrayLevel[0.5, 0.4]],
+       ImagePadding->{{0.5000000000000003, 0.5}, {0.5000000000000001, 
+        0.4999999999999716}},
+       Method->{
+        "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+         "DefaultGraphicsInteraction" -> {
+          "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+           "Effects" -> {
+            "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2},
+              "Droplines" -> {
+              "freeformCursorMode" -> True, 
+               "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+         "DefaultPlotStyle" -> Automatic},
+       PlotInteractivity:>True,
+       PlotLabel->FormBox["2767", TraditionalForm]], {580.5, -143.41756434426227},
+       ImageScaled[{0.5, 0.5}], {360., 259.83512868852455},
+      BaseStyle->{Graphics3DBoxOptions -> {SphericalRegion -> False}}], 
+     InsetBox[
+      GraphicsBox[
+       RasterBox[SparseArray[
+        Automatic, {41, 61}, 1., {
+         1, {{0, 19, 35, 51, 68, 85, 100, 115, 130, 149, 168, 183, 200, 222, 
+           242, 259, 279, 299, 315, 330, 349, 366, 385, 400, 418, 439, 455, 
+           470, 492, 514, 532, 546, 567, 587, 608, 623, 643, 663, 675, 695, 
+           714, 717}, CompressedData["
+1:eJxdkltyglAQRI2liVExEiWIioCKgLzfoLiJLMENZKXZU/oOiFR+oGqmp2dO
+19XuP9/3fq/X+8XnBf/BaDpfrrbq0XTcIEyKa3Xrv45nn1/r3f50dsOsuj0l
+flKUl07fdtwoKy9PgQWTpKuw3Cgv2r4dpFjQdg3T8uKq7eoYD7McK1qFbnl+
+wirtEYbjRx3F4aif06zT12DjuJ4fhFGctTJNPze14rHvYP4TKaoGoFr0sJPh
+h6tId210snayPBTKWqMcbQfdvMHabGXGBZ84b4KRYMPggrQJRpIBhiNjgFxJ
+s1EN1wvBUS8RVxKR2V7SCAS4EJuNW/KilgkSwDAXpRSxCCYLM1Ed8WIpEBNK
+QcpiJXIeVoTFhDErMy0vAMuAedzoFuDSTddLqf8x5wmMXcTI6U1w8CI2zDEn
+BsfxDO5Ao5QArv8AHSo2Cinunkw54mOJ+LRv8A4vBqhRLHgjZdV/4xbSTtkb
+LnIejic4QNwqLJIATwRvdDiazPiluN4jEi9M8stN3ql/KGdfRA==
+           "]}, CompressedData["
+1:eJztwTERACAMBLAHJ7WEBO6YUYqnimBNUvuuM5K8GQAAAAAA+NKV4wJ6
+          "]}], {{0, 0}, {61, 41}}, {0, 1}],
+       DefaultBaseStyle->{"PlotGraphics", "Graphics"},
+       DisplayFunction->Identity,
+       Frame->Automatic,
+       FrameLabel->{None, None},
+       FrameTicks->{{None, None}, {None, None}},
+       GridLinesStyle->Directive[
+         GrayLevel[0.5, 0.4]],
+       ImagePadding->{{0.5000000000000003, 0.5}, {0.5000000000000001, 
+        0.4999999999999716}},
+       Method->{
+        "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+         "DefaultGraphicsInteraction" -> {
+          "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+           "Effects" -> {
+            "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2},
+              "Droplines" -> {
+              "freeformCursorMode" -> True, 
+               "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+         "DefaultPlotStyle" -> Automatic},
+       PlotInteractivity:>True,
+       PlotLabel->FormBox["2802", TraditionalForm]], {967.5, -143.41756434426227},
+       ImageScaled[{0.5, 0.5}], {360., 259.83512868852455},
+      BaseStyle->{Graphics3DBoxOptions -> {SphericalRegion -> False}}]}, {
+     InsetBox[
+      GraphicsBox[
+       RasterBox[SparseArray[
+        Automatic, {41, 61}, 1., {
+         1, {{0, 20, 61, 80, 122, 140, 183, 200, 244, 261, 304, 321, 364, 381,
+            425, 441, 486, 501, 547, 561, 608, 621, 669, 681, 730, 741, 791, 
+           801, 852, 861, 913, 921, 974, 981, 1035, 1041, 1096, 1101, 1157, 
+           1161, 1218, 1221}, CompressedData["
+1:eJyNk1cSwjAMRE3vvdcQakgjpBECXIIjcAFOyb3ozfZm8iVpR2/GlrTi6Xw8
+RQkhlzghkVuMxpPpbL5Yrtab7W5/OBpP5xJPW8qKqukrY21atuNuvK2/2x84
+jRxpERZmlVlomBEm4WFGEDFNte72lCBgmGrd+pQwwLBPPXrj+X91D8Me/WPH
+9X7LDoZdZlyW7f5ULQzb7KzXpv0tGhg2OYtaGeYnr2HY4G1Z0413WsGwzj0R
+RdVfWQnDKv++lrL6TAoYlsFxLiT5EXMYltBlz54GzmAYu3nyMHAKwwFuFu8G
+TmA4yM3CzcAxDAe6eTAcXQHhBJcP
+           "]}, CompressedData["
+1:eJztwVEJACAQBbAnWOQqGUHw25T2uh6yrfZdZyR5MwAAAAAAAAAAAHyuAbST
+AnQ=
+          "]}], {{0, 0}, {61, 41}}, {0, 1}],
+       DefaultBaseStyle->{"PlotGraphics", "Graphics"},
+       DisplayFunction->Identity,
+       Frame->Automatic,
+       FrameLabel->{None, None},
+       FrameTicks->{{None, None}, {None, None}},
+       GridLinesStyle->Directive[
+         GrayLevel[0.5, 0.4]],
+       ImagePadding->{{0.5000000000000003, 0.5}, {0.5000000000000001, 
+        0.4999999999999716}},
+       Method->{
+        "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+         "DefaultGraphicsInteraction" -> {
+          "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+           "Effects" -> {
+            "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2},
+              "Droplines" -> {
+              "freeformCursorMode" -> True, 
+               "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+         "DefaultPlotStyle" -> Automatic},
+       PlotInteractivity:>True,
+       PlotLabel->FormBox["2916", TraditionalForm]], {193.5, -430.25269303278685},
+       ImageScaled[{0.5, 0.5}], {360., 259.83512868852455},
+      BaseStyle->{Graphics3DBoxOptions -> {SphericalRegion -> False}}], 
+     InsetBox[
+      GraphicsBox[
+       RasterBox[SparseArray[
+        Automatic, {41, 61}, 1., {
+         1, {{0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 389,
+            418, 447, 475, 503, 531, 558, 585, 612, 638, 664, 690, 715, 740, 
+           765, 790, 814, 838, 862, 885, 908, 931, 953, 975, 997, 1018, 1039, 
+           1060, 1063}, CompressedData["
+1:eJxTTMoPSmJiYGBQZ2FgYATSTCxsHFw8fAJCImISUjJyCkoqahpaOnoGRiZm
+FlY2o7J0kcUniU8nPmPxmIrHUDxm4jYSt4m4DcRpHk7jcJqGyzBcZuEyCmES
+qgTCJBQrEAah2IAwB8UChDHILkWYguxOhCHIrkSYgeRbhBFIXkWYgORPhAGI
+4ELohwcVKwc3n6CIuJSsgpKqhraeoYm5la2snAIAhlF9Cg==
+           "]}, CompressedData["
+1:eJztwTENACAQBLAjwchP+EECCTP+txdC2zpv35FkzQAAAAAAAAAAfKsBEusB
+1g==
+          "]}], {{0, 0}, {61, 41}}, {0, 1}],
+       DefaultBaseStyle->{"PlotGraphics", "Graphics"},
+       DisplayFunction->Identity,
+       Frame->Automatic,
+       FrameLabel->{None, None},
+       FrameTicks->{{None, None}, {None, None}},
+       GridLinesStyle->Directive[
+         GrayLevel[0.5, 0.4]],
+       ImagePadding->{{0.5000000000000003, 0.5}, {0.5000000000000001, 
+        0.4999999999999716}},
+       Method->{
+        "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+         "DefaultGraphicsInteraction" -> {
+          "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+           "Effects" -> {
+            "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2},
+              "Droplines" -> {
+              "freeformCursorMode" -> True, 
+               "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+         "DefaultPlotStyle" -> Automatic},
+       PlotInteractivity:>True,
+       PlotLabel->FormBox["3000", TraditionalForm]], {580.5, -430.25269303278685},
+       ImageScaled[{0.5, 0.5}], {360., 259.83512868852455},
+      BaseStyle->{Graphics3DBoxOptions -> {SphericalRegion -> False}}], 
+     InsetBox[
+      GraphicsBox[
+       RasterBox[SparseArray[
+        Automatic, {41, 61}, 1., {
+         1, {{0, 6, 16, 28, 36, 42, 48, 54, 58, 61, 120, 150, 181, 212, 243, 
+           266, 289, 304, 335, 354, 373, 388, 403, 414, 425, 432, 463, 480, 
+           497, 512, 527, 538, 549, 556, 571, 580, 589, 596, 603, 608, 613, 
+           616}, CompressedData["
+1:eJxdkktyglAURIWgeRo0D4IGDQ8EBFREVET8sYkswVFm2f8sfflUJZlolUL3
+6VPXfXx/PuROp/OFDwnfTNhBWEryk9LtPYuglJWesJ256/mLUlK6wnH9UhG2
+69Ezwi1l+reUhFMKu32N9Qcv6nD0yjX9zRhP3s3p7MNqQoIwWq7W8SbZprv9
+ITvmp+J8ud7u6GEDdcR1Y2LOLKoJolWcpPssLy43NLO+OuSaMTanljP3F9Ey
+3qS77Ficb/dSYSo3TEvYqEADCpCPeKQj/A4sQiIcQhFzzw+W6zjZHbL8fL3J
+bMB1c4YhHujWIDuA6iqxPtfMqQB3AOYEvDlYGTfRgxI0IL6Z3E4V1cgwSqpx
+pwKzaBKyXT9E8j47YQvtELQiSGhDrnCjZq+pkUl5xEmMMteJjbgkrhEPsXC8
+gcf/KRd/JG/TRmvVT0K3jUnROkzg7re3xlXrCG5aL/DRumC1gfZKms31qWBn
+dSe0TqmT6VKQR6fiSZSBn38AEtpIpQ==
+           "]}, CompressedData["
+1:eJztwUENACAMBLADJ7OEBBISfvj/zQEK2tZ+64wkdwYAAAAA+GgqHgIV
+          "]}], {{0, 0}, {61, 41}}, {0, 1}],
+       DefaultBaseStyle->{"PlotGraphics", "Graphics"},
+       DisplayFunction->Identity,
+       Frame->Automatic,
+       FrameLabel->{None, None},
+       FrameTicks->{{None, None}, {None, None}},
+       GridLinesStyle->Directive[
+         GrayLevel[0.5, 0.4]],
+       ImagePadding->{{0.5000000000000003, 0.5}, {0.5000000000000001, 
+        0.4999999999999716}},
+       Method->{
+        "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+         "DefaultGraphicsInteraction" -> {
+          "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+           "Effects" -> {
+            "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2},
+              "Droplines" -> {
+              "freeformCursorMode" -> True, 
+               "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+         "DefaultPlotStyle" -> Automatic},
+       PlotInteractivity:>True,
+       PlotLabel->FormBox["4200", TraditionalForm]], {967.5, -430.25269303278685},
+       ImageScaled[{0.5, 0.5}], {360., 259.83512868852455},
+      BaseStyle->{Graphics3DBoxOptions -> {SphericalRegion -> False}}]}}, {}},
+  
+  ImageSize->520,
+  Method->{"IgnoreImageSizeAutomaticLimit" -> True},
+  PlotRange->{{0, 1161.}, {-573.6702573770491, 0}},
+  PlotRangePadding->Automatic]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->605576602,ExpressionUUID->"2c9142d0-2200-4aad-b035-7f063ea9962e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->189424937,ExpressionUUID->"2d65dfb2-281c-44e8-9142-22855c9a4f68"],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["0.1.0", "HistoryData",
+  CellTags->"New",ExpressionUUID->"313659b8-b1f5-4209-9ed9-f887adbacf90"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"d2018dc7-5a1b-44c3-b54b-26fc4435e892"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->
+  "7652e45f-000e-4cf7-8a46-971956cc7e64"]
+}], "History",
+ CellID->137898529,ExpressionUUID->"1f79ffe2-4276-4b6b-b29a-0c395070389f"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->711872349,ExpressionUUID->"2568fb4d-79c8-43c4-8a6f-68523121e450"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->518999120,ExpressionUUID->"ecac24c0-6063-4a8f-9e6b-5254dc559780"],
+
+Cell["WolframInstitute/IteratedFiniteAutomaton", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->780430781,ExpressionUUID->"fb9d447e-1460-43e0-994f-663e58770d28"],
+
+Cell["WolframInstitute`IteratedFiniteAutomaton`", "Categorization",
+ CellLabel->"Context",
+ CellID->543713541,ExpressionUUID->"1b3466c0-ccaa-4c24-a5dc-fc974ed5d298"],
+
+Cell["\<\
+WolframInstitute/IteratedFiniteAutomaton/ref/IteratedFiniteAutomaton\
+\>", "Categorization",
+ CellLabel->"URI",
+ CellID->951583088,ExpressionUUID->"bad427ae-bd70-4171-beac-b6449c961b2e"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->902213587,ExpressionUUID->"e73badca-0b8f-416d-abc6-f138edeaa729"],
+
+Cell["iterated finite automaton", "Keywords",
+ CellID->962226700,ExpressionUUID->"faeb8d18-b053-421d-89b8-6ef5ca10116b"],
+
+Cell["Mealy machine", "Keywords",
+ CellID->442068148,ExpressionUUID->"fc9cd212-4e23-40b7-8ab0-7b0b439a412b"],
+
+Cell["transducer", "Keywords",
+ CellID->419602149,ExpressionUUID->"b48a75be-aa73-43f4-b801-602a3c588c56"],
+
+Cell["automaton group", "Keywords",
+ CellID->421961434,ExpressionUUID->"e032df2b-65da-42a8-aece-35dd5de9bf0c"]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{900, 800},
+TaggingRules->{
+ "Paclet" -> "WolframInstitute/IteratedFiniteAutomaton", 
+  "Metadata" -> {
+   "context" -> "WolframInstitute`IteratedFiniteAutomaton`", 
+    "history" -> {"0.1.0", "", "", ""}, "index" -> True, 
+    "keywords" -> {
+     "iterated finite automaton", "Mealy machine", "transducer", 
+      "automaton group"}, "label" -> 
+    "WolframInstitute/ IteratedFiniteAutomaton Symbol", "language" -> "en", 
+    "metadescription" -> "", "paclet" -> 
+    "WolframInstitute/IteratedFiniteAutomaton", "specialkeywords" -> {}, 
+    "status" -> "None", "summary" -> 
+    "IteratedFiniteAutomaton[rule,init,t] generates the evolution of the \
+iterated finite automaton with the specified rule from initial condition init \
+for t steps. IteratedFiniteAutomaton[rule,s0,init,t] starts the automaton in \
+state s0. IteratedFiniteAutomaton[rule,init] gives a single step of \
+evolution. IteratedFiniteAutomaton[rule,s0] is the operator form that can be \
+applied to an initial condition.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "IteratedFiniteAutomaton", "titlemodifier" -> "", 
+    "tutorialcollectionlinks" -> {}, "type" -> "Symbol", "uri" -> 
+    "WolframInstitute/IteratedFiniteAutomaton/ref/IteratedFiniteAutomaton", 
+    "windowtitle" -> "IteratedFiniteAutomaton"}},
+CellContext->"Global`",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (May 19, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"b0a4f62e-cc23-499f-90df-aad2cfc71b74"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[18816, 547, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"0a2eaaf4-8ef3-4a79-b93e-fa21286acbf0",
+   CellTags->"ExtendedExamples",
+   CellID->144915512]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 44744, 1185}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 120, 1, 70, "ObjectName",ExpressionUUID->"8de47fe6-8210-4673-bb26-d838042a875e",
+ CellID->349221021],
+Cell[699, 25, 2246, 60, 70, "Usage",ExpressionUUID->"58dfc7db-c881-4a29-9a20-747d319ff543",
+ CellID->300236459],
+Cell[2948, 87, 1210, 36, 70, "Notes",ExpressionUUID->"14fbb0fd-ba07-4357-b167-7d3cd0c68992",
+ CellID->968849001],
+Cell[4161, 125, 1165, 37, 70, "Notes",ExpressionUUID->"5f20a012-5077-4faf-a4ae-6f089f89a9e6",
+ CellID->845442752],
+Cell[5329, 164, 471, 12, 70, "Notes",ExpressionUUID->"f6c26c2a-b7b1-4e9e-84aa-4abcf22d4a0c",
+ CellID->830254042],
+Cell[5803, 178, 684, 19, 70, "Notes",ExpressionUUID->"9e265b10-d540-4dc0-82ad-59a00c2c0a34",
+ CellID->639620180]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6524, 202, 109, 1, 70, "SeeAlsoSection",ExpressionUUID->"b6004c7a-1552-401b-a8a6-27c70a57dc0b",
+ CellID->767690047],
+Cell[6636, 205, 2833, 63, 70, "SeeAlso",ExpressionUUID->"60997cd9-0746-4036-a0d5-b68bb129e77d",
+ CellID->526828821]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9506, 273, 117, 1, 70, "MoreAboutSection",ExpressionUUID->"468ac6f2-7c43-4c6b-9cf5-0f15d79d03dd",
+ CellID->829175493],
+Cell[9626, 276, 260, 5, 70, "MoreAbout",ExpressionUUID->"106e74a7-9f09-46f3-9289-095b67ba066c",
+ CellID->230764913]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9923, 286, 119, 1, 70, "RelatedLinksSection",ExpressionUUID->"18cce84b-cb09-4924-8f9e-3ada0b2f6665",
+ CellID->592964761],
+Cell[10045, 289, 299, 6, 70, "RelatedLinks",ExpressionUUID->"2539b36b-3248-42d0-9e2e-f105ecc37484",
+ CellID->200821433]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10381, 300, 139, 1, 70, "ExamplesInitializationSection",ExpressionUUID->"021ab05f-abe7-4772-8d05-df8b5ec3b4fd",
+ CellID->708970976],
+Cell[10523, 303, 200, 3, 70, "ExampleInitialization",ExpressionUUID->"8205fba0-b172-4da9-ac9b-9b68fa9bb1c2",
+ CellID->527169402]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10760, 311, 442, 12, 70, "PrimaryExamplesSection",ExpressionUUID->"b2c96a02-26fe-481e-9ea4-c47e73009311",
+ CellID->746420864],
+Cell[11205, 325, 194, 4, 70, "ExampleText",ExpressionUUID->"8ef7089e-aa1e-4b9f-ba3c-72951d0920b7",
+ CellID->235569827],
+Cell[11402, 331, 814, 26, 70, "Input",ExpressionUUID->"ef67da45-6e27-4755-a38c-5d84cd726b42",
+ CellID->112108235],
+Cell[12219, 359, 285, 6, 70, "Input",ExpressionUUID->"840309f6-1fdc-4a95-969b-ea781ff9a3f7",
+ CellID->531765054],
+Cell[12507, 367, 599, 15, 70, "Output",ExpressionUUID->"2d6bb384-ad9e-41c8-b6be-14382101278a",
+ CellID->277390262],
+Cell[13109, 384, 176, 3, 70, "ExampleText",ExpressionUUID->"308cfdf3-5363-4d23-81ab-fe267e0c7d8a",
+ CellID->423603733],
+Cell[13288, 389, 512, 13, 70, "Input",ExpressionUUID->"942ae297-290e-4022-9722-e4e996e5e8d9",
+ CellID->865483351],
+Cell[13803, 404, 269, 6, 70, "Output",ExpressionUUID->"bc0d0fb6-bd46-4880-b61b-d559b282aa6b",
+ CellID->146812229],
+Cell[14075, 412, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"ac944c1c-7002-4d28-ba08-cd9bf5d78beb",
+ CellID->498989005],
+Cell[14296, 418, 174, 3, 70, "ExampleText",ExpressionUUID->"22bea4b7-2fe6-40f5-9037-d0b22f267ac4",
+ CellID->517458811],
+Cell[14473, 423, 637, 18, 70, "Input",ExpressionUUID->"ddc1c350-6f7e-4cff-81b5-81ef22ac3b2b",
+ CellID->276409751],
+Cell[15113, 443, 1781, 38, 70, "Output",ExpressionUUID->"995eeb71-a48c-43d6-9b04-baec6f2fe158",
+ CellID->744704844],
+Cell[16897, 483, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"d3b9e1fa-da90-4b0a-b03a-a61fe9e1c4f9",
+ CellID->624954397],
+Cell[17118, 489, 320, 9, 70, "ExampleText",ExpressionUUID->"ce0c006b-ca91-4abc-aafd-2249dc14a103",
+ CellID->408489475],
+Cell[17441, 500, 878, 27, 70, "Input",ExpressionUUID->"e841fbc5-ac59-4c17-a8e2-0c7141d1f0af",
+ CellID->988932521],
+Cell[18322, 529, 263, 7, 70, "Input",ExpressionUUID->"b1e2e1a2-6685-4544-a70d-5d8e0512c1eb",
+ CellID->418881141],
+Cell[18588, 538, 191, 4, 70, "Output",ExpressionUUID->"e74cfb11-1368-468c-8405-3579b901efc1",
+ CellID->592954013]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18816, 547, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"0a2eaaf4-8ef3-4a79-b93e-fa21286acbf0",
+ CellTags->"ExtendedExamples",
+ CellID->144915512],
+Cell[CellGroupData[{
+Cell[18995, 553, 241, 5, 70, "ExampleSection",ExpressionUUID->"138deb17-9d40-456c-9e4e-3703f0463b1f",
+ CellID->544459072],
+Cell[19239, 560, 416, 11, 70, "ExampleText",ExpressionUUID->"75f3da64-0c21-4a9e-997c-76a1e0128932",
+ CellID->182860913],
+Cell[19658, 573, 616, 18, 70, "Input",ExpressionUUID->"4e9a4cc4-3272-4d61-8379-7b579ce766ba",
+ CellID->770747751],
+Cell[20277, 593, 1513, 31, 70, "Output",ExpressionUUID->"13303c46-7e5d-4a70-a3d7-0d7ed614f7f2",
+ CellID->457220804],
+Cell[21793, 626, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"f374e691-c4dd-49d9-a640-7f0fd44d142d",
+ CellID->853195151],
+Cell[22014, 632, 211, 4, 70, "ExampleText",ExpressionUUID->"e1cf0f27-e1ab-4083-9416-ddc0c42909fd",
+ CellID->652783631],
+Cell[22228, 638, 926, 29, 70, "Input",ExpressionUUID->"197dfba6-5ca4-4ecd-a888-8d0fd2441a5d",
+ CellID->713679042],
+Cell[23157, 669, 467, 12, 70, "Output",ExpressionUUID->"0a93b1e2-5dc4-41e8-93d5-1e98f4b801cb",
+ CellID->122689980]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23661, 686, 258, 5, 70, "ExampleSection",ExpressionUUID->"66c9882d-f55e-4933-a3f3-8514a2f1dd86",
+ CellID->294382514],
+Cell[23922, 693, 192, 4, 70, "ExampleText",ExpressionUUID->"7bf1d5d2-7ff0-4208-815b-fca757cba1bf",
+ CellID->416035860],
+Cell[24117, 699, 938, 29, 70, "Input",ExpressionUUID->"4dec08c8-28d4-4126-825f-a0a3c0e028d8",
+ CellID->598296227],
+Cell[25058, 730, 129, 2, 70, "Output",ExpressionUUID->"6871a83f-dafd-477c-98c3-f9888f35fdac",
+ CellID->859329676],
+Cell[25190, 734, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"3ac257db-b973-4996-a2f7-cb77ef7b0ce9",
+ CellID->475359830],
+Cell[25411, 740, 474, 10, 70, "ExampleText",ExpressionUUID->"043ca630-82c7-4308-b582-8269c202ca61",
+ CellID->896807693],
+Cell[25888, 752, 825, 23, 70, "Input",ExpressionUUID->"8b952bd6-3083-415f-a0d0-9d35881d05c9",
+ CellID->158329224],
+Cell[26716, 777, 129, 2, 70, "Output",ExpressionUUID->"0fc29a0b-ca17-4a11-aaf5-474ef4458c44",
+ CellID->929026841]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26882, 784, 249, 5, 70, "ExampleSection",ExpressionUUID->"defbc6ab-454c-410e-be29-876ac2e11eb5",
+ CellID->838489357],
+Cell[27134, 791, 180, 3, 70, "ExampleText",ExpressionUUID->"d3c379c1-8ff1-428c-aab3-32d577fed2c6",
+ CellID->966073938],
+Cell[27317, 796, 1207, 31, 70, "Input",ExpressionUUID->"0645babd-ecbc-4ca2-bd14-9722cfd7ca37",
+ CellID->423514118],
+Cell[28527, 829, 12439, 256, 70, "Output",ExpressionUUID->"2c9142d0-2200-4aad-b035-7f063ea9962e",
+ CellID->605576602]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41015, 1091, 110, 1, 70, "MetadataSection",ExpressionUUID->"2d65dfb2-281c-44e8-9142-22855c9a4f68",
+ CellID->189424937],
+Cell[41128, 1094, 479, 12, 70, "History",ExpressionUUID->"1f79ffe2-4276-4b6b-b29a-0c395070389f",
+ CellID->137898529],
+Cell[CellGroupData[{
+Cell[41632, 1110, 122, 1, 70, "CategorizationSection",ExpressionUUID->"2568fb4d-79c8-43c4-8a6f-68523121e450",
+ CellID->711872349],
+Cell[41757, 1113, 134, 2, 70, "Categorization",ExpressionUUID->"ecac24c0-6063-4a8f-9e6b-5254dc559780",
+ CellID->518999120],
+Cell[41894, 1117, 168, 2, 70, "Categorization",ExpressionUUID->"fb9d447e-1460-43e0-994f-663e58770d28",
+ CellID->780430781],
+Cell[42065, 1121, 165, 2, 70, "Categorization",ExpressionUUID->"1b3466c0-ccaa-4c24-a5dc-fc974ed5d298",
+ CellID->543713541],
+Cell[42233, 1125, 196, 4, 70, "Categorization",ExpressionUUID->"bad427ae-bd70-4171-beac-b6449c961b2e",
+ CellID->951583088]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[42466, 1134, 110, 1, 70, "KeywordsSection",ExpressionUUID->"e73badca-0b8f-416d-abc6-f138edeaa729",
+ CellID->902213587],
+Cell[42579, 1137, 120, 1, 70, "Keywords",ExpressionUUID->"faeb8d18-b053-421d-89b8-6ef5ca10116b",
+ CellID->962226700],
+Cell[42702, 1140, 108, 1, 70, "Keywords",ExpressionUUID->"fc9cd212-4e23-40b7-8ab0-7b0b439a412b",
+ CellID->442068148],
+Cell[42813, 1143, 105, 1, 70, "Keywords",ExpressionUUID->"b48a75be-aa73-43f4-b801-602a3c588c56",
+ CellID->419602149],
+Cell[42921, 1146, 110, 1, 70, "Keywords",ExpressionUUID->"e032df2b-65da-42a8-aece-35dd5de9bf0c",
+ CellID->421961434]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

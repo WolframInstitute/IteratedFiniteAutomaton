@@ -1,0 +1,359 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     13811,        350]
+NotebookOptionsPosition[      8284,        237]
+NotebookOutlinePosition[     10253,        279]
+CellTagsIndexPosition[     10210,        276]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Iterated Finite Automata", "GuideTitle",
+ CellID->856075906,ExpressionUUID->"f32f94f3-1a1f-44b7-b026-48269df07e3c"],
+
+Cell["\<\
+An iterated finite automaton applies a finite-state transducer (Mealy \
+machine) repeatedly to a row of symbols: each pass reads the row from the \
+left, rewriting it while updating the internal state, and iteration produces \
+a spacetime evolution analogous to a cellular automaton. Invertible \
+transducers generate automata groups \[LongDash] the odometer, the \
+lamplighter group and the Grigorchuk group among them \[LongDash] and \
+iterated automata probe their dynamics. This paclet follows Andrzej Zuk's \
+WSRI26 essay \"Iterated Finite Automata\", supporting explicit transition \
+rules, numeric rule codes, and the Mealy and wreath recursion presentations.\
+\>", "GuideAbstract",
+ CellID->988624525,ExpressionUUID->"87e79b32-fbe5-447c-8f6b-a2f19f7353fe"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "GuideFunctionsSection",
+ CellID->371463617,ExpressionUUID->"6dd676b1-28a9-49b8-b988-e87cbf3d1647"],
+
+Cell[CellGroupData[{
+
+Cell["Evolution", "GuideFunctionsSubsection",
+ CellID->844577260,ExpressionUUID->"c2450e3f-a4d3-48a1-93ed-c8a3b2b63572"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomaton",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomaton"]], "InlineGuideFunction",ExpressionUUID->
+  "23e47a91-c94d-4f45-b3ae-65dcef26d74a"],
+ " \[LongDash] evolve an iterated finite automaton from an initial row of \
+symbols"
+}], "GuideText",
+ CellID->383475951,ExpressionUUID->"d8b156b7-857e-4189-9094-e8f90584dd9b"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonPeriodicStop",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonPeriodicStop"]], "InlineGuideFunction",ExpressionUUID->
+  "918a4e55-d912-44c7-a6d5-c927934ff2e3"],
+ " \[LongDash] evolve until a row repeats"
+}], "GuideText",
+ CellID->669803034,ExpressionUUID->"ae1b1bb5-591d-4bb1-8400-17aa2c7b9e65"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonEvolve",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonEvolve"]], "InlineGuideFunction",ExpressionUUID->
+  "cb430d75-c87d-4c5f-9d0c-53375ad55a7a"],
+ " \[LongDash] evolve an automaton produced by a formalism converter"
+}], "GuideText",
+ CellID->302513912,ExpressionUUID->"8e1dc035-fa10-4791-ab87-18074c642160"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["State Analysis", "GuideFunctionsSubsection",
+ CellID->615826145,ExpressionUUID->"c8dacc74-164b-4a0b-b630-f6521d0cbe6a"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonStateTransitions",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonStateTransitions"]], "InlineGuideFunction",
+  ExpressionUUID->"2eb8fdca-e289-4bfd-a0e2-23ac44c2c345"],
+ " \[LongDash] evolution with the state transition recorded at each cell"
+}], "GuideText",
+ CellID->937862933,ExpressionUUID->"e0d812a2-6127-4b67-b742-c88a739c88ec"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonStateGraph",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonStateGraph"]], "InlineGuideFunction",ExpressionUUID->
+  "da22c0b8-4899-4eaf-95f4-14b8457ca3d5"],
+ " \[LongDash] state transition diagram (Moore diagram) as an edge-tagged \
+graph"
+}], "GuideText",
+ CellID->940293612,ExpressionUUID->"c8617c0a-48ef-4242-bcf0-7ad9a3075007"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonColors",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonColors"]], "InlineGuideFunction",ExpressionUUID->
+  "17996f25-55fd-45b1-8be5-4468426e8b93"],
+ " \[LongDash] color rules for spacetime plots"
+}], "GuideText",
+ CellID->598090493,ExpressionUUID->"0c0c4258-cc1e-42a1-8106-febcdd21a36b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Mealy and Wreath Formalisms", "GuideFunctionsSubsection",
+ CellID->853658209,ExpressionUUID->"e3ecc061-9bee-4a58-87d6-db67aaa70a28"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonFromStates",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonFromStates"]], "InlineGuideFunction",ExpressionUUID->
+  "c5c4c40f-bfec-4815-833e-5d257470d398"],
+ " \[LongDash] compile a Mealy transducer with named states"
+}], "GuideText",
+ CellID->856021578,ExpressionUUID->"fc5a6caf-f784-4f61-a589-235102944ac3"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonFromWreath",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonFromWreath"]], "InlineGuideFunction",ExpressionUUID->
+  "b0a15b3d-9402-443b-9630-3b2085b3e1d4"],
+ " \[LongDash] compile a wreath recursion"
+}], "GuideText",
+ CellID->153529482,ExpressionUUID->"e474ec4d-7bd0-4879-bd3d-b07fba356b63"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "GuideRelatedLinksSection",
+ CellID->556010927,ExpressionUUID->"3786090d-4115-4209-93d2-a6853248d630"],
+
+Cell[TextData[ButtonBox["A. Zuk, \"Iterated Finite Automata\", Wolfram \
+Community (WSRI26)",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://community.wolfram.com/groups/-/m/t/3761828"], 
+   None}]], "GuideRelatedLinks",
+ CellID->592118492,ExpressionUUID->"04b1e06b-86e7-419f-9c2e-f33e01c68f75"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->146217882,ExpressionUUID->"4dfece91-51ab-476e-a165-c234ecc61087"],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["0.1.0", "HistoryData",
+  CellTags->"New",ExpressionUUID->"c6013f43-0004-40db-8815-0d9c82e5b678"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"33a4866d-2602-43e1-967a-82da13b3cebe"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->
+  "9d235c63-01f7-4f67-95f1-8f3084ab5ff3"]
+}], "History",
+ CellID->734405301,ExpressionUUID->"c21b749f-e2e8-453d-a257-179335c45ed0"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->275996508,ExpressionUUID->"b4106e25-4fb3-4dcd-9d95-3801214c1738"],
+
+Cell["Guide", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->278975584,ExpressionUUID->"10fce82f-818b-4c12-ba49-f4aaac7033e1"],
+
+Cell["WolframInstitute/IteratedFiniteAutomaton", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->249597819,ExpressionUUID->"e6ed3167-3447-468f-ac87-c0da701f980d"],
+
+Cell["WolframInstitute`IteratedFiniteAutomaton`", "Categorization",
+ CellLabel->"Context",
+ CellID->444276905,ExpressionUUID->"78b3b5c6-6d7e-426e-9653-19843066770b"],
+
+Cell["\<\
+WolframInstitute/IteratedFiniteAutomaton/guide/IteratedFiniteAutomaton\
+\>", "Categorization",
+ CellLabel->"URI",
+ CellID->527301193,ExpressionUUID->"ffd83df0-31fe-4105-9999-dea6007f2f1a"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->207366907,ExpressionUUID->"d5cbd63b-13d5-419f-9320-c59f142f7edb"],
+
+Cell["iterated finite automaton", "Keywords",
+ CellID->587044847,ExpressionUUID->"f7c6a658-380b-49c5-8c60-be91dcc1527e"],
+
+Cell["automaton group", "Keywords",
+ CellID->615736140,ExpressionUUID->"ad55c219-517c-4d21-8c2d-f237fd766d78"],
+
+Cell["Mealy machine", "Keywords",
+ CellID->910698937,ExpressionUUID->"422060bc-001a-436a-a13a-f55be49a67e1"],
+
+Cell["wreath recursion", "Keywords",
+ CellID->912025943,ExpressionUUID->"1ea5c95e-0f89-43f3-902c-890429055b9e"]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{900, 800},
+TaggingRules->{
+ "Paclet" -> "WolframInstitute/IteratedFiniteAutomaton", 
+  "Metadata" -> {
+   "context" -> "WolframInstitute`IteratedFiniteAutomaton`", 
+    "history" -> {"0.1.0", "", "", ""}, "index" -> True, 
+    "keywords" -> {
+     "iterated finite automaton", "automaton group", "Mealy machine", 
+      "wreath recursion"}, "label" -> 
+    "WolframInstitute/ IteratedFiniteAutomaton Guide", "language" -> "en", 
+    "metadescription" -> "", "paclet" -> 
+    "WolframInstitute/IteratedFiniteAutomaton", "specialkeywords" -> {}, 
+    "status" -> "None", "summary" -> 
+    "An iterated finite automaton applies a finite-state transducer (Mealy \
+machine) repeatedly to a row of symbols: each pass reads the row from the \
+left, rewriting it while updating the internal state, and iteration produces \
+a spacetime evolution analogous to a cellular automaton. Invertible \
+transducers generate automata groups \[LongDash] the odometer, the \
+lamplighter group and the Grigorchuk group among them \[LongDash] and \
+iterated automata probe their dynamics. This paclet follows Andrzej Zuk's \
+WSRI26 essay \"Iterated Finite Automata\", supporting explicit transition \
+rules, numeric rule codes, and the Mealy and wreath recursion presentations.",
+     "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "Iterated Finite Automata", "titlemodifier" -> "", 
+    "tutorialcollectionlinks" -> {}, "type" -> "Guide", "uri" -> 
+    "WolframInstitute/IteratedFiniteAutomaton/guide/IteratedFiniteAutomaton", 
+    "windowtitle" -> "Iterated Finite Automata"}},
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (May 19, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"b0a4f62e-cc23-499f-90df-aad2cfc71b74"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 121, 1, 70, "GuideTitle",ExpressionUUID->"f32f94f3-1a1f-44b7-b026-48269df07e3c",
+ CellID->856075906],
+Cell[700, 25, 774, 11, 70, "GuideAbstract",ExpressionUUID->"87e79b32-fbe5-447c-8f6b-a2f19f7353fe",
+ CellID->988624525]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1511, 41, 108, 1, 70, "GuideFunctionsSection",ExpressionUUID->"6dd676b1-28a9-49b8-b988-e87cbf3d1647",
+ CellID->371463617],
+Cell[CellGroupData[{
+Cell[1644, 46, 120, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"c2450e3f-a4d3-48a1-93ed-c8a3b2b63572",
+ CellID->844577260],
+Cell[1767, 49, 453, 11, 70, "GuideText",ExpressionUUID->"d8b156b7-857e-4189-9094-e8f90584dd9b",
+ CellID->383475951],
+Cell[2223, 62, 435, 10, 70, "GuideText",ExpressionUUID->"ae1b1bb5-591d-4bb1-8400-17aa2c7b9e65",
+ CellID->669803034],
+Cell[2661, 74, 450, 10, 70, "GuideText",ExpressionUUID->"8e1dc035-fa10-4791-ab87-18074c642160",
+ CellID->302513912]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3148, 89, 125, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"c8dacc74-164b-4a0b-b630-f6521d0cbe6a",
+ CellID->615826145],
+Cell[3276, 92, 474, 10, 70, "GuideText",ExpressionUUID->"e0d812a2-6127-4b67-b742-c88a739c88ec",
+ CellID->937862933],
+Cell[3753, 104, 471, 11, 70, "GuideText",ExpressionUUID->"c8617c0a-48ef-4242-bcf0-7ad9a3075007",
+ CellID->940293612],
+Cell[4227, 117, 428, 10, 70, "GuideText",ExpressionUUID->"0c0c4258-cc1e-42a1-8106-febcdd21a36b",
+ CellID->598090493]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4692, 132, 138, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"e3ecc061-9bee-4a58-87d6-db67aaa70a28",
+ CellID->853658209],
+Cell[4833, 135, 449, 10, 70, "GuideText",ExpressionUUID->"fc5a6caf-f784-4f61-a589-235102944ac3",
+ CellID->856021578],
+Cell[5285, 147, 431, 10, 70, "GuideText",ExpressionUUID->"e474ec4d-7bd0-4879-bd3d-b07fba356b63",
+ CellID->153529482]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5765, 163, 124, 1, 70, "GuideRelatedLinksSection",ExpressionUUID->"3786090d-4115-4209-93d2-a6853248d630",
+ CellID->556010927],
+Cell[5892, 166, 304, 6, 70, "GuideRelatedLinks",ExpressionUUID->"04b1e06b-86e7-419f-9c2e-f33e01c68f75",
+ CellID->592118492]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6233, 177, 110, 1, 70, "MetadataSection",ExpressionUUID->"4dfece91-51ab-476e-a165-c234ecc61087",
+ CellID->146217882],
+Cell[6346, 180, 479, 12, 70, "History",ExpressionUUID->"c21b749f-e2e8-453d-a257-179335c45ed0",
+ CellID->734405301],
+Cell[CellGroupData[{
+Cell[6850, 196, 122, 1, 70, "CategorizationSection",ExpressionUUID->"b4106e25-4fb3-4dcd-9d95-3801214c1738",
+ CellID->275996508],
+Cell[6975, 199, 133, 2, 70, "Categorization",ExpressionUUID->"10fce82f-818b-4c12-ba49-f4aaac7033e1",
+ CellID->278975584],
+Cell[7111, 203, 168, 2, 70, "Categorization",ExpressionUUID->"e6ed3167-3447-468f-ac87-c0da701f980d",
+ CellID->249597819],
+Cell[7282, 207, 165, 2, 70, "Categorization",ExpressionUUID->"78b3b5c6-6d7e-426e-9653-19843066770b",
+ CellID->444276905],
+Cell[7450, 211, 198, 4, 70, "Categorization",ExpressionUUID->"ffd83df0-31fe-4105-9999-dea6007f2f1a",
+ CellID->527301193]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[7685, 220, 110, 1, 70, "KeywordsSection",ExpressionUUID->"d5cbd63b-13d5-419f-9320-c59f142f7edb",
+ CellID->207366907],
+Cell[7798, 223, 120, 1, 70, "Keywords",ExpressionUUID->"f7c6a658-380b-49c5-8c60-be91dcc1527e",
+ CellID->587044847],
+Cell[7921, 226, 110, 1, 70, "Keywords",ExpressionUUID->"ad55c219-517c-4d21-8c2d-f237fd766d78",
+ CellID->615736140],
+Cell[8034, 229, 108, 1, 70, "Keywords",ExpressionUUID->"422060bc-001a-436a-a13a-f55be49a67e1",
+ CellID->910698937],
+Cell[8145, 232, 111, 1, 70, "Keywords",ExpressionUUID->"1ea5c95e-0f89-43f3-902c-890429055b9e",
+ CellID->912025943]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
