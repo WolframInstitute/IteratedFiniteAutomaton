@@ -2,14 +2,14 @@ Package["WolframInstitute`IteratedFiniteAutomaton`"]
 
 PackageScope[FAStepStateTransitions]
 
-IteratedFiniteAutomatonStateTransitions[rule_List, s0_Integer : 1, init_List, t : ((_Integer ? NonNegative) | Automatic) : Automatic] := With[{rt = If[MatchQ[rule, {_Integer, {_Integer, _Integer}}], ToFARule[rule], rule]},
+IteratedFiniteAutomatonStateTransitions[rule_List, s0_Integer : 1, init_List, t : ((_Integer ? NonNegative) | Automatic) : Automatic] := With[{rt = ToAutomatonRule[rule]},
 	If[t === Automatic, FAStepStateTransitions[rt, s0, init], NestList[FAStepStateTransitions[rt, s0, #[[All, 3, 2]]]&, DirectedEdge[s0, s0, 0 -> #]& /@ init, t]]]
 
 IteratedFiniteAutomatonStateTransitions[rule_List, s0_Integer : 1][init_List] := IteratedFiniteAutomatonStateTransitions[rule, s0, init]
 
 IteratedFiniteAutomatonStateGraph[{m_Integer, {s_Integer, k_Integer}}] := Graph[
 	Range[s],
-	(r |-> DirectedEdge[r[[1, 1]], r[[2, 1]], r[[1, 2]] -> r[[2, 2]]]) /@ ToFARule[{m, {s, k}}],
+	(r |-> DirectedEdge[r[[1, 1]], r[[2, 1]], r[[1, 2]] -> r[[2, 2]]]) /@ AutomatonRuleFromCode[{m, {s, k}}],
 	EdgeLabels -> "EdgeTag", VertexLabels -> Automatic]
 
 IteratedFiniteAutomatonStateGraph[rule : {(_ -> _) ..}] := Graph[

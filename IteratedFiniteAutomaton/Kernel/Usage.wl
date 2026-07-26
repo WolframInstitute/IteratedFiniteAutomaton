@@ -15,3 +15,52 @@ IteratedFiniteAutomatonFromStates::usage = "IteratedFiniteAutomatonFromStates[<|
 IteratedFiniteAutomatonFromWreath::usage = "IteratedFiniteAutomatonFromWreath[<|state -> {outputs, sections}, ...|>, s0] converts a wreath recursion g = (outputs; sections) on symbols 0, ..., k-1 into <|\"Rule\", \"InitialState\", \"StateIndex\"|> suitable for IteratedFiniteAutomaton.";
 
 IteratedFiniteAutomatonEvolve::usage = "IteratedFiniteAutomatonEvolve[conv, init, t] evolves the converted automaton conv = IteratedFiniteAutomatonFromStates[...] or IteratedFiniteAutomatonFromWreath[...] from initial condition init for t steps.";
+
+(* Presentations. Wherever an argument is called automaton it may be an explicit
+   rule list {s, i} -> {f, o} or a numeric code {code, {s, k}}. *)
+
+AutomatonRuleFromCode::usage = "AutomatonRuleFromCode[{code, {s, k}}] gives the Mealy rule {state, input} -> {nextState, output} of the automaton numbered code over s states and k symbols.";
+
+AutomatonCodeFromRule::usage = "AutomatonCodeFromRule[rule] gives the numeric code {code, {s, k}} of an explicit Mealy rule, inverting AutomatonRuleFromCode.";
+
+CanonicalAutomatonCode::usage = "CanonicalAutomatonCode[automaton] gives the least code {code, {s, k}} in the orbit of the automaton under relabelling its states and symbols, so that two automata differing only by relabelling get the same code.";
+
+InvertibleAutomatonQ::usage = "InvertibleAutomatonQ[automaton] gives True if the outputs at each state permute the symbols, so the automaton acts on the rooted tree by an automorphism.";
+
+InvertibleAutomatonCodes::usage = "InvertibleAutomatonCodes[{s, k}] gives the codes of all invertible automata over s states and k symbols.";
+
+(* Action on the rooted tree. *)
+
+AutomatonLevelPermutations::usage = "AutomatonLevelPermutations[automaton, level] gives an Association sending each state to its action on the k^level vertices at depth level, as a permutation list.";
+
+AutomatonWordPermutation::usage = "AutomatonWordPermutation[perms, word] gives the permutation of the level vertices induced by a word in the generators, where perms = AutomatonLevelPermutations[automaton, level] and a negative entry of word means an inverse generator.\nAutomatonWordPermutation[automaton, level, word] builds perms first.";
+
+AutomatonWordOrders::usage = "AutomatonWordOrders[automaton, word, levels] gives the order of word in Aut(T_L) for each L in levels. The orders are nondecreasing in L, and constant from some level on exactly when word has finite order.";
+
+AutomatonWordBall::usage = "AutomatonWordBall[automaton, radius] gives the reduced words of length 1 to radius in the free group on the automaton's states, with inverses written as negative state numbers.";
+
+AutomatonGroupBall::usage = "AutomatonGroupBall[automaton, radius, refLevel] gives one shortest word for each distinct nontrivial element of the level-refLevel quotient represented by a word of length at most radius.";
+
+AutomatonElementCount::usage = "AutomatonElementCount[automaton, wordLength, level] gives the number of distinct elements of Aut(T_level) represented by words of length at most wordLength.";
+
+(* Group invariants. *)
+
+AutomatonAbelianQ::usage = "AutomatonAbelianQ[automaton, level] gives True if the generators commute in the level quotient.";
+
+AutomatonTorsionFreeCandidateQ::usage = "AutomatonTorsionFreeCandidateQ[automaton, wordLength, levels] gives True if some word of length at most wordLength acts nontrivially at the deepest of levels and no word's order has stopped growing there. The condition is necessary but not sufficient for torsion-freeness: orders can plateau and later resume, as they do for the lamplighter group.";
+
+AutomatonGroupFingerprint::usage = "AutomatonGroupFingerprint[automaton, level] gives <|\"Code\", \"Abelian\", \"BallGrowth\"|> for the level quotient, where \"BallGrowth\" counts the elements represented by words of length 1 to 4.";
+
+BGKMNSSNumber::usage = "BGKMNSSNumber[automaton] gives the number of a 3-state binary automaton in the classification of Bondarenko, Grigorchuk, Kravchenko, Muntyan, Nekrashevych, Savchuk and Sunic, arXiv:0803.3555.";
+
+(* Wreath recursion and sections. *)
+
+AutomatonWreathRecursion::usage = "AutomatonWreathRecursion[automaton] gives the wreath recursion as <|state -> {outputs, sections}, ...|>, the argument IteratedFiniteAutomatonFromWreath consumes.\nAutomatonWreathRecursion[automaton, Method -> \"String\"] gives the printable rendering a = \[Sigma](b, c) instead.";
+
+AutomatonSectionTable::usage = "AutomatonSectionTable[automaton] gives an Association sending {g, x} to {section of g at x, image of x}, for every generator g and every inverse generator -g.";
+
+AutomatonWordSection::usage = "AutomatonWordSection[sections, word, x] gives {section of word at the letter x, image of x}, where sections = AutomatonSectionTable[automaton].";
+
+AutomatonSection::usage = "AutomatonSection[automaton, word, treeWord] gives the section of word at the tree vertex treeWord.";
+
+AutomatonNucleus::usage = "AutomatonNucleus[automaton, radius, depth, refLevel] gives, for each d = 0, ..., depth, the sections at depth d of the words of length at most radius, kept distinct as automorphisms of T_refLevel. The list stabilizes exactly when the automaton is contracting, and its limit is the nucleus.";
