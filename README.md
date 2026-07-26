@@ -20,18 +20,21 @@ This repository collects the tools and the open problems, so that researchers ca
 Install the paclet:
 
 ```wolfram
-PacletInstall["WolframInstitute/IteratedFiniteAutomaton"]
+PacletInstall["https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton.paclet"]
 Needs["WolframInstitute`IteratedFiniteAutomaton`"]
 ```
+
+The paclet is not in the Wolfram Paclet Repository, so it installs from a public cloud object.
+The URL is stable across releases — each one overwrites it.
 
 ## 📓 Research Notebooks
 
 | Notebook | Description | Link |
 |---|---|---|
 | Wolfram and wreath recursion | Converting between the automaton formalisms | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Formalisms.nb) |
-| Periodicity of the iteration | Periods of the evolution and orders of group elements | Wolfram Cloud |
-| Automata on the rooted tree | Space-time diagrams and tree portraits | Wolfram Cloud |
-| Burnside problem | An infinite torsion group from a 5-state automaton | Wolfram Cloud |
+| Periodicity of the iteration | Periods of the evolution and orders of group elements | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Periodicity.nb) |
+| Automata on the rooted tree | Space-time diagrams and tree portraits | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Visualization.nb) |
+| Burnside problem | An infinite torsion group from a 5-state automaton | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Burnside.nb) |
 | Kaplansky zero-divisor conjecture | Zero divisors in the group ring | Wolfram Cloud |
 | Sweep of the 3-state binary automata | Which groups survive the zero-divisor test | Wolfram Cloud |
 
