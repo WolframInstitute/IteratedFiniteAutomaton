@@ -35,7 +35,7 @@ The URL is stable across releases — each one overwrites it.
 | Periodicity of the iteration | Periods of the evolution and orders of group elements | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Periodicity.nb) |
 | Automata on the rooted tree | Space-time diagrams and tree portraits | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Visualization.nb) |
 | Burnside problem | An infinite torsion group from a 5-state automaton | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Burnside.nb) |
-| Kaplansky zero-divisor conjecture | Zero divisors in the group ring | Wolfram Cloud |
+| Kaplansky zero-divisor conjecture | Zero divisors in the group ring | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Kaplansky.nb) |
 | Sweep of the 3-state binary automata | Which groups survive the zero-divisor test | Wolfram Cloud |
 
 ## 🧩 Open Problems
