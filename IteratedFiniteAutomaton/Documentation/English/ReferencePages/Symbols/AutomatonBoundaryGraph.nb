@@ -1,0 +1,1580 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     61957,       1571]
+NotebookOptionsPosition[     52195,       1375]
+NotebookOutlinePosition[     53888,       1417]
+CellTagsIndexPosition[     53808,       1412]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["AutomatonBoundaryGraph", "ObjectName",
+ CellID->896836103,ExpressionUUID->"9cec6baf-4059-43e5-92d3-897359720937"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"4ad7af8e-cef3-4722-866a-ba01064053d6"],
+ Cell[BoxData[
+  RowBox[{"AutomatonBoundaryGraph", "[", 
+   StyleBox["automaton", "TI"], ",", 
+   SubscriptBox[
+    StyleBox["s", "TI"], "0"], ",", 
+   StyleBox["level", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+  "5fe147f7-c06f-47ad-b3ae-3e4d0c1b86ff"],
+ " \[LineSeparator]",
+ "gives the permutation of the ",
+ Cell[BoxData[
+  SuperscriptBox[
+   StyleBox["k", "TI"], 
+   StyleBox["level", "TI"]]], "InlineFormula",ExpressionUUID->
+  "21d47f80-97bb-43a9-8b40-c3c4334a5881"],
+ " vertices at depth ",
+ Cell[BoxData[
+  StyleBox["level", "TI"]], "InlineFormula",ExpressionUUID->
+  "366a65e8-dc9b-42a3-b6d5-2303ca2c1324"],
+ " induced by the state ",
+ Cell[BoxData[
+  SubscriptBox[
+   StyleBox["s", "TI"], "0"]], "InlineFormula",ExpressionUUID->
+  "b04feb7a-055e-41a5-b039-4b0f52d2feb0"],
+ ", drawn as its functional graph."
+}], "Usage",
+ CellID->860785190,ExpressionUUID->"521580bb-5e4a-46a4-a6b4-fafe2cc0a7ec"],
+
+Cell[TextData[{
+ "The ",
+ Cell[BoxData[
+  StyleBox["automaton", "TI"]], "InlineFormula",ExpressionUUID->
+  "8cbb1bc7-c732-4faa-9aee-969a217c8c01"],
+ " is either an explicit list of transitions ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     StyleBox["s", "TI"], ",", 
+     StyleBox["i", "TI"]}], "}"}], "\[Rule]", 
+   RowBox[{"{", 
+    RowBox[{
+     StyleBox["f", "TI"], ",", 
+     StyleBox["o", "TI"]}], "}"}]}]], "InlineFormula",ExpressionUUID->
+  "2f7829fb-efdb-4c51-b188-56b5e9809c44"],
+ " or a numeric code ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{
+    StyleBox["code", "TI"], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      StyleBox["s", "TI"], ",", 
+      StyleBox["k", "TI"]}], "}"}]}], "}"}]], "InlineFormula",ExpressionUUID->
+  "cc96a1e6-c929-4444-8152-04981cbfa58e"],
+ "."
+}], "Notes",
+ CellID->841013162,ExpressionUUID->"693da823-810b-4f51-b5c7-bef81f1bd40a"],
+
+Cell[TextData[{
+ "Vertices are 1, \[Ellipsis], ",
+ Cell[BoxData[
+  SuperscriptBox[
+   StyleBox["k", "TI"], 
+   StyleBox["level", "TI"]]], "InlineFormula",ExpressionUUID->
+  "42a0dce1-a894-434a-a7de-c5d5e579eeb0"],
+ ", and the one edge leaving ",
+ Cell[BoxData[
+  StyleBox["i", "TI"]], "InlineFormula",ExpressionUUID->
+  "ab661341-695f-4a8a-b8b5-29611b635f95"],
+ " goes to the image of ",
+ Cell[BoxData[
+  StyleBox["i", "TI"]], "InlineFormula",ExpressionUUID->
+  "eeecc8d5-3159-4c35-8aa8-bf510feaace2"],
+ " under ",
+ Cell[BoxData[
+  ButtonBox["AutomatonLevelPermutations",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+AutomatonLevelPermutations"]], "InlineFormula",ExpressionUUID->
+  "09ce0ade-19a4-4c0e-8a5d-fa633663356d"],
+ "; every vertex has out-degree 1, so the graph has as many edges as vertices."
+}], "Notes",
+ CellID->555265870,ExpressionUUID->"3a1d0320-44ac-4950-8684-c3b46c4f8fd3"],
+
+Cell[TextData[{
+ "The connected components are the cycles of that permutation, and the least \
+common multiple of their lengths is the order of ",
+ Cell[BoxData[
+  SubscriptBox[
+   StyleBox["s", "TI"], "0"]], "InlineFormula",ExpressionUUID->
+  "73427164-ef4d-4089-b21d-42f8461dcb97"],
+ " in ",
+ Cell[BoxData[
+  RowBox[{"Aut", "(", 
+   SubscriptBox[
+    StyleBox["T", "TI"], 
+    StyleBox["level", "TI"]], ")"}]], "InlineFormula",ExpressionUUID->
+  "719d44cf-5b12-4243-aeb0-77a976d6e604"],
+ "."
+}], "Notes",
+ CellID->749442835,ExpressionUUID->"3c34a578-ef82-4d44-955d-42cc16c61a5f"],
+
+Cell[TextData[{
+ "A state acting trivially at ",
+ Cell[BoxData[
+  StyleBox["level", "TI"]], "InlineFormula",ExpressionUUID->
+  "c401c97b-6063-4138-aa8f-6039ee11cea4"],
+ " gives ",
+ Cell[BoxData[
+  SuperscriptBox[
+   StyleBox["k", "TI"], 
+   StyleBox["level", "TI"]]], "InlineFormula",ExpressionUUID->
+  "92f09acf-4367-4536-870c-9a9384a30cb9"],
+ " self-loops."
+}], "Notes",
+ CellID->577000029,ExpressionUUID->"07eda81e-7eed-4bdf-8dbd-0332ddf3b668"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->278217768,ExpressionUUID->"1e67a891-9b4e-471d-8e14-617c24b33a23"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["AutomatonTreePortrait",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+AutomatonTreePortrait"]], "InlineFormula",ExpressionUUID->
+  "6c8d78cd-191e-4df3-850f-d9dc3c20e4f1"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"8d83f517-da2a-49fd-957e-ec1647d0e6ee"],
+ Cell[BoxData[
+  ButtonBox["AutomatonLevelPermutations",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+AutomatonLevelPermutations"]], "InlineFormula",ExpressionUUID->
+  "3f680a9e-0529-4bf4-8058-4494e9014b93"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"5756448a-6398-490b-b9ea-752808cdc934"],
+ Cell[BoxData[
+  ButtonBox["AutomatonWordOrders",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/AutomatonWordOrders"]\
+], "InlineFormula",ExpressionUUID->"4633343c-f769-4c18-8e1a-09c52b58de32"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"534d0461-205c-482c-b57e-bd040def8bc6"],
+ Cell[BoxData[
+  ButtonBox["AutomatonWordPermutation",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+AutomatonWordPermutation"]], "InlineFormula",ExpressionUUID->
+  "660ff63e-9f87-49b7-a182-bd01ab0b31bd"]
+}], "SeeAlso",
+ CellID->942142302,ExpressionUUID->"98828a9b-759b-4fee-bb2c-b0b45ccebbf2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",
+ CellID->776970625,ExpressionUUID->"86735c96-6454-4541-9fb8-9f1ebcac8e12"],
+
+Cell[TextData[ButtonBox["Iterated Finite Automata",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:WolframInstitute/IteratedFiniteAutomaton/guide/\
+IteratedFiniteAutomaton"]], "MoreAbout",
+ CellID->542241006,ExpressionUUID->"e10e8a90-65d4-47f9-81e8-5d51dd7593ad"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->122764734,ExpressionUUID->"4924bf96-ac97-4c8e-b2f0-1d19f0d97f23"],
+
+Cell[TextData[ButtonBox["A. Zuk, \"Iterated Finite Automata\", Wolfram \
+Community (WSRI26)",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://community.wolfram.com/groups/-/m/t/3761828"], 
+   None}]], "RelatedLinks",
+ CellID->308871099,ExpressionUUID->"e9c1d622-5d23-4c64-8ef4-d40d7ab0ba85"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples Initialization", "ExamplesInitializationSection",
+ CellID->255066669,ExpressionUUID->"24d78836-820c-4b34-9c26-ecac214c6366"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<WolframInstitute`IteratedFiniteAutomaton`\>\"", 
+  "]"}]], "ExampleInitialization",
+ CellID->402915316,ExpressionUUID->"9662dbd1-a996-469a-a6cc-0569bdadd713"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox[
+      RowBox[{"Basic", " ", "Examples"}], "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->232712325,ExpressionUUID->"9c549da8-243e-4914-af27-a7bda4815b2f"],
+
+Cell["\<\
+The adding machine permutes the 16 vertices at depth 4 in a single cycle:\
+\>", "ExampleText",
+ CellID->258631060,ExpressionUUID->"7d69ca51-b167-4fba-8793-16576a7191c0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"addingMachine", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "0"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "0"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}]}]}], "}"}]}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->655023700,ExpressionUUID->"f5ab9293-6a57-4504-b0e4-1eff55105915"],
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", 
+  RowBox[{
+   RowBox[{"AutomatonBoundaryGraph", "[", 
+    RowBox[{"addingMachine", ",", "1", ",", "4"}], "]"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "260"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->562460596,ExpressionUUID->"46ba1f36-3e60-47c2-9796-c37194187bfe"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
+      16}, {{{1, 9}, {2, 10}, {3, 11}, {4, 12}, {5, 13}, {6, 14}, {7, 15}, {8,
+        16}, {9, 5}, {10, 6}, {11, 7}, {12, 8}, {13, 3}, {14, 4}, {15, 2}, {
+       16, 1}}, Null}, {EdgeStyle -> {
+         Opacity[0.5]}, 
+       GraphLayout -> {
+        "Dimension" -> 2, "VertexLayout" -> "CircularEmbedding"}, ImageSize -> 
+       260, VertexSize -> {0.4}, VertexStyle -> {
+         GrayLevel[0]}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.7], Opacity[0.5], CapForm["Round"], Arrowheads[
+        Medium], 
+        ArrowBox[{{
+          DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+           "VertexID$9", Automatic, Center]}, {
+          DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+           "VertexID$10", Automatic, Center]}, {
+          DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+           "VertexID$11", Automatic, Center]}, {
+          DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+           "VertexID$12", Automatic, Center]}, {
+          DynamicLocation["VertexID$5", Automatic, Center], DynamicLocation[
+           "VertexID$13", Automatic, Center]}, {
+          DynamicLocation["VertexID$6", Automatic, Center], DynamicLocation[
+           "VertexID$14", Automatic, Center]}, {
+          DynamicLocation["VertexID$7", Automatic, Center], DynamicLocation[
+           "VertexID$15", Automatic, Center]}, {
+          DynamicLocation["VertexID$8", Automatic, Center], DynamicLocation[
+           "VertexID$16", Automatic, Center]}, {
+          DynamicLocation["VertexID$9", Automatic, Center], DynamicLocation[
+           "VertexID$5", Automatic, Center]}, {
+          DynamicLocation["VertexID$10", Automatic, Center], DynamicLocation[
+           "VertexID$6", Automatic, Center]}, {
+          DynamicLocation["VertexID$11", Automatic, Center], DynamicLocation[
+           "VertexID$7", Automatic, Center]}, {
+          DynamicLocation["VertexID$12", Automatic, Center], DynamicLocation[
+           "VertexID$8", Automatic, Center]}, {
+          DynamicLocation["VertexID$13", Automatic, Center], DynamicLocation[
+           "VertexID$3", Automatic, Center]}, {
+          DynamicLocation["VertexID$14", Automatic, Center], DynamicLocation[
+           "VertexID$4", Automatic, Center]}, {
+          DynamicLocation["VertexID$15", Automatic, Center], DynamicLocation[
+           "VertexID$2", Automatic, Center]}, {
+          DynamicLocation["VertexID$16", Automatic, Center], DynamicLocation[
+           "VertexID$1", Automatic, Center]}}]}, 
+       {GrayLevel[0], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+        TagBox[
+         DiskBox[{-0.38268343236509045`, 0.9238795325112871}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$1"], 
+        TagBox[
+         DiskBox[{0.38268343236509034`, -0.923879532511287}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$2"], 
+        TagBox[
+         DiskBox[{-0.9238795325112865, -0.3826834323650892}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$3"], 
+        TagBox[
+         DiskBox[{0.9238795325112866, 0.3826834323650891}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$4"], 
+        TagBox[
+         DiskBox[{-0.9238795325112871, 0.3826834323650903}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$5"], 
+        TagBox[
+         DiskBox[{0.9238795325112868, -0.3826834323650904}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$6"], 
+        TagBox[
+         DiskBox[{-0.38268343236508917`, -0.9238795325112865}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$7"], 
+        TagBox[
+         DiskBox[{0.3826834323650895, 0.9238795325112865}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$8"], 
+        TagBox[
+         DiskBox[{-0.707106781186548, 0.7071067811865482}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$9"], 
+        TagBox[
+         DiskBox[{0.7071067811865481, -0.7071067811865483}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$10"], 
+        TagBox[
+         DiskBox[{-0.707106781186547, -0.7071067811865468}, 
+          0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$11"], 
+        TagBox[
+         DiskBox[{0.707106781186547, 0.7071067811865467}, 0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$12"], 
+        TagBox[DiskBox[{-1., 1.0106430996148606`*^-15}, 0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$13"], 
+        TagBox[DiskBox[{1., -1.133107779529596*^-15}, 0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$14"], 
+        TagBox[DiskBox[{6.049014748177263*^-16, -1.}, 0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$15"], 
+        TagBox[DiskBox[{-7.044813998280222*^-16, 1.}, 0.07803612880645121],
+         "DynamicName",
+         BoxID -> "VertexID$16"]}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImageSize->260]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->125531156,ExpressionUUID->"d83b0718-cff5-41f8-bd54-13b4b21f0074"],
+
+Cell["\<\
+The odometer stays a single cycle at every depth, so its order doubles with \
+the level:\
+\>", "ExampleText",
+ CellID->710744663,ExpressionUUID->"ddd57c2b-76b1-4cea-b921-1820a4e58d19"],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Length", "/@", 
+    RowBox[{"ConnectedComponents", "[", 
+     RowBox[{"UndirectedGraph", "[", 
+      RowBox[{"AutomatonBoundaryGraph", "[", 
+       RowBox[{"addingMachine", ",", "1", ",", "level"}], "]"}], "]"}], 
+     "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"level", ",", "1", ",", "5"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->460851707,ExpressionUUID->"9c785d10-c6e1-4f52-906c-2c2453f24a42"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "2", "}"}], ",", 
+   RowBox[{"{", "4", "}"}], ",", 
+   RowBox[{"{", "8", "}"}], ",", 
+   RowBox[{"{", "16", "}"}], ",", 
+   RowBox[{"{", "32", "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->191158818,ExpressionUUID->"ced9afdf-2a90-42e5-97dd-5b61585742b7"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"3de4439e-d87b-4b1c-86e9-930b688aab35"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->735066657,ExpressionUUID->"1a68d57a-2102-4591-9311-8ee7c5ab1cd4"],
+
+Cell[TextData[{
+ "The Grigorchuk generator ",
+ Cell[BoxData[
+  StyleBox["a", "TI"]], "InlineFormula",ExpressionUUID->
+  "597fe2d3-7f15-4228-b075-d46a1847eff4"],
+ " swaps the two halves of the tree, so at depth 3 it is four \
+transpositions:"
+}], "ExampleText",
+ CellID->216042668,ExpressionUUID->"981e1edf-ccfc-48f2-be9d-d7358fefa2f0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"grigorchuk", "=", 
+   RowBox[{"Association", "[", 
+    RowBox[{
+     RowBox[{"\"\<a\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<id\>\"", ",", "\"\<id\>\""}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"\"\<b\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<a\>\"", ",", "\"\<c\>\""}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"\"\<c\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<a\>\"", ",", "\"\<d\>\""}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"\"\<d\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<id\>\"", ",", "\"\<b\>\""}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"\"\<id\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<id\>\"", ",", "\"\<id\>\""}], "}"}]}], "}"}]}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->768920507,ExpressionUUID->"bcae26c9-b7c8-42a5-b536-52731c1770ce"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"grigorchukRule", "=", 
+   RowBox[{
+    RowBox[{"IteratedFiniteAutomatonFromWreath", "[", 
+     RowBox[{"grigorchuk", ",", "\"\<a\>\""}], "]"}], "[", "\"\<Rule\>\"", 
+    "]"}]}], ";"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->642943722,ExpressionUUID->"44641a7a-8578-4831-883d-9d3e46b69bd7"],
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", 
+  RowBox[{
+   RowBox[{"AutomatonBoundaryGraph", "[", 
+    RowBox[{"grigorchukRule", ",", "1", ",", "3"}], "]"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "260"}]}], "]"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->493215332,ExpressionUUID->"619bd158-bba7-46b1-b5a6-c31df427f64a"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{1, 2, 3, 4, 5, 6, 7, 
+      8}, {{{1, 5}, {2, 6}, {3, 7}, {4, 8}, {5, 1}, {6, 2}, {7, 3}, {8, 4}}, 
+       Null}, {EdgeStyle -> {
+         Opacity[0.5]}, 
+       GraphLayout -> {
+        "Dimension" -> 2, "VertexLayout" -> "CircularEmbedding"}, ImageSize -> 
+       260, VertexSize -> {0.4}, VertexStyle -> {
+         GrayLevel[0]}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.7], Opacity[0.5], CapForm["Round"], Arrowheads[
+        Medium], 
+        ArrowBox[
+         BezierCurveBox[{
+          DynamicLocation[
+           "VertexID$1", Automatic, Center], {-0.7372762231567112, 
+           0.30538981084672073`}, DynamicLocation[
+           "VertexID$5", Automatic, Center]}]], 
+        ArrowBox[
+         BezierCurveBox[{
+          DynamicLocation[
+           "VertexID$2", Automatic, 
+            Center], {-0.3053898108467164, -0.7372762231567115}, 
+           DynamicLocation["VertexID$6", Automatic, Center]}]], 
+        ArrowBox[
+         BezierCurveBox[{
+          DynamicLocation["VertexID$3", Automatic, Center], {
+           0.7372762231567075, -0.30538981084672595`}, DynamicLocation[
+           "VertexID$7", Automatic, Center]}]], 
+        ArrowBox[
+         BezierCurveBox[{
+          DynamicLocation["VertexID$4", Automatic, Center], {
+           0.3053898108467173, 0.7372762231567126}, DynamicLocation[
+           "VertexID$8", Automatic, Center]}]], 
+        ArrowBox[
+         BezierCurveBox[{
+          DynamicLocation[
+           "VertexID$5", Automatic, Center], {-0.9698305580298389, 
+           0.40171697033983167`}, DynamicLocation[
+           "VertexID$1", Automatic, Center]}]], 
+        ArrowBox[
+         BezierCurveBox[{
+          DynamicLocation[
+           "VertexID$6", Automatic, 
+            Center], {-0.4017169703398185, -0.9698305580298401}, 
+           DynamicLocation["VertexID$2", Automatic, Center]}]], 
+        ArrowBox[
+         BezierCurveBox[{
+          DynamicLocation["VertexID$7", Automatic, Center], {
+           0.9698305580298394, -0.40171697033982745`}, DynamicLocation[
+           "VertexID$3", Automatic, Center]}]], 
+        ArrowBox[
+         BezierCurveBox[{
+          DynamicLocation["VertexID$8", Automatic, Center], {
+           0.4017169703398211, 0.9698305580298374}, DynamicLocation[
+           "VertexID$4", Automatic, Center]}]]}, 
+       {GrayLevel[0], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+        TagBox[
+         DiskBox[{-0.707106781186548, 0.7071067811865482}, 
+          0.15307337294603582],
+         "DynamicName",
+         BoxID -> "VertexID$1"], 
+        TagBox[
+         DiskBox[{-0.707106781186547, -0.7071067811865468}, 
+          0.15307337294603582],
+         "DynamicName",
+         BoxID -> "VertexID$2"], 
+        TagBox[
+         DiskBox[{0.7071067811865481, -0.7071067811865483}, 
+          0.15307337294603582],
+         "DynamicName",
+         BoxID -> "VertexID$3"], 
+        TagBox[
+         DiskBox[{0.707106781186547, 0.7071067811865467}, 0.15307337294603582],
+         "DynamicName",
+         BoxID -> "VertexID$4"], 
+        TagBox[DiskBox[{-1., 1.0106430996148606`*^-15}, 0.15307337294603582],
+         "DynamicName",
+         BoxID -> "VertexID$5"], 
+        TagBox[DiskBox[{6.049014748177263*^-16, -1.}, 0.15307337294603582],
+         "DynamicName",
+         BoxID -> "VertexID$6"], 
+        TagBox[DiskBox[{1., -1.133107779529596*^-15}, 0.15307337294603582],
+         "DynamicName",
+         BoxID -> "VertexID$7"], 
+        TagBox[DiskBox[{-7.044813998280222*^-16, 1.}, 0.15307337294603582],
+         "DynamicName",
+         BoxID -> "VertexID$8"]}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImageSize->260]], "Output",
+ CellLabel->"Out[6]=",
+ CellID->909298835,ExpressionUUID->"4143db3c-e476-4ec7-937e-e8acb7932158"],
+
+Cell[BoxData[
+ RowBox[{"Sort", "[", 
+  RowBox[{"Length", "/@", 
+   RowBox[{"ConnectedComponents", "[", 
+    RowBox[{"UndirectedGraph", "[", 
+     RowBox[{"AutomatonBoundaryGraph", "[", 
+      RowBox[{"grigorchukRule", ",", "1", ",", "3"}], "]"}], "]"}], "]"}]}], 
+  "]"}]], "Input",
+ CellLabel->"In[7]:=",
+ CellID->989907192,ExpressionUUID->"9c8e0d83-9a64-449e-a2a4-f0b5895766b9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2", ",", "2", ",", "2", ",", "2"}], "}"}]], "Output",
+ CellLabel->"Out[7]=",
+ CellID->691505163,ExpressionUUID->"93ccdacb-3af9-422c-b9d8-f32060ce9641"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->573307211,ExpressionUUID->"7a88443d-0e53-4390-a64b-c35cd89343b1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Scope", "ExampleSection",ExpressionUUID->
+   "dd313a7e-6412-43f9-8cb6-1df246818990"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->295603613,ExpressionUUID->"7d59dc37-bc41-4cfc-afff-9fbd1b737643"],
+
+Cell["\<\
+The identity state of the Grigorchuk automaton fixes every boundary vertex, \
+so its graph is all self-loops:\
+\>", "ExampleText",
+ CellID->116705366,ExpressionUUID->"724567ba-0cb9-46b6-a8ef-75686d4aefa2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"grigorchuk", "=", 
+   RowBox[{"Association", "[", 
+    RowBox[{
+     RowBox[{"\"\<a\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<id\>\"", ",", "\"\<id\>\""}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"\"\<b\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<a\>\"", ",", "\"\<c\>\""}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"\"\<c\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<a\>\"", ",", "\"\<d\>\""}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"\"\<d\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<id\>\"", ",", "\"\<b\>\""}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"\"\<id\>\"", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"\"\<id\>\"", ",", "\"\<id\>\""}], "}"}]}], "}"}]}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->845071902,ExpressionUUID->"28121539-d0c0-4aae-9c98-f068034ab83b"],
+
+Cell[BoxData[
+ RowBox[{"EdgeList", "[", 
+  RowBox[{"AutomatonBoundaryGraph", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"IteratedFiniteAutomatonFromWreath", "[", 
+      RowBox[{"grigorchuk", ",", "\"\<a\>\""}], "]"}], "[", "\"\<Rule\>\"", 
+     "]"}], ",", "5", ",", "2"}], "]"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->340257517,ExpressionUUID->"dca7c892-807a-411e-8874-dd8c1c7a6d80"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"1", "\[DirectedEdge]", "1"}], ",", 
+   RowBox[{"2", "\[DirectedEdge]", "2"}], ",", 
+   RowBox[{"3", "\[DirectedEdge]", "3"}], ",", 
+   RowBox[{"4", "\[DirectedEdge]", "4"}]}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->435522545,ExpressionUUID->"85e2e1d9-9525-45e9-a187-e690073aec0d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Properties & Relations", "ExampleSection",ExpressionUUID->
+   "63293c02-d21b-4c68-8160-a143ed7c0bcf"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->133014341,ExpressionUUID->"3ea24efc-2f5e-47df-b62b-214d46920026"],
+
+Cell[TextData[{
+ "One outgoing edge per vertex, so vertices and edges both number ",
+ Cell[BoxData[
+  SuperscriptBox[
+   StyleBox["k", "TI"], 
+   StyleBox["level", "TI"]]], "InlineFormula",ExpressionUUID->
+  "1b2a496d-bb03-4932-9bd3-4b4a3e62b8bc"],
+ ":"
+}], "ExampleText",
+ CellID->841558508,ExpressionUUID->"f6962888-1027-4a39-a722-7932647ea0fe"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"addingMachine", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "0"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "0"}], "}"}]}], ",", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "1"}], "}"}]}]}], "}"}]}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->219434034,ExpressionUUID->"09e04327-d716-4077-9d44-876b6f455c79"],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"VertexCount", "[", 
+      RowBox[{"AutomatonBoundaryGraph", "[", 
+       RowBox[{"addingMachine", ",", "1", ",", "level"}], "]"}], "]"}], ",", 
+     RowBox[{"EdgeCount", "[", 
+      RowBox[{"AutomatonBoundaryGraph", "[", 
+       RowBox[{"addingMachine", ",", "1", ",", "level"}], "]"}], "]"}], ",", 
+     SuperscriptBox["2", "level"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"level", ",", "1", ",", "5"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->520410097,ExpressionUUID->"19657cf2-b3df-417c-80b5-9fbe973e44b3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "4", ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "8", ",", "8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"16", ",", "16", ",", "16"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"32", ",", "32", ",", "32"}], "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->935510328,ExpressionUUID->"62c5c31e-23ec-40db-b569-8d2a72e8dcd5"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"f47fca99-0527-42cc-8316-76fa764f3267"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->867295005,ExpressionUUID->"5162dc9e-c90e-428f-926a-b8ee31054e6a"],
+
+Cell[TextData[{
+ "The least common multiple of the cycle lengths is the order reported by ",
+ Cell[BoxData[
+  ButtonBox["AutomatonWordOrders",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/AutomatonWordOrders"]\
+], "InlineFormula",ExpressionUUID->"e7ac7a8d-5ca1-48a5-b26b-33a2109625d9"],
+ ":"
+}], "ExampleText",
+ CellID->206865807,ExpressionUUID->"6a5e2e28-2d55-41c9-8a67-d7ad42f3bf27"],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"LCM", "@@", 
+    RowBox[{"Length", "/@", 
+     RowBox[{"ConnectedComponents", "[", 
+      RowBox[{"UndirectedGraph", "[", 
+       RowBox[{"AutomatonBoundaryGraph", "[", 
+        RowBox[{"addingMachine", ",", "1", ",", "level"}], "]"}], "]"}], 
+      "]"}]}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"level", ",", "1", ",", "5"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->159536949,ExpressionUUID->"6692c6db-4a66-44ac-a281-e1acb8180b24"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2", ",", "4", ",", "8", ",", "16", ",", "32"}], "}"}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->756033056,ExpressionUUID->"c6430a38-8c85-4565-8a26-364973397c66"],
+
+Cell[BoxData[
+ RowBox[{"AutomatonWordOrders", "[", 
+  RowBox[{"addingMachine", ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"Range", "[", "5", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->603748308,ExpressionUUID->"7b3ec008-073d-4d0c-9682-4b8bc8914f7a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2", ",", "4", ",", "8", ",", "16", ",", "32"}], "}"}]], "Output",
+ CellLabel->"Out[4]=",
+ CellID->272353152,ExpressionUUID->"412cea1a-1c86-4c24-adee-fa1c7a09e524"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Neat Examples", "ExampleSection",ExpressionUUID->
+   "ef6ef98f-50c3-4204-939c-543bace7e388"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->606648610,ExpressionUUID->"c02a0c7f-bae3-4f06-a358-d7a6b0006f0d"],
+
+Cell["\<\
+The lamplighter generator shows what a plateau in the order tower looks like: \
+from level 2 to level 3 the cycle length stalls at 4 and the number of cycles \
+doubles instead:\
+\>", "ExampleText",
+ CellID->872103409,ExpressionUUID->"49daac29-0355-495c-85b4-3cfa746c0b56"],
+
+Cell[BoxData[
+ RowBox[{"Row", "[", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    TemplateBox[{
+      RowBox[{"Graph", "[", 
+        RowBox[{
+          RowBox[{"AutomatonBoundaryGraph", "[", 
+            RowBox[{
+              RowBox[{"{", 
+                RowBox[{"156", ",", 
+                  RowBox[{"{", 
+                    RowBox[{"2", ",", "2"}], "}"}]}], "}"}], ",", "1", ",", 
+              "level"}], "]"}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", "140"}]}], "]"}], 
+      TemplateBox[{"\"level \"", "level"}, "RowDefault"]},
+     "Labeled",
+     DisplayFunction->(GridBox[{{
+         TagBox[
+          ItemBox[
+           PaneBox[
+            TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+            BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+          "SkipImageSizeLevel"]}, {
+         ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+       GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+       AutoDelete -> False, 
+       GridBoxItemSize -> {
+        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+       BaselinePosition -> {1, 1}]& ),
+     InterpretationFunction->(RowBox[{"Labeled", "[", 
+        RowBox[{#, ",", #2, ",", 
+          RowBox[{"{", "}"}]}], "]"}]& )], ",", 
+    RowBox[{"{", 
+     RowBox[{"level", ",", "1", ",", "4"}], "}"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->933279661,ExpressionUUID->"1c81dbed-9ab4-4f41-9d3d-62286cd10975"],
+
+Cell[BoxData[
+ TemplateBox[{
+   TemplateBox[{
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics", 
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+           Graph[{1, 2}, {{{1, 2}, {2, 1}}, Null}, {EdgeStyle -> {
+               Opacity[0.5]}, 
+             GraphLayout -> {
+              "Dimension" -> 2, "VertexLayout" -> "CircularEmbedding"}, 
+             ImageSize -> 140, VertexSize -> {0.4}, VertexStyle -> {
+               GrayLevel[0]}}]]}, 
+        TagBox[
+         GraphicsGroupBox[{{
+            Arrowheads[Medium], 
+            Directive[
+             Opacity[0.7], 
+             Hue[0.6, 0.7, 0.7], 
+             CapForm["Round"]], 
+            Opacity[0.5], 
+            ArrowBox[
+             BezierCurveBox[{
+               DynamicLocation["VertexID$1", Automatic, Center], {
+               0., -0.32888149436623243`}, 
+               DynamicLocation["VertexID$2", Automatic, Center]}]], 
+            ArrowBox[
+             BezierCurveBox[{
+               DynamicLocation["VertexID$2", Automatic, Center], {0., 
+               0.32888149436623243`}, 
+               DynamicLocation["VertexID$1", Automatic, Center]}]]}, {
+            Directive[
+             Hue[0.6, 0.5, 1.], 
+             EdgeForm[
+              Directive[
+               GrayLevel[0], 
+               Opacity[0.7]]]], 
+            GrayLevel[0], 
+            TagBox[
+             DiskBox[{1., 0.}, 0.4], "DynamicName", BoxID -> "VertexID$1"], 
+            TagBox[
+             DiskBox[{-1., 0.}, 0.4], "DynamicName", BoxID -> 
+             "VertexID$2"]}}], 
+         MouseAppearanceTag["NetworkGraphics"]], AllowKernelInitialization -> 
+        False]], {
+      FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 140, 
+       DefaultBaseStyle -> "NetworkGraphics"}], 
+     TemplateBox[{"\"level \"", "1"}, "RowDefault"]}, "Labeled", 
+    DisplayFunction -> (GridBox[{{
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"]}, {
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      BaselinePosition -> {1, 1}]& ), 
+    InterpretationFunction -> (RowBox[{"Labeled", "[", 
+       RowBox[{#, ",", #2, ",", 
+         RowBox[{"{", "}"}]}], "]"}]& )], 
+   TemplateBox[{
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics", 
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+           
+           Graph[{1, 2, 3, 4}, {{{1, 4}, {2, 3}, {3, 1}, {4, 2}}, Null}, {
+            EdgeStyle -> {
+               Opacity[0.5]}, 
+             GraphLayout -> {
+              "Dimension" -> 2, "VertexLayout" -> "CircularEmbedding"}, 
+             ImageSize -> 140, VertexSize -> {0.4}, VertexStyle -> {
+               GrayLevel[0]}}]]}, 
+        TagBox[
+         GraphicsGroupBox[{{
+            Arrowheads[Medium], 
+            Directive[
+             Opacity[0.7], 
+             Hue[0.6, 0.7, 0.7], 
+             CapForm["Round"]], 
+            Opacity[0.5], 
+            ArrowBox[{{
+               DynamicLocation["VertexID$1", Automatic, Center], 
+               DynamicLocation["VertexID$4", Automatic, Center]}, {
+               DynamicLocation["VertexID$2", Automatic, Center], 
+               DynamicLocation["VertexID$3", Automatic, Center]}, {
+               DynamicLocation["VertexID$3", Automatic, Center], 
+               DynamicLocation["VertexID$1", Automatic, Center]}, {
+               DynamicLocation["VertexID$4", Automatic, Center], 
+               DynamicLocation["VertexID$2", Automatic, Center]}}]}, {
+            Directive[
+             Hue[0.6, 0.5, 1.], 
+             EdgeForm[
+              Directive[
+               GrayLevel[0], 
+               Opacity[0.7]]]], 
+            GrayLevel[0], 
+            TagBox[
+             DiskBox[{-1., 1.0106430996148606`*^-15}, 0.2828427124746188], 
+             "DynamicName", BoxID -> "VertexID$1"], 
+            TagBox[
+             DiskBox[{1., -1.133107779529596*^-15}, 0.2828427124746188], 
+             "DynamicName", BoxID -> "VertexID$2"], 
+            TagBox[
+             DiskBox[{-7.044813998280222*^-16, 1.}, 0.2828427124746188], 
+             "DynamicName", BoxID -> "VertexID$3"], 
+            TagBox[
+             DiskBox[{6.049014748177263*^-16, -1.}, 0.2828427124746188], 
+             "DynamicName", BoxID -> "VertexID$4"]}}], 
+         MouseAppearanceTag["NetworkGraphics"]], AllowKernelInitialization -> 
+        False]], {
+      FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 140, 
+       DefaultBaseStyle -> "NetworkGraphics"}], 
+     TemplateBox[{"\"level \"", "2"}, "RowDefault"]}, "Labeled", 
+    DisplayFunction -> (GridBox[{{
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"]}, {
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      BaselinePosition -> {1, 1}]& ), 
+    InterpretationFunction -> (RowBox[{"Labeled", "[", 
+       RowBox[{#, ",", #2, ",", 
+         RowBox[{"{", "}"}]}], "]"}]& )], 
+   TemplateBox[{
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics", 
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+           
+           Graph[{1, 2, 3, 4, 5, 6, 7, 
+            8}, {{{1, 8}, {2, 7}, {3, 5}, {4, 6}, {5, 2}, {6, 1}, {7, 3}, {8, 
+             4}}, Null}, {EdgeStyle -> {
+               Opacity[0.5]}, 
+             GraphLayout -> {
+              "Dimension" -> 2, "VertexLayout" -> "CircularEmbedding"}, 
+             ImageSize -> 140, VertexSize -> {0.4}, VertexStyle -> {
+               GrayLevel[0]}}]]}, 
+        TagBox[
+         GraphicsGroupBox[{{
+            Arrowheads[Medium], 
+            Directive[
+             Opacity[0.7], 
+             Hue[0.6, 0.7, 0.7], 
+             CapForm["Round"]], 
+            Opacity[0.5], 
+            ArrowBox[{{
+               DynamicLocation["VertexID$1", Automatic, Center], 
+               DynamicLocation["VertexID$8", Automatic, Center]}, {
+               DynamicLocation["VertexID$2", Automatic, Center], 
+               DynamicLocation["VertexID$7", Automatic, Center]}, {
+               DynamicLocation["VertexID$3", Automatic, Center], 
+               DynamicLocation["VertexID$5", Automatic, Center]}, {
+               DynamicLocation["VertexID$4", Automatic, Center], 
+               DynamicLocation["VertexID$6", Automatic, Center]}, {
+               DynamicLocation["VertexID$5", Automatic, Center], 
+               DynamicLocation["VertexID$2", Automatic, Center]}, {
+               DynamicLocation["VertexID$6", Automatic, Center], 
+               DynamicLocation["VertexID$1", Automatic, Center]}, {
+               DynamicLocation["VertexID$7", Automatic, Center], 
+               DynamicLocation["VertexID$3", Automatic, Center]}, {
+               DynamicLocation["VertexID$8", Automatic, Center], 
+               DynamicLocation["VertexID$4", Automatic, Center]}}]}, {
+            Directive[
+             Hue[0.6, 0.5, 1.], 
+             EdgeForm[
+              Directive[
+               GrayLevel[0], 
+               Opacity[0.7]]]], 
+            GrayLevel[0], 
+            TagBox[
+             
+             DiskBox[{-0.707106781186548, 0.7071067811865482}, 
+              0.15307337294603582`], "DynamicName", BoxID -> "VertexID$1"], 
+            TagBox[
+             
+             DiskBox[{0.7071067811865481, -0.7071067811865483}, 
+              0.15307337294603582`], "DynamicName", BoxID -> "VertexID$2"], 
+            TagBox[
+             
+             DiskBox[{0.707106781186547, 0.7071067811865467}, 
+              0.15307337294603582`], "DynamicName", BoxID -> "VertexID$3"], 
+            TagBox[
+             
+             DiskBox[{-0.707106781186547, -0.7071067811865468}, 
+              0.15307337294603582`], "DynamicName", BoxID -> "VertexID$4"], 
+            TagBox[
+             DiskBox[{-7.044813998280222*^-16, 1.}, 0.15307337294603582`], 
+             "DynamicName", BoxID -> "VertexID$5"], 
+            TagBox[
+             DiskBox[{6.049014748177263*^-16, -1.}, 0.15307337294603582`], 
+             "DynamicName", BoxID -> "VertexID$6"], 
+            TagBox[
+             DiskBox[{1., -1.133107779529596*^-15}, 0.15307337294603582`], 
+             "DynamicName", BoxID -> "VertexID$7"], 
+            TagBox[
+             DiskBox[{-1., 1.0106430996148606`*^-15}, 0.15307337294603582`], 
+             "DynamicName", BoxID -> "VertexID$8"]}}], 
+         MouseAppearanceTag["NetworkGraphics"]], AllowKernelInitialization -> 
+        False]], {
+      FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 140, 
+       DefaultBaseStyle -> "NetworkGraphics"}], 
+     TemplateBox[{"\"level \"", "3"}, "RowDefault"]}, "Labeled", 
+    DisplayFunction -> (GridBox[{{
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"]}, {
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      BaselinePosition -> {1, 1}]& ), 
+    InterpretationFunction -> (RowBox[{"Labeled", "[", 
+       RowBox[{#, ",", #2, ",", 
+         RowBox[{"{", "}"}]}], "]"}]& )], 
+   TemplateBox[{
+     GraphicsBox[
+      NamespaceBox["NetworkGraphics", 
+       DynamicModuleBox[{Typeset`graph = HoldComplete[
+           
+           Graph[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
+            16}, {{{1, 16}, {2, 15}, {3, 13}, {4, 14}, {5, 10}, {6, 9}, {7, 
+             11}, {8, 12}, {9, 4}, {10, 3}, {11, 1}, {12, 2}, {13, 6}, {14, 
+             5}, {15, 7}, {16, 8}}, Null}, {EdgeStyle -> {
+               Opacity[0.5]}, 
+             GraphLayout -> {
+              "Dimension" -> 2, "VertexLayout" -> "CircularEmbedding"}, 
+             ImageSize -> 140, VertexSize -> {0.4}, VertexStyle -> {
+               GrayLevel[0]}}]]}, 
+        TagBox[
+         GraphicsGroupBox[{{
+            Arrowheads[Medium], 
+            Directive[
+             Opacity[0.7], 
+             Hue[0.6, 0.7, 0.7], 
+             CapForm["Round"]], 
+            Opacity[0.5], 
+            ArrowBox[{{
+               DynamicLocation["VertexID$1", Automatic, Center], 
+               DynamicLocation["VertexID$16", Automatic, Center]}, {
+               DynamicLocation["VertexID$2", Automatic, Center], 
+               DynamicLocation["VertexID$15", Automatic, Center]}, {
+               DynamicLocation["VertexID$3", Automatic, Center], 
+               DynamicLocation["VertexID$13", Automatic, Center]}, {
+               DynamicLocation["VertexID$4", Automatic, Center], 
+               DynamicLocation["VertexID$14", Automatic, Center]}, {
+               DynamicLocation["VertexID$5", Automatic, Center], 
+               DynamicLocation["VertexID$10", Automatic, Center]}, {
+               DynamicLocation["VertexID$6", Automatic, Center], 
+               DynamicLocation["VertexID$9", Automatic, Center]}, {
+               DynamicLocation["VertexID$7", Automatic, Center], 
+               DynamicLocation["VertexID$11", Automatic, Center]}, {
+               DynamicLocation["VertexID$8", Automatic, Center], 
+               DynamicLocation["VertexID$12", Automatic, Center]}, {
+               DynamicLocation["VertexID$9", Automatic, Center], 
+               DynamicLocation["VertexID$4", Automatic, Center]}, {
+               DynamicLocation["VertexID$10", Automatic, Center], 
+               DynamicLocation["VertexID$3", Automatic, Center]}, {
+               DynamicLocation["VertexID$11", Automatic, Center], 
+               DynamicLocation["VertexID$1", Automatic, Center]}, {
+               DynamicLocation["VertexID$12", Automatic, Center], 
+               DynamicLocation["VertexID$2", Automatic, Center]}, {
+               DynamicLocation["VertexID$13", Automatic, Center], 
+               DynamicLocation["VertexID$6", Automatic, Center]}, {
+               DynamicLocation["VertexID$14", Automatic, Center], 
+               DynamicLocation["VertexID$5", Automatic, Center]}, {
+               DynamicLocation["VertexID$15", Automatic, Center], 
+               DynamicLocation["VertexID$7", Automatic, Center]}, {
+               DynamicLocation["VertexID$16", Automatic, Center], 
+               DynamicLocation["VertexID$8", Automatic, Center]}}]}, {
+            Directive[
+             Hue[0.6, 0.5, 1.], 
+             EdgeForm[
+              Directive[
+               GrayLevel[0], 
+               Opacity[0.7]]]], 
+            GrayLevel[0], 
+            TagBox[
+             
+             DiskBox[{-0.38268343236509045`, 0.9238795325112871}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$1"], 
+            TagBox[
+             
+             DiskBox[{-0.9238795325112865, -0.3826834323650892}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$2"], 
+            TagBox[
+             
+             DiskBox[{0.38268343236509034`, -0.923879532511287}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$3"], 
+            TagBox[
+             
+             DiskBox[{0.9238795325112866, 0.3826834323650891}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$4"], 
+            TagBox[
+             
+             DiskBox[{0.3826834323650895, 0.9238795325112865}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$5"], 
+            TagBox[
+             
+             DiskBox[{0.9238795325112868, -0.3826834323650904}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$6"], 
+            TagBox[
+             
+             DiskBox[{-0.38268343236508917`, -0.9238795325112865}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$7"], 
+            TagBox[
+             
+             DiskBox[{-0.9238795325112871, 0.3826834323650903}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$8"], 
+            TagBox[
+             DiskBox[{1., -1.133107779529596*^-15}, 0.07803612880645121], 
+             "DynamicName", BoxID -> "VertexID$9"], 
+            TagBox[
+             DiskBox[{-7.044813998280222*^-16, 1.}, 0.07803612880645121], 
+             "DynamicName", BoxID -> "VertexID$10"], 
+            TagBox[
+             DiskBox[{6.049014748177263*^-16, -1.}, 0.07803612880645121], 
+             "DynamicName", BoxID -> "VertexID$11"], 
+            TagBox[
+             DiskBox[{-1., 1.0106430996148606`*^-15}, 0.07803612880645121], 
+             "DynamicName", BoxID -> "VertexID$12"], 
+            TagBox[
+             
+             DiskBox[{0.7071067811865481, -0.7071067811865483}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$13"], 
+            TagBox[
+             
+             DiskBox[{0.707106781186547, 0.7071067811865467}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$14"], 
+            TagBox[
+             
+             DiskBox[{-0.707106781186547, -0.7071067811865468}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$15"], 
+            TagBox[
+             
+             DiskBox[{-0.707106781186548, 0.7071067811865482}, 
+              0.07803612880645121], "DynamicName", BoxID -> "VertexID$16"]}}], 
+         MouseAppearanceTag["NetworkGraphics"]], AllowKernelInitialization -> 
+        False]], {
+      FormatType -> TraditionalForm, FrameTicks -> None, ImageSize -> 140, 
+       DefaultBaseStyle -> "NetworkGraphics"}], 
+     TemplateBox[{"\"level \"", "4"}, "RowDefault"]}, "Labeled", 
+    DisplayFunction -> (GridBox[{{
+        TagBox[
+         ItemBox[
+          PaneBox[
+           TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+           BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+         "SkipImageSizeLevel"]}, {
+        ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+      AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      BaselinePosition -> {1, 1}]& ), 
+    InterpretationFunction -> (RowBox[{"Labeled", "[", 
+       RowBox[{#, ",", #2, ",", 
+         RowBox[{"{", "}"}]}], "]"}]& )]},
+  "RowDefault"]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->531860075,ExpressionUUID->"15a3a9a6-b063-48f1-8d8c-126a1793769e"],
+
+Cell[BoxData[
+ RowBox[{"AutomatonWordOrders", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"156", ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"Range", "[", "6", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->548492878,ExpressionUUID->"d88ec908-e3e5-47d2-b56d-f34a20230591"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2", ",", "4", ",", "4", ",", "8", ",", "8", ",", "8"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->898239384,ExpressionUUID->"dd172a5f-6ab3-4e41-a714-c8948185cb04"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->681593407,ExpressionUUID->"3a418f85-6f9a-4df6-9a1e-32fb4aef0da0"],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["0.2.0", "HistoryData",
+  CellTags->"New",ExpressionUUID->"019f209e-9890-4622-9ef4-05b2391abda3"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"2957538d-08d0-4ce4-85fc-04fb3e29a773"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->
+  "677dbbc9-dbb6-44ae-9e54-827ed81851da"]
+}], "History",
+ CellID->507476873,ExpressionUUID->"192df2cb-7701-456a-bc96-7fe260c78e54"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->909667949,ExpressionUUID->"17603495-30a9-44b9-8ced-f5365aacecab"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->608578939,ExpressionUUID->"d30f4b8a-8732-438e-9d71-121a932e5181"],
+
+Cell["WolframInstitute/IteratedFiniteAutomaton", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->739741027,ExpressionUUID->"5f804b08-30d4-4de7-bc68-d8b5d419e38f"],
+
+Cell["WolframInstitute`IteratedFiniteAutomaton`", "Categorization",
+ CellLabel->"Context",
+ CellID->943948541,ExpressionUUID->"fa61a441-bdc0-4963-b184-f4c62090bbe0"],
+
+Cell["\<\
+WolframInstitute/IteratedFiniteAutomaton/ref/AutomatonBoundaryGraph\
+\>", "Categorization",
+ CellLabel->"URI",
+ CellID->780556438,ExpressionUUID->"fb08477a-dec6-4dc2-ba62-1c5a655e45c5"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->166543497,ExpressionUUID->"87d54988-9321-432b-8e9b-56c749c269d5"],
+
+Cell["boundary", "Keywords",
+ CellID->307814233,ExpressionUUID->"5f777c95-8370-45dd-bb20-7bf2c2acb5e8"],
+
+Cell["functional graph", "Keywords",
+ CellID->938540045,ExpressionUUID->"e8adc024-3ff1-4b8b-b4c4-ab6ad4289cf4"],
+
+Cell["cycle structure", "Keywords",
+ CellID->768055079,ExpressionUUID->"5329e120-a5b4-4d41-ad43-141a8acb8535"],
+
+Cell["tree automorphism", "Keywords",
+ CellID->104913620,ExpressionUUID->"b9d5ae15-b7ba-43f1-a0be-59e072879795"]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{900, 800},
+TaggingRules->{
+ "Paclet" -> "WolframInstitute/IteratedFiniteAutomaton", 
+  "Metadata" -> {
+   "context" -> "WolframInstitute`IteratedFiniteAutomaton`", 
+    "history" -> {"0.2.0", "", "", ""}, "index" -> True, 
+    "keywords" -> {
+     "boundary", "functional graph", "cycle structure", "tree automorphism"}, 
+    "label" -> "WolframInstitute/ IteratedFiniteAutomaton Symbol", "language" -> 
+    "en", "metadescription" -> "", "paclet" -> 
+    "WolframInstitute/IteratedFiniteAutomaton", "specialkeywords" -> {}, 
+    "status" -> "None", "summary" -> 
+    "AutomatonBoundaryGraph[automaton,s0,level] gives the permutation of the \
+klevel vertices at depth level induced by the state s0, drawn as its \
+functional graph.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "AutomatonBoundaryGraph", "titlemodifier" -> "", 
+    "tutorialcollectionlinks" -> {}, "type" -> "Symbol", "uri" -> 
+    "WolframInstitute/IteratedFiniteAutomaton/ref/AutomatonBoundaryGraph", 
+    "windowtitle" -> "AutomatonBoundaryGraph"}},
+CellContext->"Global`",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (May 19, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"d66576b9-e646-40ee-9072-7bc751d80d0e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[23200, 645, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"7a88443d-0e53-4390-a64b-c35cd89343b1",
+   CellTags->"ExtendedExamples",
+   CellID->573307211]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 53615, 1405}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 119, 1, 70, "ObjectName",ExpressionUUID->"9cec6baf-4059-43e5-92d3-897359720937",
+ CellID->896836103],
+Cell[698, 25, 1008, 27, 70, "Usage",ExpressionUUID->"521580bb-5e4a-46a4-a6b4-fafe2cc0a7ec",
+ CellID->860785190],
+Cell[1709, 54, 887, 29, 70, "Notes",ExpressionUUID->"693da823-810b-4f51-b5c7-bef81f1bd40a",
+ CellID->841013162],
+Cell[2599, 85, 943, 25, 70, "Notes",ExpressionUUID->"3a1d0320-44ac-4950-8684-c3b46c4f8fd3",
+ CellID->555265870],
+Cell[3545, 112, 581, 16, 70, "Notes",ExpressionUUID->"3c34a578-ef82-4d44-955d-42cc16c61a5f",
+ CellID->749442835],
+Cell[4129, 130, 447, 13, 70, "Notes",ExpressionUUID->"07eda81e-7eed-4bdf-8dbd-0332ddf3b668",
+ CellID->577000029]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4613, 148, 109, 1, 70, "SeeAlsoSection",ExpressionUUID->"1e67a891-9b4e-471d-8e14-617c24b33a23",
+ CellID->278217768],
+Cell[4725, 151, 1519, 35, 70, "SeeAlso",ExpressionUUID->"98828a9b-759b-4fee-bb2c-b0b45ccebbf2",
+ CellID->942142302]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6281, 191, 117, 1, 70, "MoreAboutSection",ExpressionUUID->"86735c96-6454-4541-9fb8-9f1ebcac8e12",
+ CellID->776970625],
+Cell[6401, 194, 260, 5, 70, "MoreAbout",ExpressionUUID->"e10e8a90-65d4-47f9-81e8-5d51dd7593ad",
+ CellID->542241006]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6698, 204, 119, 1, 70, "RelatedLinksSection",ExpressionUUID->"4924bf96-ac97-4c8e-b2f0-1d19f0d97f23",
+ CellID->122764734],
+Cell[6820, 207, 299, 6, 70, "RelatedLinks",ExpressionUUID->"e9c1d622-5d23-4c64-8ef4-d40d7ab0ba85",
+ CellID->308871099]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7156, 218, 139, 1, 70, "ExamplesInitializationSection",ExpressionUUID->"24d78836-820c-4b34-9c26-ecac214c6366",
+ CellID->255066669],
+Cell[7298, 221, 200, 3, 70, "ExampleInitialization",ExpressionUUID->"9662dbd1-a996-469a-a6cc-0569bdadd713",
+ CellID->402915316]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7535, 229, 442, 12, 70, "PrimaryExamplesSection",ExpressionUUID->"9c549da8-243e-4914-af27-a7bda4815b2f",
+ CellID->232712325],
+Cell[7980, 243, 179, 3, 70, "ExampleText",ExpressionUUID->"7d69ca51-b167-4fba-8793-16576a7191c0",
+ CellID->258631060],
+Cell[8162, 248, 814, 26, 70, "Input",ExpressionUUID->"f5ab9293-6a57-4504-b0e4-1eff55105915",
+ CellID->655023700],
+Cell[8979, 276, 316, 7, 70, "Input",ExpressionUUID->"46ba1f36-3e60-47c2-9796-c37194187bfe",
+ CellID->562460596],
+Cell[9298, 285, 5643, 128, 70, "Output",ExpressionUUID->"d83b0718-cff5-41f8-bd54-13b4b21f0074",
+ CellID->125531156],
+Cell[14944, 415, 194, 4, 70, "ExampleText",ExpressionUUID->"ddd57c2b-76b1-4cea-b921-1820a4e58d19",
+ CellID->710744663],
+Cell[15141, 421, 478, 12, 70, "Input",ExpressionUUID->"9c785d10-c6e1-4f52-906c-2c2453f24a42",
+ CellID->460851707],
+Cell[15622, 435, 323, 9, 70, "Output",ExpressionUUID->"ced9afdf-2a90-42e5-97dd-5b61585742b7",
+ CellID->191158818],
+Cell[15948, 446, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"1a68d57a-2102-4591-9311-8ee7c5ab1cd4",
+ CellID->735066657],
+Cell[16169, 452, 335, 8, 70, "ExampleText",ExpressionUUID->"981e1edf-ccfc-48f2-be9d-d7358fefa2f0",
+ CellID->216042668],
+Cell[16507, 462, 1424, 42, 70, "Input",ExpressionUUID->"bcae26c9-b7c8-42a5-b536-52731c1770ce",
+ CellID->768920507],
+Cell[17934, 506, 328, 8, 70, "Input",ExpressionUUID->"44641a7a-8578-4831-883d-9d3e46b69bd7",
+ CellID->642943722],
+Cell[18265, 516, 317, 7, 70, "Input",ExpressionUUID->"619bd158-bba7-46b1-b5a6-c31df427f64a",
+ CellID->493215332],
+Cell[18585, 525, 4001, 98, 70, "Output",ExpressionUUID->"4143db3c-e476-4ec7-937e-e8acb7932158",
+ CellID->909298835],
+Cell[22589, 625, 380, 9, 70, "Input",ExpressionUUID->"9c8e0d83-9a64-449e-a2a4-f0b5895766b9",
+ CellID->989907192],
+Cell[22972, 636, 191, 4, 70, "Output",ExpressionUUID->"93ccdacb-3af9-422c-b9d8-f32060ce9641",
+ CellID->691505163]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23200, 645, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"7a88443d-0e53-4390-a64b-c35cd89343b1",
+ CellTags->"ExtendedExamples",
+ CellID->573307211],
+Cell[CellGroupData[{
+Cell[23379, 651, 241, 5, 70, "ExampleSection",ExpressionUUID->"7d59dc37-bc41-4cfc-afff-9fbd1b737643",
+ CellID->295603613],
+Cell[23623, 658, 215, 4, 70, "ExampleText",ExpressionUUID->"724567ba-0cb9-46b6-a8ef-75686d4aefa2",
+ CellID->116705366],
+Cell[23841, 664, 1424, 42, 70, "Input",ExpressionUUID->"28121539-d0c0-4aae-9c98-f068034ab83b",
+ CellID->845071902],
+Cell[25268, 708, 396, 9, 70, "Input",ExpressionUUID->"dca7c892-807a-411e-8874-dd8c1c7a6d80",
+ CellID->340257517],
+Cell[25667, 719, 343, 8, 70, "Output",ExpressionUUID->"85e2e1d9-9525-45e9-a187-e690073aec0d",
+ CellID->435522545]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26047, 732, 258, 5, 70, "ExampleSection",ExpressionUUID->"3ea24efc-2f5e-47df-b62b-214d46920026",
+ CellID->133014341],
+Cell[26308, 739, 347, 9, 70, "ExampleText",ExpressionUUID->"f6962888-1027-4a39-a722-7932647ea0fe",
+ CellID->841558508],
+Cell[26658, 750, 814, 26, 70, "Input",ExpressionUUID->"09e04327-d716-4077-9d44-876b6f455c79",
+ CellID->219434034],
+Cell[27475, 778, 626, 15, 70, "Input",ExpressionUUID->"19657cf2-b3df-417c-80b5-9fbe973e44b3",
+ CellID->520410097],
+Cell[28104, 795, 502, 14, 70, "Output",ExpressionUUID->"62c5c31e-23ec-40db-b569-8d2a72e8dcd5",
+ CellID->935510328],
+Cell[28609, 811, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"5162dc9e-c90e-428f-926a-b8ee31054e6a",
+ CellID->867295005],
+Cell[28830, 817, 435, 10, 70, "ExampleText",ExpressionUUID->"6a5e2e28-2d55-41c9-8a67-d7ad42f3bf27",
+ CellID->206865807],
+Cell[29268, 829, 511, 13, 70, "Input",ExpressionUUID->"6692c6db-4a66-44ac-a281-e1acb8180b24",
+ CellID->159536949],
+Cell[29782, 844, 203, 4, 70, "Output",ExpressionUUID->"c6430a38-8c85-4565-8a26-364973397c66",
+ CellID->756033056],
+Cell[29988, 850, 272, 6, 70, "Input",ExpressionUUID->"7b3ec008-073d-4d0c-9682-4b8bc8914f7a",
+ CellID->603748308],
+Cell[30263, 858, 203, 4, 70, "Output",ExpressionUUID->"412cea1a-1c86-4c24-adee-fa1c7a09e524",
+ CellID->272353152]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30503, 867, 249, 5, 70, "ExampleSection",ExpressionUUID->"c02a0c7f-bae3-4f06-a358-d7a6b0006f0d",
+ CellID->606648610],
+Cell[30755, 874, 282, 5, 70, "ExampleText",ExpressionUUID->"49daac29-0355-495c-85b4-3cfa746c0b56",
+ CellID->872103409],
+Cell[31040, 881, 1464, 36, 70, "Input",ExpressionUUID->"1c81dbed-9ab4-4f41-9d3d-62286cd10975",
+ CellID->933279661],
+Cell[32507, 919, 17019, 371, 70, "Output",ExpressionUUID->"15a3a9a6-b063-48f1-8d8c-126a1793769e",
+ CellID->531860075],
+Cell[49529, 1292, 364, 10, 70, "Input",ExpressionUUID->"d88ec908-e3e5-47d2-b56d-f34a20230591",
+ CellID->548492878],
+Cell[49896, 1304, 214, 5, 70, "Output",ExpressionUUID->"dd172a5f-6ab3-4e41-a714-c8948185cb04",
+ CellID->898239384]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50159, 1315, 110, 1, 70, "MetadataSection",ExpressionUUID->"3a418f85-6f9a-4df6-9a1e-32fb4aef0da0",
+ CellID->681593407],
+Cell[50272, 1318, 479, 12, 70, "History",ExpressionUUID->"192df2cb-7701-456a-bc96-7fe260c78e54",
+ CellID->507476873],
+Cell[CellGroupData[{
+Cell[50776, 1334, 122, 1, 70, "CategorizationSection",ExpressionUUID->"17603495-30a9-44b9-8ced-f5365aacecab",
+ CellID->909667949],
+Cell[50901, 1337, 134, 2, 70, "Categorization",ExpressionUUID->"d30f4b8a-8732-438e-9d71-121a932e5181",
+ CellID->608578939],
+Cell[51038, 1341, 168, 2, 70, "Categorization",ExpressionUUID->"5f804b08-30d4-4de7-bc68-d8b5d419e38f",
+ CellID->739741027],
+Cell[51209, 1345, 165, 2, 70, "Categorization",ExpressionUUID->"fa61a441-bdc0-4963-b184-f4c62090bbe0",
+ CellID->943948541],
+Cell[51377, 1349, 195, 4, 70, "Categorization",ExpressionUUID->"fb08477a-dec6-4dc2-ba62-1c5a655e45c5",
+ CellID->780556438]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[51609, 1358, 110, 1, 70, "KeywordsSection",ExpressionUUID->"87d54988-9321-432b-8e9b-56c749c269d5",
+ CellID->166543497],
+Cell[51722, 1361, 103, 1, 70, "Keywords",ExpressionUUID->"5f777c95-8370-45dd-bb20-7bf2c2acb5e8",
+ CellID->307814233],
+Cell[51828, 1364, 111, 1, 70, "Keywords",ExpressionUUID->"e8adc024-3ff1-4b8b-b4c4-ab6ad4289cf4",
+ CellID->938540045],
+Cell[51942, 1367, 110, 1, 70, "Keywords",ExpressionUUID->"5329e120-a5b4-4d41-ad43-141a8acb8535",
+ CellID->768055079],
+Cell[52055, 1370, 112, 1, 70, "Keywords",ExpressionUUID->"b9d5ae15-b7ba-43f1-a0be-59e072879795",
+ CellID->104913620]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
