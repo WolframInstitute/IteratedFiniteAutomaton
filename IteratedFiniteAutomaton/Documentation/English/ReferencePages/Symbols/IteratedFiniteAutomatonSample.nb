@@ -1,0 +1,1034 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     40664,       1025]
+NotebookOptionsPosition[     32469,        855]
+NotebookOutlinePosition[     34118,        897]
+CellTagsIndexPosition[     34039,        892]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["IteratedFiniteAutomatonSample", "ObjectName",
+ CellID->102698531,ExpressionUUID->"632501dd-34c0-46f9-82e5-c57a6d060a76"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"f4108a93-5af0-4dde-a10a-c37191fc31af"],
+ Cell[BoxData[
+  RowBox[{"IteratedFiniteAutomatonSample", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     StyleBox["s", "TI"], ",", 
+     StyleBox["k", "TI"]}], "}"}], ",", 
+   StyleBox["n", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+  "bd279c26-000f-4a8e-9059-c57ef57c4ee7"],
+ " \[LineSeparator]",
+ "gives ",
+ Cell[BoxData[
+  RowBox[{
+   StyleBox["n", "TI"], "+", "1"}]], "InlineFormula",ExpressionUUID->
+  "bfb29c51-b3fb-4e73-bdcc-b15b8f847417"],
+ " codes spread evenly over the ",
+ Cell[BoxData[
+  SuperscriptBox[
+   RowBox[{"(", 
+    RowBox[{
+     StyleBox["s", "TI"], " ", 
+     StyleBox["k", "TI"]}], ")"}], 
+   RowBox[{
+    StyleBox["s", "TI"], " ", 
+    StyleBox["k", "TI"]}]]], "InlineFormula",ExpressionUUID->
+  "42ec3ca6-03f7-4893-a572-e6448637edc7"],
+ " automata on ",
+ Cell[BoxData[
+  StyleBox["s", "TI"]], "InlineFormula",ExpressionUUID->
+  "387739e9-3b1d-4611-984b-2c76ecc50e96"],
+ " states and ",
+ Cell[BoxData[
+  StyleBox["k", "TI"]], "InlineFormula",ExpressionUUID->
+  "648e0041-ec64-4edc-a99c-18d1adcd7b15"],
+ " symbols."
+}], "Usage",
+ CellID->348091570,ExpressionUUID->"4e39a2e8-414f-457d-bf7f-2045c3d2eaf5"],
+
+Cell[TextData[{
+ "The automata on ",
+ Cell[BoxData[
+  StyleBox["s", "TI"]], "InlineFormula",ExpressionUUID->
+  "ac540759-12d8-4a9f-8fd2-492104f364fd"],
+ " states and ",
+ Cell[BoxData[
+  StyleBox["k", "TI"]], "InlineFormula",ExpressionUUID->
+  "fcdc52be-93d6-481d-8dd5-10b34248c258"],
+ " symbols are coded 0, \[Ellipsis], ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      StyleBox["s", "TI"], " ", 
+      StyleBox["k", "TI"]}], ")"}], 
+    RowBox[{
+     StyleBox["s", "TI"], " ", 
+     StyleBox["k", "TI"]}]], "-", "1"}]], "InlineFormula",ExpressionUUID->
+  "5d9a0dcd-50fe-4166-8e73-0a7e1c2145c2"],
+ "; each code pairs with its shape as ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{
+    StyleBox["code", "TI"], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      StyleBox["s", "TI"], ",", 
+      StyleBox["k", "TI"]}], "}"}]}], "}"}]], "InlineFormula",ExpressionUUID->
+  "380c6281-409b-4b1e-9003-37130b7cd809"],
+ "."
+}], "Notes",
+ CellID->486297902,ExpressionUUID->"aa2da483-b943-432a-b634-c8a3c6bf2702"],
+
+Cell[TextData[{
+ "The sample is ",
+ Cell[BoxData[
+  RowBox[{
+   ButtonBox["Round",
+    BaseStyle->"Link",
+    ButtonData->"paclet:ref/Round"], "[", 
+   RowBox[{
+    ButtonBox["Subdivide",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/Subdivide"], "[", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         StyleBox["s", "TI"], " ", 
+         StyleBox["k", "TI"]}], ")"}], 
+       RowBox[{
+        StyleBox["s", "TI"], " ", 
+        StyleBox["k", "TI"]}]], "-", "1"}], ",", 
+     StyleBox["n", "TI"]}], "]"}], "]"}]], "InlineFormula",ExpressionUUID->
+  "021265f6-1443-48c3-be07-1c7ef1ee1cd8"],
+ ": an increasing list that starts at 0 and ends at the last code."
+}], "Notes",
+ CellID->396334447,ExpressionUUID->"6ff80fe9-f1f9-4f50-921c-0e142e6af7d2"],
+
+Cell[TextData[{
+ "It sweeps the whole code space, invertible automata and degenerate ones \
+alike; ",
+ Cell[BoxData[
+  ButtonBox["InvertibleAutomatonCodes",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+InvertibleAutomatonCodes"]], "InlineFormula",ExpressionUUID->
+  "6d6f0d06-8d26-43a7-a3db-eb7583d6b65d"],
+ " enumerates the invertible part instead."
+}], "Notes",
+ CellID->478829169,ExpressionUUID->"d2b296d9-febd-4ca9-9be6-8dda168068b6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->328329745,ExpressionUUID->"50210ec0-d744-4ae8-918f-77c2cdd79a21"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonInitialConditionSample",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonInitialConditionSample"]], "InlineFormula",
+  ExpressionUUID->"7d2ed6f1-e8c5-4f4a-849b-f18da8f31031"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"cd0e2463-bf6e-49e6-8a02-7b4bb887a449"],
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonsByRule",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonsByRule"]], "InlineFormula",ExpressionUUID->
+  "807479ce-08e1-40d0-9f4b-7648af9de780"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"f84e7a9e-2f03-4c88-8294-b3214b3f0b6b"],
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonsMatrix",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonsMatrix"]], "InlineFormula",ExpressionUUID->
+  "806e9470-f3c3-4833-9238-5a2c6f0d7f28"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"c61e292a-19e1-49d1-b5d2-59212f94a559"],
+ Cell[BoxData[
+  ButtonBox["InvertibleAutomatonCodes",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+InvertibleAutomatonCodes"]], "InlineFormula",ExpressionUUID->
+  "df734576-5b48-4bee-9248-76c1af591fe7"]
+}], "SeeAlso",
+ CellID->300803774,ExpressionUUID->"b44611c1-6d6c-4914-bb7d-f199b8f605f1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",
+ CellID->442229559,ExpressionUUID->"4c75ac15-fd99-4918-999f-22e4e46368cc"],
+
+Cell[TextData[ButtonBox["Iterated Finite Automata",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:WolframInstitute/IteratedFiniteAutomaton/guide/\
+IteratedFiniteAutomaton"]], "MoreAbout",
+ CellID->795242963,ExpressionUUID->"a1e45488-6495-4b32-b8b3-dc5279d9693b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->934576651,ExpressionUUID->"831fec8f-fd13-44b0-8dc6-f3740d0217c4"],
+
+Cell[TextData[ButtonBox["A. Zuk, \"Iterated Finite Automata\", Wolfram \
+Community (WSRI26)",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://community.wolfram.com/groups/-/m/t/3761828"], 
+   None}]], "RelatedLinks",
+ CellID->822095796,ExpressionUUID->"130ea3b8-2ee9-4f6c-aec3-86f0399fbee2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples Initialization", "ExamplesInitializationSection",
+ CellID->251642326,ExpressionUUID->"05c36fdc-ecb7-4839-885f-7cbdfa4ff1ce"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<WolframInstitute`IteratedFiniteAutomaton`\>\"", 
+  "]"}]], "ExampleInitialization",
+ CellID->169608608,ExpressionUUID->"66144bf7-a869-49f0-9fa1-c54eb17f7926"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox[
+      RowBox[{"Basic", " ", "Examples"}], "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->242726873,ExpressionUUID->"f3775618-9457-4f5e-bb99-e8b978442680"],
+
+Cell["\<\
+Six codes spread over the automata on three states and two symbols:\
+\>", "ExampleText",
+ CellID->706864103,ExpressionUUID->"b045fd06-0fd0-412f-9219-2af8cb565239"],
+
+Cell[BoxData[
+ RowBox[{"IteratedFiniteAutomatonSample", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"3", ",", "2"}], "}"}], ",", "5"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->150932718,ExpressionUUID->"f6db3ba7-bf48-45e9-9516-76ff02f12bf0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "9331", ",", "18662", ",", "27993", ",", "37324", ",", "46655"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->847251061,ExpressionUUID->"22fe3adc-bb80-41da-8484-0514c24395ed"],
+
+Cell[BoxData[
+ SuperscriptBox[
+  RowBox[{"(", 
+   RowBox[{"3", " ", "2"}], ")"}], 
+  RowBox[{"3", " ", "2"}]]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->348865738,ExpressionUUID->"531781b3-83d5-43e4-8903-f1e0b577db8f"],
+
+Cell[BoxData["46656"], "Output",
+ CellLabel->"Out[2]=",
+ CellID->815519082,ExpressionUUID->"3f676376-af3e-43d8-8d42-b7478fedf140"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"476365e1-bcfc-438f-bf98-24b8205bfaf9"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->606577660,ExpressionUUID->"bf215373-ef69-4ae4-8fef-1af1203097a4"],
+
+Cell["\<\
+Twelve codes over the two-state three-symbol automata, each evolved from the \
+same seed:\
+\>", "ExampleText",
+ CellID->581780947,ExpressionUUID->"df288d58-4954-4a15-8496-6da946865e74"],
+
+Cell[BoxData[
+ RowBox[{"Grid", "[", 
+  RowBox[{"Partition", "[", 
+   RowBox[{
+    RowBox[{"IteratedFiniteAutomatonsByRule", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", "3"}], "}"}], ",", 
+      RowBox[{"IteratedFiniteAutomatonSample", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}], ",", "11"}], "]"}], ",", 
+      RowBox[{"CenterArray", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", "41"}], "]"}], ",", "30"}], 
+     "]"}], ",", "4"}], "]"}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->466493218,ExpressionUUID->"5f606bdc-d276-4788-adeb-2000cb164068"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     GraphicsBox[RasterBox[CompressedData["
+1:eJztzrEKQWEABeBbHkRKyXLLZPwfgMlqU2Z2q8FikZDdYrAog1HKIygLJaQM
+9wnkygtYZPlOnb4znlyjVWtmoijKpi2mfe9PkkCSJEmSJEmSJEmSJEmSJEmS
+JEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmS39oeDS754T6URvdxr3wKu+6k
+Ml9dQ3Vbvx3jR3h2ksOsfw7L6aKwjjd//8vf+gLq2Lg3
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}], 
+     GraphicsBox[RasterBox[CompressedData["
+1:eJzt1bFKglEYxvEPupAQAmkRmhrPBejU2iY0197a0NISYtHe0uAiODhG4CUI
+LgVRETR4BZHRFgi96ed53vf8BXnkmY7nnPf8Gt3jg6Otqqq2F9/dxff7989n
+nn5n5+Hw7bH1kT5P57Pbi+c0vBk0x617+n/2J/3Ll53eNO3136/O95/S5Oy6
+fTd6XVtvXc+ycydj5LJ7kntd0bLuubauR+3do19vz7n7chmvSbzW2U+8psdr
+/T7X/OI1idfxXMZreryO5zJek3gdz2W8psfreC7jNYnX8VzGa3q8jucyXpN4
+Hc9lvKYv2Wu1ucNrUsGv3Ouq639F7a37o/YO0+N1yS7jNVmC12rzhdf0Cr2X
+c1ebI7Uer0mPXqvNkVpv3U+1d5s+ttdq8+Klx2tS2Wu1efHSW/dZzRf6GF6r
+zYX3Hq9JBa/V5sJ7b91/NV/ofXmtdv+j9nhNbtJrtfsftbeei5ov9Jpeq93z
+0nq8JuvwWu2el9Zbz0vNF/q8XqvdZ3q8Jlf3Wu0+0+M1/d/fbbV7S4/X5Ope
+0/vqreeu5gv9ZrwmfaXV8dzrJevNL6YMsVs=
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}], 
+     GraphicsBox[RasterBox[CompressedData["
+1:eJztlqFKREEUQBf8EBEEsSyYjO8DNFltglm71WCxiKxitxgsgsEogp8gWBRE
+RTDsF4grmxfewLhz5s5ZeJzltH1z5+5Z2tnb2l0YDAaLk2d18vx9n37Gnayb
+mw/bny/D7+7nYPx8efzW3Vxcr9wN75vz+6OT9+XTp25t9HV2tP7aPR6eb1zd
+fhQ/HwpnvR8905eeFwpT73tUn/p+9ExPmyvaHqOd13/70vtV5iFtruxtJmn7
+WW+H99ljtHOhzQNtP+vb7PBc9701X3rvyjykzZW9zSRtb+vb7PDW+sQO10ea
+81z3XW+HRyJtruxtJmn7XB+7w6N2CG0eaPtcH6PDc913vR3eAmlzZW8zSdvz
++hgdXntv1OJT37+e6WuZK+fNDpf13ovauyIqaftfX1eH19IVUX3queiZnjY/
+zpUdLuvt8Fr6QU5J6wo9s8Np/aC3wyN52t6gvZ/WfKk9L/PS3pZ9SOsKfdkO
+t7fr8qnnqGd6e1tvh8ejvS37kNYV+vl0uL0dw6eer57p7W29HR6P9rbsQ1pX
+6Ofz/0v7XXo7vGWfup8999i+dBfIPJx1fz33NvkLs5bs/A==
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}], 
+     GraphicsBox[RasterBox[CompressedData["
+1:eJztWrtKBEEQXPBDRBDE5MDIcD9AI1MzwVhzUwMTE5FTzE0MTAQDQxH8BMFE
+QVQEg/sC8cRIYYPR7q2q2TpY5iiaue6d6a5+3NzG1trmTNM0s9Nncfp8ff/+
+TNrf6+rN+uvD6L392Jncn+4/tRcn5wtXo2vjxn/g2+OD5/nDu3Zp/Ha0t/zY
+3u4er5xdvhTLl97D0t/N1qcLZ7OL7f4Y58S77m2Uv6PiQLb+2XaZr43/J/6X
+3qtsPoq659n6q7xn43XgbPktKg5k8yDbezZeB86W37LFAfV+gvm6bhzldyr5
+dq39BPN1HTib36F4li2eoOwyX2vh6nng0OZKKLvM11p4FC/Uykds9TvKLvM1
+J67id9l8pDJXYrPLfM3pvyp1rkp+Xuu8zPU1J47yOxU+UuknsPmd+Zozr2bL
+t9n6YGzxDVW/uL7WyquHxkcq8U1F3nyN9S82v8h+D2z9hCi/YJM3X2Pjtnrd
+ypZXsM2VUHOrqPimjqP+v8dWt6rXudnxEIVnx0N1nC2eq+uf7UdsfTzU/azV
+XpW6LzvesvFRrX08Nn5h25/t/bDNHdj0H1ofTyXuqdibzYNscwc2/dnyBJXz
+UtFfha9R/RaV/liUPiheYDsvdf2z7UXVBSrzCPV+F1sfT/1csus1trza+nPW
+fVHxweeCzQdQeTVbf0BFfxSf+lyw+rP1E7x/P/M1dbu8fyy/o/oq3h/bV2Sz
+y/v/7dyz8zrL9yOvoqflY+VL44blteRV9LR8rDxb3954P/MO43XjXXHAq9Ya
+lad5rWP9BG99NIM=
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}]},
+    {
+     GraphicsBox[RasterBox[CompressedData["
+1:eJzt06FKg3EUxuEPvBARBmL5wGT8X8CWVteEZe2rBsuKjG2sWwwWwbA4Bl6C
+YHEgKoLhuwLZhsU7kL17DhyeE0/5HZ1fdPsHVVUdbvZks9v7d5rC3fZyfPPe
+Gj2X0/HX5PpsVZ6upu27x4/SWfY+X+vv8jNoXm6Hb+Vhdn88rxf//i9JXZP7
+qK7JPHVN5qlrMk9dk3nqmsxT12Seuibz1DWZp67JPHVN5qlrMk9dk3nqmsxT
+12Seuibz1DWZp67JPHVN5qlrMk9dk3nqmsxT12Seuibz1DWZp67JPHVN5qlr
+Mk9dk3nqmn9dA4M+Fpo=
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}], 
+     GraphicsBox[RasterBox[CompressedData["
+1:eJzt2KFKBFEUgOEBH0QEQSwLJuN9AE1Wm2DWbjVYLCKr2C0Gi2AwiuAjCBYF
+UREM+wTiqllxlpmdM/d+C8NZvrR77/4c2LmNrbXNmaqqZsfP4vj5er96s/76
+MHhPHzuj+9P9p3Rxcr5wNbhOvF++PTx4nj+8S0vDt6O95cd0u3u8cnb5kqrv
+18hseUb7PfA8XNfTmb+dc7TfA8/DdT2dGe3eed6u62anvcwjuK6bndHul5fp
+up5s2ss8sut6shntHjnXtb3M83Zd/z2j3RfnuraXeZmu658Z7V4417W9zHnJ
+XUc7f851bS9zXnLX0c6Zc13by5yX3HW08+Q8gvela3uZ8/y6jnZunEf2aF3b
+y5zn13W08+G8j95V1/Yy5/l1He0cOM/J2+7aXuY8v66jfV/OS/CmuraXOY/j
+TXUd7XtxXrLX7dpe5jy+1+062ufnnP+/a3u5TG/q/1Kz21m3364/r9nu/ASK
+Tj5L
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}], 
+     GraphicsBox[RasterBox[CompressedData["
+1:eJzt3KFKRFEUheEBH0QEQSwDJuN9AE1Wm2DWbjVYLCKj2C2GKYLBKIKPIFgU
+REUwzBOIIzZhTzrD/c8+vzBsw4dc7lqLaS7t7G3tLgwGg8XpZ3X6+f3972fS
+/b/7o5O35dPHbm30eXa0/tI9HJ5vXN28d5v32x/Pw6/u+2DydHn82l1fjFdu
+h3d6PdpHPdcz89LryXvpy0eXlpdeT9hLVk/LV5/b0/pfi48uLV99bl/LXrJ6
+Wh/0dXlan7P66NL6oK/L19J/PbM/ever9/ta7371/L7p3W/LPso3+ju0vund
+b8t+3vnS+ql3v5l8qXyjS+un3v1m8rR8aX1uzdP6qS+7l1LPE11an1vztH7q
+Z/va86X1v3ZPy1dftv99PX90af2v3dP6qZ/tW8uXtheap+WlL9tn2vNHPrq0
+vdB8Lfnqzdfva/7715ftJ+35S/no0vblfvXmy3mfNE97n/qyfaM9f18+urQ9
+mm9ub751vX/3qzdfv69p70fvflvw7ldvvnwfXferN992vPnm9uabw0fXfHN7
+89Xr6/Xut03vzXHn/f9zvHXdH/SV1QE=
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}], 
+     GraphicsBox[RasterBox[CompressedData["
+1:eJzt1aFKQ2EYh/EDXsgQBFk5YDJ+FzCT1SaYtVsNlpUx5rCvGFYEg1EEL0Gw
+KIjKYGFXIG6saXEfIu/O9ztweMfDE07Z/9k8PN4/2qiqqjV/2/N38Xv5zNL3
+u3d/8PFcT9Pn6exp1H1N15fj7dv67ofHj+GfDHpvW/3HtDOYXJzvvqSHs2Hn
+6uY93Hfy/8fHm8FX/V/jzebRdoaf5+s1P8Ke4HqN6zVfr/l6XRrXazzyzvDz
+fL3mR9gTXK9xvebrNV+vS+N6jUfeGX6er9f8CHuC6zWu13y95ut1aVyv8cg7
+w8/z9ZofYU9wvcb1mq/XfL0ujes1Hnln+Hm+XvMj7Amu17he8/War9elcb3G
+I+8MP8/Xa36EPcH1Gtdrvl7z9bo0rtd45J3h5/l6zY+wJ7he43rN12u+XpfG
+9Rr/zQ6463X/qtduM+4Xq9kxEA==
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}]},
+    {
+     GraphicsBox[RasterBox[CompressedData["
+1:eJztWrFKQ0EQfOCHiCCITcDK8n2AVrZ2grX2thY2NiJR7G0s0ggWliL4CYKN
+gqgIFvkCMWofsmH3ZvZuAo8Ny3Jv2Hc3c7t3Szt7W7sLXdctTp7VyfP7f/N+
+++N58NV/H4yfLo9f++uL0crt4K7fH568LZ8+9mvDz7Oj9Zf+4fB84+rmXf45
+/dY8d3+/8czW+l4vPKg8eMV74bHmGTUfrOPITrde8yrLuvPKA4qXvN4bnX8U
+Tvl9dYdt3aH4B7UfiNbBLDhbs16648XbtfKPFWf0ftuLf9hwtuZH5S163WXh
+H7b9thf/sOFszUbnDbXu2PjHmh+2/gMbD7DpI5suR+/HUOsOxT/RfSRUn5mN
+B7y+e3abPf9Z+McrP6g+M1tdLL2eb76xnUew6ZQ1b6jzLGt8lrpYev1v2e5v
+WPGjdAqlF2z3QLy+O5teZPGz6SPb+RRbf8wLJ1t9wfa9sluUPma/r8jWh2eb
+Dyid9cKTxR8936zzhG0flWU9st0DYTtfa+38GtUfQ+Fke2+W8ylUvz0af616
+bZ1vbPc2UbrJpl9sea4VP5tl229H40Tlx5oH1PlUlv02G362ehml42zn0Wx9
+fq86kY23s+OfVQ9KWRTvZT/v8Hovql/Etl/Ngp9Nr9l4z2pR9xXZ9AuVZ7Z+
+Xa34rZaN96Rf2H5RFr6qFT9qv8p2/1b8Pz0/Xnm25kH4y+h1lr4QG3+y4Y/m
+E42PrU/F/23ij+YTjV9mfK95mJ3fah0/uj7S+JzjZ+EfjV+mXlB8rvjs/KPx
+y9QLiueMZ+MTxZeJl79ufxb+UbxvvPx1+9l4Rv4y/Cxbt2XjGfl9+ZkNp/xl
+/GhekfWx1vWOxisba38AnmivAQ==
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}], 
+     GraphicsBox[RasterBox[CompressedData["
+1:eJzt1TErxHEcx/F/eSBSSpYrk/H3AJisNmVmtxosFunIbjFYlMEo5SEoCyWk
+DPcI5Fh1A+V8z+d1df2v1/Sv+/Z5z6xtrKxPdV03PfzOD78fvzf7e4+z+zdt
+of9ysLN43663D5dOzp8a/x++fLX6fNd7bW9bg9vj3Yd2dnQ6d9G7HOnV3p+P
+53/nk+XuIdOr7QzXa67XXK+5fU5z95Dp1XaG6zXXa67X3D6nuXvI9Go7w/Wa
+6zXXa26f09w9ZHq1neF6zfWa6zW3z2nuHjK92s5wveZ6zfWa2+c0dw+ZXm1n
+uF5zveZ6ze1zmruHTK+2M1yvuV5zveb2Oc3dQ6ZX2xmu11yvuV5z+5zm7iHT
+q+0M12uu11yvuX1Oc/eQ6dV2ho9nt7vPz+DLs9r785/5qP/Xc7Ke393tv35f
+z999vgP6/TzT
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}], 
+     GraphicsBox[RasterBox[CompressedData["
+1:eJzt07FqwlAYhuGAFyKCUFwCTo7nAuzUtZvgrHtXBxcXkbR079LBRXBwFMFL
+EFwqiIrgkCsoja4lQ6CU+H1v4PCHh38IvDm1Tu+pW4miqJqdRnau74+r59NX
+fAnfL+n2Y7QPs/fpwyJehn4yPtQnm9BMzq/D1i6sB2/tz/kx5O3j9+X09XS6
+azt9PZ3u2k5fT6e7ttPX0+mu7fT1dLprO309ne7aTl9Pp7u209fT6a7t9PV0
+ums7fT2d7tpOX0+nu7bT19Ppru309XS6azt9PZ3u2k5fT6e7ttPX0+mu7fT1
+dLprO309ne7aTl9Pp7u209fT6a7t9PV0ums7fT2d7tpOX0+nu7bT19Ppru30
+9XS6azt9PZ3u2k5fT6e7ttPX0/O64+X0on2j25P+mvwP2p7Xnf1y7he972X7
+fvb/Z595X/Ov7jVTY/4AmRN5sg==
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}], 
+     GraphicsBox[RasterBox[CompressedData["
+1:eJzt0bEKQWEYBuBTLkRKyXLKZPwvgMlqU2Z2q8FikZDdYrAog1HKJSgLJaQM
+5wrkcA8Geb56e9+e9cs1WrVmJoqibJpimveubuu3Y/wIz05ymPXPYTldFNbx
+JnDOOeecc84555xzzjnnnHPOOeecc84555xzzjnnnHPOOeecc84555xzzjnn
+nHPOOeecc84555xzzjnnnHPOOeecc84555xz/g2PPpfoH+/2aHDJD/ehNLqP
+e+VT2HUnlfnq6u9/2i+ITcMm
+       "], {{0, 0}, {41, 31}}, {0, 1}],
+      Frame->Automatic,
+      FrameLabel->{None, None},
+      FrameTicks->{{None, None}, {None, None}},
+      GridLinesStyle->Directive[
+        GrayLevel[0.5, 0.4]],
+      Method->{
+       "GridLinesInFront" -> True, "DefaultBoundaryStyle" -> Automatic, 
+        "DefaultGraphicsInteraction" -> {
+         "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+          "Effects" -> {
+           "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+            "Droplines" -> {
+             "freeformCursorMode" -> True, 
+              "placement" -> {"x" -> "All", "y" -> "None"}}}}, 
+        "DefaultPlotStyle" -> Automatic}]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->446813322,ExpressionUUID->"1e664b01-08e8-4388-b0ff-618f4ab37069"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->767541799,ExpressionUUID->"ea2d19cd-57d7-4226-acc6-dfe4a551f91a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Scope", "ExampleSection",ExpressionUUID->
+   "c2db9099-57aa-4a36-9202-e6be703bde88"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->542420647,ExpressionUUID->"e100d8c5-7faf-46d1-92b7-556d29163ab6"],
+
+Cell["\<\
+Eight codes over the 256 automata on two states and two symbols:\
+\>", "ExampleText",
+ CellID->687466330,ExpressionUUID->"7be62682-7b1d-4894-918e-28db6f9c6c0f"],
+
+Cell[BoxData[
+ RowBox[{"IteratedFiniteAutomatonSample", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2"}], "}"}], ",", "7"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->175916921,ExpressionUUID->"0abc47c7-0a76-4a21-821f-9f6766535e2a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "36", ",", "73", ",", "109", ",", "146", ",", "182", ",", "219", ",",
+    "255"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->642057270,ExpressionUUID->"f4a07a12-593a-4c44-bf91-5eee8103e6fd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Properties & Relations", "ExampleSection",ExpressionUUID->
+   "fdd943a8-bf7a-4c89-80cd-81ed818bea42"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->510627210,ExpressionUUID->"fb5bd98f-4ab1-44c6-9f52-9b52302549e0"],
+
+Cell["The sample begins at 0, ends at the last code and increases:", \
+"ExampleText",
+ CellID->609047462,ExpressionUUID->"50148b1e-c91d-4742-b0d7-eb50770c6962"],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"codes", "=", 
+       RowBox[{"IteratedFiniteAutomatonSample", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"2", ",", "3"}], "}"}], ",", "n"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Length", "[", "codes", "]"}], ",", 
+       RowBox[{"First", "[", "codes", "]"}], ",", 
+       RowBox[{"Last", "[", "codes", "]"}], ",", 
+       RowBox[{"OrderedQ", "[", "codes", "]"}]}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "5"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->459427580,ExpressionUUID->"0f358025-4e6e-49c6-a588-3c0d3795d880"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", "0", ",", "46655", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "0", ",", "46655", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "0", ",", "46655", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "0", ",", "46655", ",", "True"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "0", ",", "46655", ",", "True"}], "}"}]}], 
+  "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->818462043,ExpressionUUID->"b78fe52c-5240-4382-ad94-c9e777f1f188"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"43e6b310-b352-459a-8892-e3fb0b35fae1"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->726625788,ExpressionUUID->"bdb5c9d7-5179-4d62-be05-0ba13f708dbe"],
+
+Cell["\<\
+Asking for as many subdivisions as there are codes enumerates the whole space:\
+\>", "ExampleText",
+ CellID->718038682,ExpressionUUID->"a27960de-6af7-471f-8d40-433f233ec665"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IteratedFiniteAutomatonSample", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"2", ",", "2"}], "}"}], ",", 
+    RowBox[{
+     SuperscriptBox["4", "4"], "-", "1"}]}], "]"}], "===", 
+  RowBox[{"Range", "[", 
+   RowBox[{"0", ",", 
+    RowBox[{
+     SuperscriptBox["4", "4"], "-", "1"}]}], "]"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->266755862,ExpressionUUID->"26e275f5-5c30-47e5-bad1-0e79b15fe332"],
+
+Cell[BoxData["True"], "Output",
+ CellLabel->"Out[2]=",
+ CellID->489058393,ExpressionUUID->"5ef419a1-029e-440d-af2e-cd9dc5353d55"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Neat Examples", "ExampleSection",ExpressionUUID->
+   "8b13c95f-97c9-43c5-8d30-d618735a586f"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->242872658,ExpressionUUID->"4960e686-9c4d-4b9d-85e5-3b5cf087d1bd"],
+
+Cell["\<\
+One automaton in four on two states and two symbols is invertible, and an \
+even sweep of 100 codes lands close to that share:\
+\>", "ExampleText",
+ CellID->832343219,ExpressionUUID->"34700795-7b2d-4015-9f0f-7f569bd93374"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Count", "[", 
+    RowBox[{
+     RowBox[{"IteratedFiniteAutomatonSample", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "2"}], "}"}], ",", "99"}], "]"}], ",", 
+     RowBox[{"code_", "/;", 
+      RowBox[{"InvertibleAutomatonQ", "[", 
+       RowBox[{"{", 
+        RowBox[{"code", ",", 
+         RowBox[{"{", 
+          RowBox[{"2", ",", "2"}], "}"}]}], "}"}], "]"}]}]}], "]"}], ",", 
+   RowBox[{"Length", "[", 
+    RowBox[{"InvertibleAutomatonCodes", "[", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2"}], "}"}], "]"}], "]"}]}], "}"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->153812739,ExpressionUUID->"9bff2c05-8fe3-4b88-8384-bda538ab555f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"24", ",", "64"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->515467683,ExpressionUUID->"3327d27a-d3b1-48d2-b964-255b80fdc955"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->988128222,ExpressionUUID->"026c93bc-b6e8-4d29-8afd-19feda58c3a3"],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["0.2.0", "HistoryData",
+  CellTags->"New",ExpressionUUID->"dca8e338-8f76-4c30-b525-6432db9506a7"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"4765698b-97ed-48f3-a821-98c0cae24e88"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->
+  "7f78d8f1-5ef2-4027-9840-91edfef987ea"]
+}], "History",
+ CellID->180952795,ExpressionUUID->"f1108767-2698-4ef2-ad34-b8b554c35637"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->540235520,ExpressionUUID->"fa3a8cf9-654c-47a4-ae5c-4bd56905f264"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->438238469,ExpressionUUID->"7e8f0f42-1803-460e-b26b-982da7c85eae"],
+
+Cell["WolframInstitute/IteratedFiniteAutomaton", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->150890175,ExpressionUUID->"ae284b7f-fc43-424c-8498-7459f3254444"],
+
+Cell["WolframInstitute`IteratedFiniteAutomaton`", "Categorization",
+ CellLabel->"Context",
+ CellID->688072944,ExpressionUUID->"887f5c7d-a9ea-4665-a7c9-f6cd12ed1cd2"],
+
+Cell["\<\
+WolframInstitute/IteratedFiniteAutomaton/ref/IteratedFiniteAutomatonSample\
+\>", "Categorization",
+ CellLabel->"URI",
+ CellID->343656605,ExpressionUUID->"2786f18d-f033-4798-9e42-e53c0d39dd4c"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->184202057,ExpressionUUID->"67aeb4d6-2e9b-4054-a1c4-e1e0021cc87e"],
+
+Cell["sample", "Keywords",
+ CellID->897172108,ExpressionUUID->"ad7b6d93-5096-4037-8c6d-37034a27c9bc"],
+
+Cell["rule space", "Keywords",
+ CellID->643711445,ExpressionUUID->"aa2712b3-88a9-4164-afd7-35bee927202c"],
+
+Cell["survey", "Keywords",
+ CellID->124913169,ExpressionUUID->"9c1401ea-79c0-4a2d-a36c-fb660c0caa77"],
+
+Cell["gallery", "Keywords",
+ CellID->699743087,ExpressionUUID->"a00f7e80-f925-4817-890c-adeabb764c47"]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{900, 800},
+TaggingRules->{
+ "Paclet" -> "WolframInstitute/IteratedFiniteAutomaton", 
+  "Metadata" -> {
+   "context" -> "WolframInstitute`IteratedFiniteAutomaton`", 
+    "history" -> {"0.2.0", "", "", ""}, "index" -> True, 
+    "keywords" -> {"sample", "rule space", "survey", "gallery"}, "label" -> 
+    "WolframInstitute/ IteratedFiniteAutomaton Symbol", "language" -> "en", 
+    "metadescription" -> "", "paclet" -> 
+    "WolframInstitute/IteratedFiniteAutomaton", "specialkeywords" -> {}, 
+    "status" -> "None", "summary" -> 
+    "IteratedFiniteAutomatonSample[{s,k},n] gives n+1 codes spread evenly \
+over the (s k)s k automata on s states and k symbols.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "IteratedFiniteAutomatonSample", 
+    "titlemodifier" -> "", "tutorialcollectionlinks" -> {}, "type" -> 
+    "Symbol", "uri" -> 
+    "WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonSample", "windowtitle" -> 
+    "IteratedFiniteAutomatonSample"}},
+CellContext->"Global`",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (May 19, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"d66576b9-e646-40ee-9072-7bc751d80d0e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[25114, 630, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"ea2d19cd-57d7-4226-acc6-dfe4a551f91a",
+   CellTags->"ExtendedExamples",
+   CellID->767541799]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 33846, 885}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 126, 1, 70, "ObjectName",ExpressionUUID->"632501dd-34c0-46f9-82e5-c57a6d060a76",
+ CellID->102698531],
+Cell[705, 25, 1222, 37, 70, "Usage",ExpressionUUID->"4e39a2e8-414f-457d-bf7f-2045c3d2eaf5",
+ CellID->348091570],
+Cell[1930, 64, 1031, 33, 70, "Notes",ExpressionUUID->"aa2da483-b943-432a-b634-c8a3c6bf2702",
+ CellID->486297902],
+Cell[2964, 99, 798, 25, 70, "Notes",ExpressionUUID->"6ff80fe9-f1f9-4f50-921c-0e142e6af7d2",
+ CellID->396334447],
+Cell[3765, 126, 490, 12, 70, "Notes",ExpressionUUID->"d2b296d9-febd-4ca9-9be6-8dda168068b6",
+ CellID->478829169]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4292, 143, 109, 1, 70, "SeeAlsoSection",ExpressionUUID->"50210ec0-d744-4ae8-918f-77c2cdd79a21",
+ CellID->328329745],
+Cell[4404, 146, 1600, 36, 70, "SeeAlso",ExpressionUUID->"b44611c1-6d6c-4914-bb7d-f199b8f605f1",
+ CellID->300803774]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6041, 187, 117, 1, 70, "MoreAboutSection",ExpressionUUID->"4c75ac15-fd99-4918-999f-22e4e46368cc",
+ CellID->442229559],
+Cell[6161, 190, 260, 5, 70, "MoreAbout",ExpressionUUID->"a1e45488-6495-4b32-b8b3-dc5279d9693b",
+ CellID->795242963]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6458, 200, 119, 1, 70, "RelatedLinksSection",ExpressionUUID->"831fec8f-fd13-44b0-8dc6-f3740d0217c4",
+ CellID->934576651],
+Cell[6580, 203, 299, 6, 70, "RelatedLinks",ExpressionUUID->"130ea3b8-2ee9-4f6c-aec3-86f0399fbee2",
+ CellID->822095796]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6916, 214, 139, 1, 70, "ExamplesInitializationSection",ExpressionUUID->"05c36fdc-ecb7-4839-885f-7cbdfa4ff1ce",
+ CellID->251642326],
+Cell[7058, 217, 200, 3, 70, "ExampleInitialization",ExpressionUUID->"66144bf7-a869-49f0-9fa1-c54eb17f7926",
+ CellID->169608608]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7295, 225, 442, 12, 70, "PrimaryExamplesSection",ExpressionUUID->"f3775618-9457-4f5e-bb99-e8b978442680",
+ CellID->242726873],
+Cell[7740, 239, 173, 3, 70, "ExampleText",ExpressionUUID->"b045fd06-0fd0-412f-9219-2af8cb565239",
+ CellID->706864103],
+Cell[7916, 244, 252, 6, 70, "Input",ExpressionUUID->"f6db3ba7-bf48-45e9-9516-76ff02f12bf0",
+ CellID->150932718],
+Cell[8171, 252, 236, 6, 70, "Output",ExpressionUUID->"22fe3adc-bb80-41da-8484-0514c24395ed",
+ CellID->847251061],
+Cell[8410, 260, 218, 6, 70, "Input",ExpressionUUID->"531781b3-83d5-43e4-8903-f1e0b577db8f",
+ CellID->348865738],
+Cell[8631, 268, 130, 2, 70, "Output",ExpressionUUID->"3f676376-af3e-43d8-8d42-b7478fedf140",
+ CellID->815519082],
+Cell[8764, 272, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"bf215373-ef69-4ae4-8fef-1af1203097a4",
+ CellID->606577660],
+Cell[8985, 278, 195, 4, 70, "ExampleText",ExpressionUUID->"df288d58-4954-4a15-8496-6da946865e74",
+ CellID->581780947],
+Cell[9183, 284, 660, 18, 70, "Input",ExpressionUUID->"5f606bdc-d276-4788-adeb-2000cb164068",
+ CellID->466493218],
+Cell[9846, 304, 15231, 321, 70, "Output",ExpressionUUID->"1e664b01-08e8-4388-b0ff-618f4ab37069",
+ CellID->446813322]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25114, 630, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"ea2d19cd-57d7-4226-acc6-dfe4a551f91a",
+ CellTags->"ExtendedExamples",
+ CellID->767541799],
+Cell[CellGroupData[{
+Cell[25293, 636, 241, 5, 70, "ExampleSection",ExpressionUUID->"e100d8c5-7faf-46d1-92b7-556d29163ab6",
+ CellID->542420647],
+Cell[25537, 643, 170, 3, 70, "ExampleText",ExpressionUUID->"7be62682-7b1d-4894-918e-28db6f9c6c0f",
+ CellID->687466330],
+Cell[25710, 648, 252, 6, 70, "Input",ExpressionUUID->"0abc47c7-0a76-4a21-821f-9f6766535e2a",
+ CellID->175916921],
+Cell[25965, 656, 250, 6, 70, "Output",ExpressionUUID->"f4a07a12-593a-4c44-bf91-5eee8103e6fd",
+ CellID->642057270]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26252, 667, 258, 5, 70, "ExampleSection",ExpressionUUID->"fb5bd98f-4ab1-44c6-9f52-9b52302549e0",
+ CellID->510627210],
+Cell[26513, 674, 160, 2, 70, "ExampleText",ExpressionUUID->"50148b1e-c91d-4742-b0d7-eb50770c6962",
+ CellID->609047462],
+Cell[26676, 678, 743, 20, 70, "Input",ExpressionUUID->"0f358025-4e6e-49c6-a588-3c0d3795d880",
+ CellID->459427580],
+Cell[27422, 700, 584, 15, 70, "Output",ExpressionUUID->"b78fe52c-5240-4382-ad94-c9e777f1f188",
+ CellID->818462043],
+Cell[28009, 717, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"bdb5c9d7-5179-4d62-be05-0ba13f708dbe",
+ CellID->726625788],
+Cell[28230, 723, 184, 3, 70, "ExampleText",ExpressionUUID->"a27960de-6af7-471f-8d40-433f233ec665",
+ CellID->718038682],
+Cell[28417, 728, 440, 13, 70, "Input",ExpressionUUID->"26e275f5-5c30-47e5-bad1-0e79b15fe332",
+ CellID->266755862],
+Cell[28860, 743, 129, 2, 70, "Output",ExpressionUUID->"5ef419a1-029e-440d-af2e-cd9dc5353d55",
+ CellID->489058393]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29026, 750, 249, 5, 70, "ExampleSection",ExpressionUUID->"4960e686-9c4d-4b9d-85e5-3b5cf087d1bd",
+ CellID->242872658],
+Cell[29278, 757, 232, 4, 70, "ExampleText",ExpressionUUID->"34700795-7b2d-4015-9f0f-7f569bd93374",
+ CellID->832343219],
+Cell[29513, 763, 715, 20, 70, "Input",ExpressionUUID->"9bff2c05-8fe3-4b88-8384-bda538ab555f",
+ CellID->153812739],
+Cell[30231, 785, 173, 4, 70, "Output",ExpressionUUID->"3327d27a-d3b1-48d2-b964-255b80fdc955",
+ CellID->515467683]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30453, 795, 110, 1, 70, "MetadataSection",ExpressionUUID->"026c93bc-b6e8-4d29-8afd-19feda58c3a3",
+ CellID->988128222],
+Cell[30566, 798, 479, 12, 70, "History",ExpressionUUID->"f1108767-2698-4ef2-ad34-b8b554c35637",
+ CellID->180952795],
+Cell[CellGroupData[{
+Cell[31070, 814, 122, 1, 70, "CategorizationSection",ExpressionUUID->"fa3a8cf9-654c-47a4-ae5c-4bd56905f264",
+ CellID->540235520],
+Cell[31195, 817, 134, 2, 70, "Categorization",ExpressionUUID->"7e8f0f42-1803-460e-b26b-982da7c85eae",
+ CellID->438238469],
+Cell[31332, 821, 168, 2, 70, "Categorization",ExpressionUUID->"ae284b7f-fc43-424c-8498-7459f3254444",
+ CellID->150890175],
+Cell[31503, 825, 165, 2, 70, "Categorization",ExpressionUUID->"887f5c7d-a9ea-4665-a7c9-f6cd12ed1cd2",
+ CellID->688072944],
+Cell[31671, 829, 202, 4, 70, "Categorization",ExpressionUUID->"2786f18d-f033-4798-9e42-e53c0d39dd4c",
+ CellID->343656605]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[31910, 838, 110, 1, 70, "KeywordsSection",ExpressionUUID->"67aeb4d6-2e9b-4054-a1c4-e1e0021cc87e",
+ CellID->184202057],
+Cell[32023, 841, 101, 1, 70, "Keywords",ExpressionUUID->"ad7b6d93-5096-4037-8c6d-37034a27c9bc",
+ CellID->897172108],
+Cell[32127, 844, 105, 1, 70, "Keywords",ExpressionUUID->"aa2712b3-88a9-4164-afd7-35bee927202c",
+ CellID->643711445],
+Cell[32235, 847, 101, 1, 70, "Keywords",ExpressionUUID->"9c1401ea-79c0-4a2d-a36c-fb660c0caa77",
+ CellID->124913169],
+Cell[32339, 850, 102, 1, 70, "Keywords",ExpressionUUID->"a00f7e80-f925-4817-890c-adeabb764c47",
+ CellID->699743087]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

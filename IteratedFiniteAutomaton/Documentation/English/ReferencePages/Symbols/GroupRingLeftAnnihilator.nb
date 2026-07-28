@@ -1,0 +1,793 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     27925,        784]
+NotebookOptionsPosition[     19615,        615]
+NotebookOutlinePosition[     21313,        656]
+CellTagsIndexPosition[     21234,        651]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["GroupRingLeftAnnihilator", "ObjectName",
+ CellID->145190509,ExpressionUUID->"42fb2a40-7595-450c-bcc8-fecf7af31e91"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"f5b36d49-1d6c-4c73-8571-94473aedb96d"],
+ Cell[BoxData[
+  RowBox[{"GroupRingLeftAnnihilator", "[", 
+   StyleBox["automaton", "TI"], ",", 
+   StyleBox["a", "TI"], ",", 
+   StyleBox["support", "TI"], ",", 
+   StyleBox["levels", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+  "3f3d1f47-a1b8-4d05-ba9e-dbd464b7d249"],
+ " \[LineSeparator]",
+ "gives a basis of the coefficient vectors ",
+ Cell[BoxData[
+  StyleBox["b", "TI"]], "InlineFormula",ExpressionUUID->
+  "498dc96f-087a-4a1b-9fde-d4023c51fc2d"],
+ ", in the basis ",
+ Cell[BoxData[
+  StyleBox["support", "TI"]], "InlineFormula",ExpressionUUID->
+  "2c7212a4-06bb-4e25-aa88-644d643f51cb"],
+ ", with ",
+ Cell[BoxData[
+  RowBox[{
+   StyleBox["a", "TI"], 
+   RowBox[{"\[Sum]", 
+    RowBox[{
+     SubscriptBox[
+      StyleBox["b", "TI"], 
+      StyleBox["j", "TI"]], 
+     SubscriptBox[
+      StyleBox["support", "TI"], 
+      StyleBox["j", "TI"]]}]}], "=", "0"}]], "InlineFormula",ExpressionUUID->
+  "93f051ff-3787-4183-b3d0-f36ee97ecb9a"],
+ " in every level quotient in ",
+ Cell[BoxData[
+  StyleBox["levels", "TI"]], "InlineFormula",ExpressionUUID->
+  "d3cae2f9-171b-42dd-846b-f5c638c116a6"],
+ "."
+}], "Usage",
+ CellID->686832037,ExpressionUUID->"91e0f463-f60c-4093-8465-aba200587b5c"],
+
+Cell[TextData[{
+ "A group-ring element is a list of coefficient-word pairs ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{
+    StyleBox["c", "TI"], ",", 
+    StyleBox["w", "TI"]}], "}"}]], "InlineFormula",ExpressionUUID->
+  "e3050a2f-28ee-4a67-91ed-bf3288e9100e"],
+ ", so ",
+ Cell[BoxData[
+  RowBox[{"{", "}"}]], "InlineFormula",ExpressionUUID->
+  "053b8f16-4d64-4b2c-aa93-6686d13a464a"],
+ " is 0 and ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"{", "}"}]}], "}"}], "}"}]], "InlineFormula",ExpressionUUID->
+  "dd3c5b5e-2e60-4adc-b0fa-3c40f18723c6"],
+ " is 1."
+}], "Notes",
+ CellID->546781565,ExpressionUUID->"5173a62f-340b-4789-940d-bbf7a265cd02"],
+
+Cell[TextData[{
+ "The condition is linear in ",
+ Cell[BoxData[
+  StyleBox["b", "TI"]], "InlineFormula",ExpressionUUID->
+  "dbf0da46-0dac-458c-9221-7121636424ea"],
+ ", so this is a ",
+ Cell[BoxData[
+  ButtonBox["NullSpace",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/NullSpace"]], "InlineFormula",ExpressionUUID->
+  "c6e39297-7270-45b3-a7b9-9a2f0df4b995"],
+ " over ",
+ Cell[BoxData[
+  SubscriptBox["\[DoubleStruckCapitalF]", 
+   StyleBox["p", "TI"]]], "InlineFormula",ExpressionUUID->
+  "2a421517-4f21-4849-9308-e4e43d60daad"],
+ " of the matrix whose columns are the products ",
+ Cell[BoxData[
+  RowBox[{
+   StyleBox["a", "TI"], " ", 
+   SubscriptBox[
+    StyleBox["support", "TI"], 
+    StyleBox["j", "TI"]]}]], "InlineFormula",ExpressionUUID->
+  "842a8d2e-bedd-4bfd-a879-38df1be08769"],
+ ", stacked over all levels."
+}], "Notes",
+ CellID->375467948,ExpressionUUID->"b31c3684-4a15-4645-98c6-104905df2c27"],
+
+Cell[TextData[{
+ "An empty result means ",
+ Cell[BoxData[
+  StyleBox["a", "TI"]], "InlineFormula",ExpressionUUID->
+  "2daaa7f5-d740-4a40-9fdf-d6052087ac74"],
+ " is not a left zero divisor with support in ",
+ Cell[BoxData[
+  StyleBox["support", "TI"]], "InlineFormula",ExpressionUUID->
+  "ad8152f0-5aad-41b0-ad1e-b4ffd9bef0fb"],
+ " at those levels."
+}], "Notes",
+ CellID->288089511,ExpressionUUID->"dc691495-d71b-4933-bc87-73206921d1bb"],
+
+Cell[TextData[{
+ "The usual ",
+ Cell[BoxData[
+  StyleBox["support", "TI"]], "InlineFormula",ExpressionUUID->
+  "c03ff7a1-080a-4e1b-b9fb-f49c44605915"],
+ " is ",
+ Cell[BoxData[
+  RowBox[{"Prepend", "[", 
+   RowBox[{
+    RowBox[{"AutomatonGroupBall", "[", 
+     RowBox[{
+      StyleBox["automaton", "TI"], ",", 
+      StyleBox["radius", "TI"], ",", 
+      StyleBox["refLevel", "TI"]}], "]"}], ",", 
+    RowBox[{"{", "}"}]}], "]"}]], "InlineFormula",ExpressionUUID->
+  "e992a60f-0f7c-4fb5-89a2-2a73b4e1053e"],
+ "."
+}], "Notes",
+ CellID->727854179,ExpressionUUID->"47b450ae-448d-4255-badd-1b9bcb703e5c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->240166919,ExpressionUUID->"45695a71-13ba-45d4-bb25-d14d978b69d5"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["GroupRingZeroDivisorSurvival",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+GroupRingZeroDivisorSurvival"]], "InlineFormula",ExpressionUUID->
+  "6e34bcbe-d783-494b-971a-1b7dd0af80d8"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"dc904f6d-a56e-4576-85cf-180fc8e4487d"],
+ Cell[BoxData[
+  ButtonBox["GroupRingLevelProduct",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+GroupRingLevelProduct"]], "InlineFormula",ExpressionUUID->
+  "57e09bac-d617-47c9-9135-1af2bed23ef0"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"33349148-540a-4e1c-a83d-e2d09f620266"],
+ Cell[BoxData[
+  ButtonBox["AutomatonGroupBall",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/AutomatonGroupBall"]]\
+, "InlineFormula",ExpressionUUID->"89699511-9ade-4ad5-9c5b-bf9462778b52"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"71cf3026-33f9-4d27-9543-9dbb77748ff3"],
+ Cell[BoxData[
+  ButtonBox["GroupRingIdempotentQ",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+GroupRingIdempotentQ"]], "InlineFormula",ExpressionUUID->
+  "9cf2c593-e4c2-4093-998f-b72e0607706d"]
+}], "SeeAlso",
+ CellID->999603580,ExpressionUUID->"3fa762f8-4ae2-430b-b4b8-19b3228e03fb"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",
+ CellID->470193503,ExpressionUUID->"a9ab5643-b08f-4730-b8c5-b932f3c3826c"],
+
+Cell[TextData[ButtonBox["Iterated Finite Automata",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:WolframInstitute/IteratedFiniteAutomaton/guide/\
+IteratedFiniteAutomaton"]], "MoreAbout",
+ CellID->638209515,ExpressionUUID->"9ac548c3-8dc0-41c6-aae0-979d96257b58"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->552655996,ExpressionUUID->"0adee782-5976-4c03-a8ad-32e91d2484e7"],
+
+Cell[TextData[ButtonBox["A. Zuk, \"Iterated Finite Automata\", Wolfram \
+Community (WSRI26)",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://community.wolfram.com/groups/-/m/t/3761828"], 
+   None}]], "RelatedLinks",
+ CellID->593592224,ExpressionUUID->"ad95f7dd-52da-43e3-9b27-9522bd55e86c"],
+
+Cell[TextData[ButtonBox["D. S. Passman, \"The Algebraic Structure of Group \
+Rings\" \[LongDash] the Kaplansky zero divisor conjecture",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://en.wikipedia.org/wiki/Kaplansky%27s_conjectures"], 
+   None}]], "RelatedLinks",
+ CellID->185425102,ExpressionUUID->"adf3af6f-53b0-42be-877b-bf9d7171ce54"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples Initialization", "ExamplesInitializationSection",
+ CellID->238265916,ExpressionUUID->"8374db65-3209-47e1-bc2a-01f77aa25a44"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<WolframInstitute`IteratedFiniteAutomaton`\>\"", 
+  "]"}]], "ExampleInitialization",
+ CellID->634224129,ExpressionUUID->"7c5b7abe-ee67-4f29-9816-a4e210909e95"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox[
+      RowBox[{"Basic", " ", "Examples"}], "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->783003000,ExpressionUUID->"f3412df0-bba1-49bf-9314-5184bb39e323"],
+
+Cell["\<\
+The support: the identity together with the four Grigorchuk generators.\
+\>", "ExampleText",
+ CellID->778815633,ExpressionUUID->"5714c159-1372-421a-9bde-e56aebda3564"],
+
+Cell[BoxData[
+ RowBox[{"support", "=", 
+  RowBox[{"Prepend", "[", 
+   RowBox[{
+    RowBox[{"AutomatonGroupBall", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"8950703898", ",", 
+        RowBox[{"{", 
+         RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", "1", ",", "6"}], "]"}],
+     ",", 
+    RowBox[{"{", "}"}]}], "]"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->618475577,ExpressionUUID->"bac626f3-6305-48b2-a574-eea27000f664"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "2", "}"}], ",", 
+   RowBox[{"{", "3", "}"}], ",", 
+   RowBox[{"{", "4", "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->559926994,ExpressionUUID->"ee6d5d2f-45ff-4510-8a28-caaa9de033ca"],
+
+Cell[TextData[{
+ "Over ",
+ Cell[BoxData[
+  SubscriptBox["\[DoubleStruckCapitalF]", "2"]], "InlineFormula",
+  ExpressionUUID->"7f5f65ec-e869-4740-920a-2da28588015b"],
+ " the annihilator of ",
+ Cell[BoxData[
+  RowBox[{"1", "+", 
+   StyleBox["a", "TI"]}]], "InlineFormula",ExpressionUUID->
+  "bdc04272-74e0-4cfe-9c8c-5465c0f0801d"],
+ " is spanned by ",
+ Cell[BoxData[
+  RowBox[{"1", "+", 
+   StyleBox["a", "TI"]}]], "InlineFormula",ExpressionUUID->
+  "3326cb80-b729-479b-8c80-0306f1c6da0f"],
+ " itself:"
+}], "ExampleText",
+ CellID->726787255,ExpressionUUID->"78e9ab2f-bf75-4a64-8546-d92fc631cd54"],
+
+Cell[BoxData[
+ RowBox[{"GroupRingLeftAnnihilator", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"8950703898", ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"{", "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"{", "1", "}"}]}], "}"}]}], "}"}], ",", "support", ",", 
+   RowBox[{"Range", "[", 
+    RowBox[{"3", ",", "6"}], "]"}], ",", 
+   RowBox[{"Modulus", "\[Rule]", "2"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->912142348,ExpressionUUID->"0647fd96-bf6e-4d07-9007-8ce571450f96"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}], 
+  "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->896518281,ExpressionUUID->"22e49dc0-d977-43d5-970a-44c3a870526e"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"ab1fdacf-3aaa-49cb-b165-311a721a4cd7"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->359674627,ExpressionUUID->"b13c085c-e408-4384-9570-8bb3328dfe2e"],
+
+Cell[TextData[{
+ "In the torsion-free ",
+ Cell[BoxData[
+  ButtonBox["Integers",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Integers"]], "InlineFormula",ExpressionUUID->
+  "70b439e9-1584-4d9c-8341-a9023078a6bf"],
+ " the same element annihilates nothing:"
+}], "ExampleText",
+ CellID->569202304,ExpressionUUID->"74090d10-f080-41b2-9857-2489f20c3af3"],
+
+Cell[BoxData[
+ RowBox[{"GroupRingLeftAnnihilator", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"62", ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"{", "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"{", "1", "}"}]}], "}"}]}], "}"}], ",", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{
+     RowBox[{"AutomatonGroupBall", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"62", ",", 
+         RowBox[{"{", 
+          RowBox[{"2", ",", "2"}], "}"}]}], "}"}], ",", "1", ",", "6"}], 
+      "]"}], ",", 
+     RowBox[{"{", "}"}]}], "]"}], ",", 
+   RowBox[{"Range", "[", 
+    RowBox[{"3", ",", "6"}], "]"}], ",", 
+   RowBox[{"Modulus", "\[Rule]", "2"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->643259052,ExpressionUUID->"d99a924e-f447-4921-9699-3fad787bf790"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->450590798,ExpressionUUID->"7b495c62-e5cb-4b12-896c-63dd668de2b8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->387625970,ExpressionUUID->"be61baf2-7370-4ed1-99e5-ca483fddbc36"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Scope", "ExampleSection",ExpressionUUID->
+   "ae377954-86ac-4304-b09d-13ffdaefe04b"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->297484664,ExpressionUUID->"db59154d-2ca6-47fd-9be1-560f36c69aba"],
+
+Cell["A unit annihilates nothing, in any group:", "ExampleText",
+ CellID->101302136,ExpressionUUID->"382bd0e0-63e3-44ae-81d3-ae274650e7af"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"support", "=", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{
+     RowBox[{"AutomatonGroupBall", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"8950703898", ",", 
+         RowBox[{"{", 
+          RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", "1", ",", "6"}], 
+      "]"}], ",", 
+     RowBox[{"{", "}"}]}], "]"}]}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->119426406,ExpressionUUID->"8a000e66-4bf3-4022-b79d-78eba18eb749"],
+
+Cell[BoxData[
+ RowBox[{"GroupRingLeftAnnihilator", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"8950703898", ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", 
+      RowBox[{"{", "}"}]}], "}"}], "}"}], ",", "support", ",", 
+   RowBox[{"{", "3", "}"}], ",", 
+   RowBox[{"Modulus", "\[Rule]", "2"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->602584377,ExpressionUUID->"aa07c03c-0860-4289-95b9-2fb75db6c322"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->689890500,ExpressionUUID->"249968af-60fd-451c-ac48-b7c1eda1c24c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Properties & Relations", "ExampleSection",ExpressionUUID->
+   "f599f4a5-974a-4c0d-885a-4782a58e5e35"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->587929321,ExpressionUUID->"611cd88a-442a-4388-a52d-64c6b32d11d8"],
+
+Cell["\<\
+A basis vector, read back as a group-ring element, really is annihilated:\
+\>", "ExampleText",
+ CellID->251035000,ExpressionUUID->"cb9c1186-58c3-4c3c-a9aa-a88bf9ffb457"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"support", "=", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{
+     RowBox[{"AutomatonGroupBall", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"8950703898", ",", 
+         RowBox[{"{", 
+          RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", "1", ",", "6"}], 
+      "]"}], ",", 
+     RowBox[{"{", "}"}]}], "]"}]}], ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->808653633,ExpressionUUID->"2d7f36d5-4858-482b-a417-090a0c011667"],
+
+Cell[BoxData[
+ RowBox[{"coefficients", "=", 
+  RowBox[{"First", "[", 
+   RowBox[{"GroupRingLeftAnnihilator", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"8950703898", ",", 
+       RowBox[{"{", 
+        RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", 
+         RowBox[{"{", "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", 
+         RowBox[{"{", "1", "}"}]}], "}"}]}], "}"}], ",", "support", ",", 
+     RowBox[{"Range", "[", 
+      RowBox[{"3", ",", "6"}], "]"}], ",", 
+     RowBox[{"Modulus", "\[Rule]", "2"}]}], "]"}], "]"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->442862541,ExpressionUUID->"1b539147-d5e2-4cd0-93de-b8c40cae121e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "1", ",", "0", ",", "0", ",", "0"}], "}"}]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->253997634,ExpressionUUID->"5280b8ec-9a39-469b-807e-c78780c9be73"],
+
+Cell[BoxData[
+ RowBox[{"witness", "=", 
+  RowBox[{"DeleteCases", "[", 
+   RowBox[{
+    TemplateBox[{
+      RowBox[{"{", 
+        RowBox[{"coefficients", ",", "support"}], "}"}]},
+     "Transpose"], ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "_"}], "}"}]}], "]"}]}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->815572827,ExpressionUUID->"c9932676-67ce-461f-bebc-4ac15496060f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"{", "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     RowBox[{"{", "1", "}"}]}], "}"}]}], "}"}]], "Output",
+ CellLabel->"Out[3]=",
+ CellID->961215165,ExpressionUUID->"c01ca85b-d08f-4e9b-a54f-d68ace7aa411"],
+
+Cell[BoxData[
+ RowBox[{"GroupRingLevelProduct", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"8950703898", ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "2"}], "}"}]}], "}"}], ",", "6", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"{", "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"{", "1", "}"}]}], "}"}]}], "}"}], ",", "witness", ",", 
+   RowBox[{"Modulus", "\[Rule]", "2"}]}], "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->123380395,ExpressionUUID->"7f6452cb-9c6e-4992-ba2b-a0f35f69d6dc"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", "\[RightAssociation]"}]], "Output",
+ CellLabel->"Out[4]=",
+ CellID->145674149,ExpressionUUID->"7689d76a-bdf4-491d-81a8-05ae9bf88b23"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->194995200,ExpressionUUID->"9944906b-b265-4c1a-857d-467e124573e2"],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["0.2.0", "HistoryData",
+  CellTags->"New",ExpressionUUID->"8a4d36c2-19db-49eb-9024-30e431168bfa"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"d557328c-3221-41f3-b371-6d875a2d184b"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->
+  "20e818c7-3a02-4b71-ac15-fe40b4399186"]
+}], "History",
+ CellID->193044294,ExpressionUUID->"91a3dfdb-2e74-4749-b509-da7d1138ad7f"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->746880633,ExpressionUUID->"b247bf02-6ce7-46d3-99cd-f7a3b74c2fdb"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->980765690,ExpressionUUID->"0856c8a6-918f-47f1-a1a9-50cebf956921"],
+
+Cell["WolframInstitute/IteratedFiniteAutomaton", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->201282373,ExpressionUUID->"97d527a7-0ccd-478d-ae54-ead716ac9ffa"],
+
+Cell["WolframInstitute`IteratedFiniteAutomaton`", "Categorization",
+ CellLabel->"Context",
+ CellID->510176335,ExpressionUUID->"02ed9663-e78f-4647-bcf2-264d126de0f9"],
+
+Cell["\<\
+WolframInstitute/IteratedFiniteAutomaton/ref/GroupRingLeftAnnihilator\
+\>", "Categorization",
+ CellLabel->"URI",
+ CellID->931009482,ExpressionUUID->"233044cc-7d36-45bf-a84a-2dc29aaae735"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->339371753,ExpressionUUID->"d3021b2b-73ce-4f9a-9a0d-85870fe7a619"],
+
+Cell["annihilator", "Keywords",
+ CellID->654630303,ExpressionUUID->"5b363a4a-71cf-4c61-b074-093aad9fa783"],
+
+Cell["zero divisor", "Keywords",
+ CellID->364888775,ExpressionUUID->"f5780817-d1d0-4395-8071-753d78f3c1b3"],
+
+Cell["nullspace", "Keywords",
+ CellID->470197306,ExpressionUUID->"394b84ce-5d7b-48cd-89fc-4a57ade32308"],
+
+Cell["group ring", "Keywords",
+ CellID->956280437,ExpressionUUID->"60a8904b-da05-4249-8f3d-c82a6aae288b"]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{900, 800},
+TaggingRules->{
+ "Paclet" -> "WolframInstitute/IteratedFiniteAutomaton", 
+  "Metadata" -> {
+   "context" -> "WolframInstitute`IteratedFiniteAutomaton`", 
+    "history" -> {"0.2.0", "", "", ""}, "index" -> True, 
+    "keywords" -> {"annihilator", "zero divisor", "nullspace", "group ring"}, 
+    "label" -> "WolframInstitute/ IteratedFiniteAutomaton Symbol", "language" -> 
+    "en", "metadescription" -> "", "paclet" -> 
+    "WolframInstitute/IteratedFiniteAutomaton", "specialkeywords" -> {}, 
+    "status" -> "None", "summary" -> 
+    "GroupRingLeftAnnihilator[automaton,a,support,levels] gives a basis of \
+the coefficient vectors b, in the basis support, with a\[Sum]bjsupportj=0 in \
+every level quotient in levels.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "GroupRingLeftAnnihilator", "titlemodifier" -> "", 
+    "tutorialcollectionlinks" -> {}, "type" -> "Symbol", "uri" -> 
+    "WolframInstitute/IteratedFiniteAutomaton/ref/GroupRingLeftAnnihilator", 
+    "windowtitle" -> "GroupRingLeftAnnihilator"}},
+CellContext->"Global`",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (May 19, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"6e6f4c56-088c-4056-bce6-6c52be2b1589"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[12486, 389, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"be61baf2-7370-4ed1-99e5-ca483fddbc36",
+   CellTags->"ExtendedExamples",
+   CellID->387625970]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 21041, 644}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 121, 1, 70, "ObjectName",ExpressionUUID->"42fb2a40-7595-450c-bcc8-fecf7af31e91",
+ CellID->145190509],
+Cell[700, 25, 1289, 37, 70, "Usage",ExpressionUUID->"91e0f463-f60c-4093-8465-aba200587b5c",
+ CellID->686832037],
+Cell[1992, 64, 688, 21, 70, "Notes",ExpressionUUID->"5173a62f-340b-4789-940d-bbf7a265cd02",
+ CellID->546781565],
+Cell[2683, 87, 911, 26, 70, "Notes",ExpressionUUID->"b31c3684-4a15-4645-98c6-104905df2c27",
+ CellID->375467948],
+Cell[3597, 115, 436, 11, 70, "Notes",ExpressionUUID->"dc691495-d71b-4933-bc87-73206921d1bb",
+ CellID->288089511],
+Cell[4036, 128, 599, 18, 70, "Notes",ExpressionUUID->"47b450ae-448d-4255-badd-1b9bcb703e5c",
+ CellID->727854179]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4672, 151, 109, 1, 70, "SeeAlsoSection",ExpressionUUID->"45695a71-13ba-45d4-bb25-d14d978b69d5",
+ CellID->240166919],
+Cell[4784, 154, 1513, 35, 70, "SeeAlso",ExpressionUUID->"3fa762f8-4ae2-430b-b4b8-19b3228e03fb",
+ CellID->999603580]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6334, 194, 117, 1, 70, "MoreAboutSection",ExpressionUUID->"a9ab5643-b08f-4730-b8c5-b932f3c3826c",
+ CellID->470193503],
+Cell[6454, 197, 260, 5, 70, "MoreAbout",ExpressionUUID->"9ac548c3-8dc0-41c6-aae0-979d96257b58",
+ CellID->638209515]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6751, 207, 119, 1, 70, "RelatedLinksSection",ExpressionUUID->"0adee782-5976-4c03-a8ad-32e91d2484e7",
+ CellID->552655996],
+Cell[6873, 210, 299, 6, 70, "RelatedLinks",ExpressionUUID->"ad95f7dd-52da-43e3-9b27-9522bd55e86c",
+ CellID->593592224],
+Cell[7175, 218, 347, 6, 70, "RelatedLinks",ExpressionUUID->"adf3af6f-53b0-42be-877b-bf9d7171ce54",
+ CellID->185425102]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7559, 229, 139, 1, 70, "ExamplesInitializationSection",ExpressionUUID->"8374db65-3209-47e1-bc2a-01f77aa25a44",
+ CellID->238265916],
+Cell[7701, 232, 200, 3, 70, "ExampleInitialization",ExpressionUUID->"7c5b7abe-ee67-4f29-9816-a4e210909e95",
+ CellID->634224129]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7938, 240, 442, 12, 70, "PrimaryExamplesSection",ExpressionUUID->"f3412df0-bba1-49bf-9314-5184bb39e323",
+ CellID->783003000],
+Cell[8383, 254, 177, 3, 70, "ExampleText",ExpressionUUID->"5714c159-1372-421a-9bde-e56aebda3564",
+ CellID->778815633],
+Cell[8563, 259, 442, 13, 70, "Input",ExpressionUUID->"bac626f3-6305-48b2-a574-eea27000f664",
+ CellID->618475577],
+Cell[9008, 274, 316, 9, 70, "Output",ExpressionUUID->"ee6d5d2f-45ff-4510-8a28-caaa9de033ca",
+ CellID->559926994],
+Cell[9327, 285, 594, 17, 70, "ExampleText",ExpressionUUID->"78e9ab2f-bf75-4a64-8546-d92fc631cd54",
+ CellID->726787255],
+Cell[9924, 304, 645, 19, 70, "Input",ExpressionUUID->"0647fd96-bf6e-4d07-9007-8ce571450f96",
+ CellID->912142348],
+Cell[10572, 325, 228, 6, 70, "Output",ExpressionUUID->"22e49dc0-d977-43d5-970a-44c3a870526e",
+ CellID->896518281],
+Cell[10803, 333, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"b13c085c-e408-4384-9570-8bb3328dfe2e",
+ CellID->359674627],
+Cell[11024, 339, 353, 9, 70, "ExampleText",ExpressionUUID->"74090d10-f080-41b2-9857-2489f20c3af3",
+ CellID->569202304],
+Cell[11380, 350, 923, 29, 70, "Input",ExpressionUUID->"d99a924e-f447-4921-9699-3fad787bf790",
+ CellID->643259052],
+Cell[12306, 381, 143, 3, 70, "Output",ExpressionUUID->"7b495c62-e5cb-4b12-896c-63dd668de2b8",
+ CellID->450590798]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12486, 389, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"be61baf2-7370-4ed1-99e5-ca483fddbc36",
+ CellTags->"ExtendedExamples",
+ CellID->387625970],
+Cell[CellGroupData[{
+Cell[12665, 395, 241, 5, 70, "ExampleSection",ExpressionUUID->"db59154d-2ca6-47fd-9be1-560f36c69aba",
+ CellID->297484664],
+Cell[12909, 402, 139, 1, 70, "ExampleText",ExpressionUUID->"382bd0e0-63e3-44ae-81d3-ae274650e7af",
+ CellID->101302136],
+Cell[13051, 405, 471, 14, 70, "Input",ExpressionUUID->"8a000e66-4bf3-4022-b79d-78eba18eb749",
+ CellID->119426406],
+Cell[13525, 421, 502, 14, 70, "Input",ExpressionUUID->"aa07c03c-0860-4289-95b9-2fb75db6c322",
+ CellID->602584377],
+Cell[14030, 437, 143, 3, 70, "Output",ExpressionUUID->"249968af-60fd-451c-ac48-b7c1eda1c24c",
+ CellID->689890500]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14210, 445, 258, 5, 70, "ExampleSection",ExpressionUUID->"611cd88a-442a-4388-a52d-64c6b32d11d8",
+ CellID->587929321],
+Cell[14471, 452, 179, 3, 70, "ExampleText",ExpressionUUID->"cb9c1186-58c3-4c3c-a9aa-a88bf9ffb457",
+ CellID->251035000],
+Cell[14653, 457, 471, 14, 70, "Input",ExpressionUUID->"2d7f36d5-4858-482b-a417-090a0c011667",
+ CellID->808653633],
+Cell[15127, 473, 744, 21, 70, "Input",ExpressionUUID->"1b539147-d5e2-4cd0-93de-b8c40cae121e",
+ CellID->442862541],
+Cell[15874, 496, 201, 4, 70, "Output",ExpressionUUID->"5280b8ec-9a39-469b-807e-c78780c9be73",
+ CellID->253997634],
+Cell[16078, 502, 377, 11, 70, "Input",ExpressionUUID->"c9932676-67ce-461f-bebc-4ac15496060f",
+ CellID->815572827],
+Cell[16458, 515, 316, 10, 70, "Output",ExpressionUUID->"c01ca85b-d08f-4e9b-a54f-d68ace7aa411",
+ CellID->961215165],
+Cell[16777, 527, 584, 17, 70, "Input",ExpressionUUID->"7f6452cb-9c6e-4992-ba2b-a0f35f69d6dc",
+ CellID->123380395],
+Cell[17364, 546, 178, 3, 70, "Output",ExpressionUUID->"7689d76a-bdf4-491d-81a8-05ae9bf88b23",
+ CellID->145674149]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17591, 555, 110, 1, 70, "MetadataSection",ExpressionUUID->"9944906b-b265-4c1a-857d-467e124573e2",
+ CellID->194995200],
+Cell[17704, 558, 479, 12, 70, "History",ExpressionUUID->"91a3dfdb-2e74-4749-b509-da7d1138ad7f",
+ CellID->193044294],
+Cell[CellGroupData[{
+Cell[18208, 574, 122, 1, 70, "CategorizationSection",ExpressionUUID->"b247bf02-6ce7-46d3-99cd-f7a3b74c2fdb",
+ CellID->746880633],
+Cell[18333, 577, 134, 2, 70, "Categorization",ExpressionUUID->"0856c8a6-918f-47f1-a1a9-50cebf956921",
+ CellID->980765690],
+Cell[18470, 581, 168, 2, 70, "Categorization",ExpressionUUID->"97d527a7-0ccd-478d-ae54-ead716ac9ffa",
+ CellID->201282373],
+Cell[18641, 585, 165, 2, 70, "Categorization",ExpressionUUID->"02ed9663-e78f-4647-bcf2-264d126de0f9",
+ CellID->510176335],
+Cell[18809, 589, 197, 4, 70, "Categorization",ExpressionUUID->"233044cc-7d36-45bf-a84a-2dc29aaae735",
+ CellID->931009482]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[19043, 598, 110, 1, 70, "KeywordsSection",ExpressionUUID->"d3021b2b-73ce-4f9a-9a0d-85870fe7a619",
+ CellID->339371753],
+Cell[19156, 601, 106, 1, 70, "Keywords",ExpressionUUID->"5b363a4a-71cf-4c61-b074-093aad9fa783",
+ CellID->654630303],
+Cell[19265, 604, 107, 1, 70, "Keywords",ExpressionUUID->"f5780817-d1d0-4395-8071-753d78f3c1b3",
+ CellID->364888775],
+Cell[19375, 607, 104, 1, 70, "Keywords",ExpressionUUID->"394b84ce-5d7b-48cd-89fc-4a57ade32308",
+ CellID->470197306],
+Cell[19482, 610, 105, 1, 70, "Keywords",ExpressionUUID->"60a8904b-da05-4249-8f3d-c82a6aae288b",
+ CellID->956280437]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

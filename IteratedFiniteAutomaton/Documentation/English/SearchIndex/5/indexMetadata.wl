@@ -1,31 +1,31 @@
 <|"IndexedPaths" -> None, "Driver" -> "Lucene", 
- "CreationDate" -> DateObject[{2026, 7, 26, 5, 1, 
-    24.572247`8.14301985480747}, "Instant", "Gregorian", 2.], "Version" -> 5, 
- "Synonyms" -> None, "Method" -> "BM25", "Language" -> "English", 
- "ContentFieldOptions" -> <|"Abstract" -> <|"Weight" -> 1.5|>, 
-   "Context" -> <|"Stored" -> True, "Searchable" -> False, 
-     "Tokenized" -> False|>, "Description" -> <|"Stored" -> True, 
-     "Searchable" -> False, "Tokenized" -> False|>, 
-   "Dictionary" -> <|"OmitTermFreqAndPositions" -> True|>, 
-   "DisplayedCategory" -> <|"Stored" -> True, "Searchable" -> False, 
-     "Tokenized" -> False|>, "ExactTitle" -> <|"Stored" -> True, 
-     "Tokenized" -> False, "LengthWeighted" -> False|>, 
-   "ExampleText" -> <|"Weight" -> 0.05|>, "Frequency" -> 
-    <|"Stored" -> True, "Searchable" -> False, "Tokenized" -> False, 
-     "BulkRetrievalOptimized" -> True|>, "Keywords" -> <|"Stored" -> True|>, 
-   "Language" -> <|"Stored" -> True, "Searchable" -> False, 
-     "Tokenized" -> False|>, "NormalizedTitle" -> <|"Tokenized" -> False, 
-     "LengthWeighted" -> False|>, "NotebookPackage" -> 
-    <|"Stored" -> True, "Searchable" -> False, "Tokenized" -> False, 
-     "BulkRetrievalOptimized" -> True|>, "NotebookStatus" -> 
-    <|"Stored" -> True, "Searchable" -> True, "Tokenized" -> False, 
-     "BulkRetrievalOptimized" -> True|>, "NotebookType" -> 
-    <|"Stored" -> True, "Tokenized" -> False, "BulkRetrievalOptimized" -> 
-      True, "LengthWeighted" -> False|>, "PacletName" -> 
+ "CreationDate" -> DateObject[{2026, 7, 27, 11, 7, 
+    19.983208`8.053240192835682}, "Instant", "Gregorian", 2.], 
+ "Version" -> 5, "Synonyms" -> None, "Method" -> "BM25", 
+ "Language" -> "English", "ContentFieldOptions" -> 
+  <|"Abstract" -> <|"Weight" -> 1.5|>, "Context" -> 
     <|"Stored" -> True, "Searchable" -> False, "Tokenized" -> False|>, 
-   "ReferredBy" -> <|"Weight" -> 0.5, "LengthWeighted" -> False|>, 
-   "SeeAlso" -> <|"LengthWeighted" -> False|>, "ShortNotations" -> 
-    <|"Tokenized" -> False, "LengthWeighted" -> False|>, 
+   "Description" -> <|"Stored" -> True, "Searchable" -> False, 
+     "Tokenized" -> False|>, "Dictionary" -> 
+    <|"OmitTermFreqAndPositions" -> True|>, "DisplayedCategory" -> 
+    <|"Stored" -> True, "Searchable" -> False, "Tokenized" -> False|>, 
+   "ExactTitle" -> <|"Stored" -> True, "Tokenized" -> False, 
+     "LengthWeighted" -> False|>, "ExampleText" -> <|"Weight" -> 0.05|>, 
+   "Frequency" -> <|"Stored" -> True, "Searchable" -> False, 
+     "Tokenized" -> False, "BulkRetrievalOptimized" -> True|>, 
+   "Keywords" -> <|"Stored" -> True|>, "Language" -> 
+    <|"Stored" -> True, "Searchable" -> False, "Tokenized" -> False|>, 
+   "NormalizedTitle" -> <|"Tokenized" -> False, "LengthWeighted" -> False|>, 
+   "NotebookPackage" -> <|"Stored" -> True, "Searchable" -> False, 
+     "Tokenized" -> False, "BulkRetrievalOptimized" -> True|>, 
+   "NotebookStatus" -> <|"Stored" -> True, "Searchable" -> True, 
+     "Tokenized" -> False, "BulkRetrievalOptimized" -> True|>, 
+   "NotebookType" -> <|"Stored" -> True, "Tokenized" -> False, 
+     "BulkRetrievalOptimized" -> True, "LengthWeighted" -> False|>, 
+   "PacletName" -> <|"Stored" -> True, "Searchable" -> False, 
+     "Tokenized" -> False|>, "ReferredBy" -> <|"Weight" -> 0.5, 
+     "LengthWeighted" -> False|>, "SeeAlso" -> <|"LengthWeighted" -> False|>, 
+   "ShortNotations" -> <|"Tokenized" -> False, "LengthWeighted" -> False|>, 
    "SnippetPlaintext" -> <|"Stored" -> True, "Searchable" -> False, 
      "Tokenized" -> False|>, "Title" -> <|"Stored" -> True, "Weight" -> 2|>, 
    "TokenizedNotebookType" -> <|"LengthWeighted" -> False|>, 
