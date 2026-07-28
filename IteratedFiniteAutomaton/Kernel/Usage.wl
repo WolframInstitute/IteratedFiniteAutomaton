@@ -63,7 +63,7 @@ AutomatonWordSection::usage = "AutomatonWordSection[sections, word, x] gives {se
 
 AutomatonSection::usage = "AutomatonSection[automaton, word, treeWord] gives the section of word at the tree vertex treeWord.";
 
-AutomatonNucleus::usage = "AutomatonNucleus[automaton, radius, depth, refLevel] gives, for each d = 0, ..., depth, the sections at depth d of the words of length at most radius, kept distinct as automorphisms of T_refLevel. The list stabilizes exactly when the automaton is contracting, and its limit is the nucleus.";
+AutomatonNucleus::usage = "AutomatonNucleus[automaton, radius, depth, refLevel] gives, for each d = 0, ..., depth, the sections at depth d of the words of length at most radius, kept distinct as automorphisms of T_refLevel. Contraction shows as the counts decreasing to a limit that does not grow when radius grows, and that limit is the nucleus; a list sitting at the size of the radius ball for every depth is the non-contracting case, the sections of the ball being the ball again.";
 
 (* The group ring. An element is a list of {coefficient, word} pairs, so {} is 0 and
    {{1, {}}} is 1; Modulus -> p computes over F_p and Modulus -> 0 over the integers. *)
