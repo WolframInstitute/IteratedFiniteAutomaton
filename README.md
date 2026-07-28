@@ -74,3 +74,24 @@ The source of the project: Andrzej Żuk, *Iterated finite automata*, WSRI 2026 �
 
 No Wolfram Language functionality for automata groups exists — `transducer` and `Mealy` match no documented symbol, and neither the Function Repository nor the Paclet Repository has anything on self-similar or branch groups.
 The prior art is GAP's [`AutomGrp`](References.md#AutomGrp) and [`FR`](References.md#FR).
+
+## 🔬 Reproducing
+
+[`REPRODUCING.md`](REPRODUCING.md) records the Wolfram version, how to load the paclet from source, how to run the test suite (**102 tests, ~8 s**), and how to reproduce the catalog's test recipes — every instruction executed from a clean checkout before being written down.
+It also says plainly what this repository does *not* let you re-run: the four exhaustive sweeps and the notebook builds live in a separate private development repository, so their parameters are documented here but their drivers are not.
+
+## 📐 What is proven, computed, and conjectured
+
+Three different kinds of claim, kept apart on purpose.
+
+- **Proven** — nothing new. Every theorem cited is someone else's, and [`References.md`](References.md) says whose.
+- **Computed** — the contents of every `Searched here` field in [`OpenProblems.md`](OpenProblems.md), each stated with the bound that makes it falsifiable: a space, a radius, a field, a weight bound, and the level at which the refutation happened. An empty search is recorded as an empty search, never as evidence.
+- **Conjectured** — the `Conjecture` and `Question` environments in the research notebooks, each with the range over which it was verified and no claim beyond it.
+
+The `Faithfulness` field grades every translation as `Equivalent`, `Sufficient`, `Necessary`, `Heuristic` or `None`, from a closed list, so a translation that is only an analogy has to say so in a field instead of hedging in prose.
+
+## 📄 License and citation
+
+MIT — see [`LICENSE`](LICENSE). To cite the software, see [`CITATION.cff`](CITATION.cff); to cite the mathematics, cite the works in [`References.md`](References.md) directly.
+
+Contributions: [`CONTRIBUTING.md`](CONTRIBUTING.md).

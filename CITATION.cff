@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: IteratedFiniteAutomaton
+message: If you use this software or its results, please cite it as below.
+type: software
+authors:
+  - given-names: Pavel
+    family-names: Hajek
+    affiliation: Wolfram Institute
+abstract: >-
+  Iterated finite automata and automata groups: evolution, periodicity, state
+  analysis, and conversion between Mealy and wreath recursion formalisms, based
+  on Andrzej Zuk's WSRI26 essay. Includes a catalog of nineteen open problems in
+  group theory paired with the automaton statements that would settle them.
+keywords:
+  - iterated finite automaton
+  - Mealy automaton
+  - automata group
+  - self-similar group
+  - wreath recursion
+  - rooted tree
+  - group ring
+  - Kaplansky conjecture
+  - Burnside problem
+  - Wolfram Language
+license: MIT
+version: 0.2.0
+repository-code: https://github.com/WolframInstitute/IteratedFiniteAutomaton
+references:
+  - type: article
+    title: Iterated Finite Automata
+    authors:
+      - given-names: Andrzej
+        family-names: Zuk
+    year: 2026
+    url: https://community.wolfram.com/groups/-/m/t/3761828
+    notes: The essay this repository implements.
