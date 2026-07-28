@@ -8,6 +8,10 @@ IteratedFiniteAutomatonStateTransitions::usage = "IteratedFiniteAutomatonStateTr
 
 IteratedFiniteAutomatonStateGraph::usage = "IteratedFiniteAutomatonStateGraph[{code, {s, k}}] gives the state transition diagram of the automaton as a Graph with edge tags i -> o.\nIteratedFiniteAutomatonStateGraph[rule] accepts an explicit rule list.";
 
+IteratedFiniteAutomatonStateSubgraph::usage = "IteratedFiniteAutomatonStateSubgraph[rule, s0, init, t] gives the sub-digraph of the state transition diagram whose edges the initial condition init actually traverses in t steps, as a Graph on all of the automaton's states, so that an isolated vertex is a state this tape never visits.\nIteratedFiniteAutomatonStateSubgraph[rule, s0, init] uses one step.\nIteratedFiniteAutomatonStateSubgraph[rule, s0] is the operator form.";
+
+IteratedFiniteAutomatonStateSubgraphFamily::usage = "IteratedFiniteAutomatonStateSubgraphFamily[rule, s0, n, t] gives the family of exercised sub-digraphs over all k^n initial conditions of length n, as an Association sending each traversed edge set to the tapes that traverse it. Its length counts the distinct subgraphs, and Union @@ Keys gives the edges some tape reaches.\nIteratedFiniteAutomatonStateSubgraphFamily[rule, s0, n] uses one step.";
+
 IteratedFiniteAutomatonColors::usage = "IteratedFiniteAutomatonColors[k] gives ColorRules for k symbols: white for 0, black for 1 when k == 2, ColorData[97] otherwise.";
 
 IteratedFiniteAutomatonFromStates::usage = "IteratedFiniteAutomatonFromStates[<|state -> {input -> {output, nextState}, ...}, ...|>, s0] converts a Mealy transducer with named states and initial state s0 into <|\"Rule\", \"InitialState\", \"StateIndex\"|> suitable for IteratedFiniteAutomaton.";
