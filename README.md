@@ -31,7 +31,9 @@ Needs["WolframInstitute`IteratedFiniteAutomaton`"]
 ```
 
 The paclet is not in the Wolfram Paclet Repository, so it installs from a public cloud object.
-The URL is stable across releases — each one overwrites it — so check `PacletObject["WolframInstitute/IteratedFiniteAutomaton"]["Version"]` to see what you got; it is currently **0.4.0**, which adds the constructive families of many-state automata and the exercised state subgraph.
+The URL is stable across releases — each one overwrites it — so check `PacletObject["WolframInstitute/IteratedFiniteAutomaton"]["Version"]` to see what you got.
+**That object currently serves 0.3.0, one release behind this repository.**
+`main` is **0.4.0**, which adds the constructive families of many-state automata and the exercised state subgraph; until the object is refreshed, those five exports are reachable only by building from this checkout — see [`REPRODUCING.md`](REPRODUCING.md).
 
 ## 📓 Research Notebooks
 

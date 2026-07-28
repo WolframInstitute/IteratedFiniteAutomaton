@@ -24,7 +24,9 @@ The paclet is **not** in the Wolfram Paclet Repository, so that public cloud
 object is the only install route. The URL is stable across releases — each one
 overwrites it — so pinning a version means checking
 `PacletObject["WolframInstitute/IteratedFiniteAutomaton"]["Version"]` after
-installing, currently `0.4.0`.
+installing. **That object currently serves `0.3.0`, one release behind this
+repository**, so nothing below that needs 0.4.0 can be reproduced from it; build
+from the checkout instead, as the next two sections describe.
 
 ## Load from source instead
 
@@ -70,8 +72,11 @@ PacletInstall[archive, ForceVersionInstall -> True]
 
 Produces `WolframInstitute__IteratedFiniteAutomaton-0.4.0.paclet`, and installing
 it gives 47 exports and **48 documentation notebooks** — one reference page per
-export plus the guide. The archive built from this checkout is byte-identical to
-the object at the public install URL.
+export plus the guide. This is currently the **only** way to get 0.4.0: the
+public install object still holds the 0.3.0 archive, so the two are not
+byte-identical, and the research notebook on many-state automata reads correctly
+from its embedded outputs but cannot be re-evaluated against what that URL
+serves.
 
 ## Reproduce the catalog's test recipes
 
