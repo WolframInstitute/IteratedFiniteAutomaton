@@ -17,6 +17,10 @@ PackageExport[CanonicalAutomatonCode]
 PackageExport[InvertibleAutomatonQ]
 PackageExport[InvertibleAutomatonCodes]
 
+PackageExport[AutomatonAdderCascade]
+PackageExport[AutomatonWindowProgram]
+PackageExport[AutomatonProduct]
+
 PackageExport[AutomatonLevelPermutations]
 PackageExport[AutomatonWordPermutation]
 PackageExport[AutomatonWordOrders]
