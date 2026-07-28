@@ -3,14 +3,14 @@
 The literature this repository stands on, grouped by the role each work plays here.
 Every annotation says why the work matters to *this* repository, not what its abstract says.
 
-The machine-readable form is [`references.bib`](references.bib) — biblatex, 57 entries, generated from Crossref content negotiation and the arXiv API rather than typed by hand.
+The machine-readable form is [`references.bib`](references.bib) — biblatex, 89 entries, generated from Crossref content negotiation and the arXiv API rather than typed by hand.
 The keys below are its keys, so a citation anywhere in the repository resolves both ways: `References.md#Kaplansky1970` for a reader, `\cite{Kaplansky1970}` for a document.
 
 **Keys.** Full surnames for one or two authors, initials for three or more, a letter suffix for same-author/same-year collisions.
 So `Higman1940`, `GrigorchukZuk2001`, `BurnsHale1972`, but `GNS2000`, `BKN2010`, `BGKMNSS2007a`.
 
-**Links.** A DOI or an arXiv abstract page wherever one exists, and no publisher landing pages — 43 of the 57 entries resolve that way.
-The other fourteen, each marked below: three carry a permanent Numdam or Math-Net.Ru locator instead ([Zuk2008](#Zuk2008), [Atiyah1976](#Atiyah1976), [GNS2000](#GNS2000)); three are online sources whose URL *is* the work ([Zuk2026](#Zuk2026), [Wolfram2003](#Wolfram2003), [MathlibMonoidAlgebra](#MathlibMonoidAlgebra)); two books carry an ISBN only ([Zuk2012](#Zuk2012), [Passman1977](#Passman1977)); the three [Software](#software) entries are GAP projects whose own recommended citation is a versioned URL; and three works have no machine identifier in existence ([Burnside1902](#Burnside1902), [Zassenhaus1974](#Zassenhaus1974), [Aleshin1983](#Aleshin1983)).
+**Links.** A DOI or an arXiv abstract page wherever one exists, and no publisher landing pages — 74 of the 89 entries resolve that way.
+The other fourteen, each marked below: three carry a permanent Numdam or Math-Net.Ru locator instead ([Zuk2008](#Zuk2008), [Atiyah1976](#Atiyah1976), [GNS2000](#GNS2000)); three are online sources whose URL *is* the work ([Zuk2026](#Zuk2026), [Wolfram2003](#Wolfram2003), [MathlibMonoidAlgebra](#MathlibMonoidAlgebra)); two books carry an ISBN only ([Zuk2012](#Zuk2012), [Passman1977](#Passman1977)); the three [Software](#software) entries are GAP projects whose own recommended citation is a versioned URL; and four works have no machine identifier in existence ([Burnside1902](#Burnside1902), [Sanov1940](#Sanov1940), [Zassenhaus1974](#Zassenhaus1974), [Aleshin1983](#Aleshin1983)).
 Żuk's advanced-course pages, cited in earlier drafts of this repository, are the policy's own argument: `webusers.imj-prg.fr/~andrzej.zuk/` no longer resolves, so the entry is gone.
 
 ## Source
@@ -38,6 +38,17 @@ The other fourteen, each marked below: three carry a permanent Numdam or Math-Ne
   Lecture-notes treatment of the same material, longer than the Bourbaki talk and easier to read first. No DOI exists.
 - <a id="Zuk2020"></a>**Zuk2020** — Andrzej Żuk, *From partial differential equations to groups*, in *Analysis and Geometry on Graphs and Manifolds*, LMS Lecture Note Ser. 461, CUP, 2020, 368–381. [10.1017/9781108615259.015](https://doi.org/10.1017/9781108615259.015)
   Puts the spectral side of automaton groups — the lamplighter spectrum in particular — in a wider analytic frame.
+
+- <a id="Luck1994"></a>**Luck1994** — Wolfgang Lück, *Approximating $L^2$-invariants by their finite-dimensional analogues*, Geom. Funct. Anal. **4** (1994), 455–481. [10.1007/BF01896404](https://doi.org/10.1007/BF01896404)
+  The theorem that makes the [Atiyah entry](OpenProblems.md#Atiyah) computable here: for a residually finite group with a nested tower of finite-index normal subgroups intersecting trivially, the $L^2$-Betti number is the limit of $\lvert G_L \rvert^{-1} \dim \ker \rho_L$ — and the level stabilisers of a rooted-tree action are exactly such a tower, so every term is a rank in a finite group ring the paclet already computes in.
+- <a id="Chou1980"></a>**Chou1980** — Ching Chou, *Elementary amenable groups*, Illinois J. Math. **24** (1980), 396–407. [10.1215/ijm/1256047608](https://doi.org/10.1215/ijm/1256047608)
+  The structure theory of the elementary amenable class — closure under subgroups, quotients, extensions and directed unions, and the growth restrictions that follow. It is why [Day's problem](OpenProblems.md#DayElementary) has no computational recipe here: the class is defined by closure operations, and nothing in the paclet ranges over subgroups.
+- <a id="BN2007"></a>**BN2007** — Ievgen Bondarenko, Volodymyr Nekrashevych, *Post-critically finite self-similar groups*, 2007. [arXiv:math/0701824](https://arxiv.org/abs/math/0701824)
+  Bounded activity implies contracting. That converse direction is what turns `AutomatonNucleus` into a *negative* test for boundedness, and it is how 28 of the 32 torsion-free $(3, 2)$ codes were shown to lie outside the reach of [BKN2010](#BKN2010) without computing any activity degree.
+- <a id="Nekrashevych2008"></a>**Nekrashevych2008** — Volodymyr Nekrashevych, *Free subgroups in groups acting on rooted trees*, 2008. [arXiv:0802.2554](https://arxiv.org/abs/0802.2554)
+  No free subgroups in groups generated by bounded automata (reproving Sidki) or in iterated monodromy groups of expanding coverings. Together with [BKN2010](#BKN2010) this is what cancels both halves of a [von Neumann witness](OpenProblems.md#VonNeumannDay) inside the bounded class.
+- <a id="Abert2005"></a>**Abert2005** — Miklós Abért, *Group laws and free subgroups in topological groups*, Bull. London Math. Soc. **37** (2005), 525–534. [10.1112/S002460930500425X](https://doi.org/10.1112/S002460930500425X) · [arXiv:math/0306364](https://arxiv.org/abs/math/0306364)
+  Weakly branch groups satisfy no group law, and in the closure almost all finite subsets generate free subgroups — the opposite of the "weakly branch groups have no free subgroups" that one might expect, and the correction that stopped the four free-monoid classes being written up as von Neumann candidates.
 
 ## Landmark groups
 
@@ -80,6 +91,13 @@ Each of these is a group the repository either reproduces from an automaton or m
   No preprint exists.
 - <a id="Atiyah1976"></a>**Atiyah1976** — Michael Atiyah, *Elliptic operators, discrete groups and von Neumann algebras*, Astérisque **32–33** (1976), 43–72. [numdam.org/item/AST_1976__32-33__43_0](https://www.numdam.org/item/AST_1976__32-33__43_0/)
   Where the $L^2$-Betti integrality question is raised.
+
+- <a id="Aleshin1972"></a>**Aleshin1972** — S. V. Aleshin, *Finite automata and Burnside's problem for periodic groups*, Math. Notes **11** (1972), 199–203. [10.1007/BF01098526](https://doi.org/10.1007/BF01098526)
+  The first automaton solution of the general Burnside problem, eight years before [Grigorchuk1980](#Grigorchuk1980) — the reason the automaton approach to torsion groups predates the group everyone quotes for it. Aleshin's *other* automaton, the free one, is [Aleshin1983](#Aleshin1983).
+- <a id="BartholdiErschler2010"></a>**BartholdiErschler2010** — Laurent Bartholdi, Anna G. Erschler, *Growth of permutational extensions*, 2010. [arXiv:1011.5266](https://arxiv.org/abs/1011.5266)
+  The first groups of intermediate growth whose growth function is known asymptotically rather than merely bounded on both sides — the calibration for how far a finite ball count is from a growth type.
+- <a id="ErschlerZheng2018"></a>**ErschlerZheng2018** — Anna Erschler, Tianyi Zheng, *Growth of periodic Grigorchuk groups*, 2018. [arXiv:1802.09077](https://arxiv.org/abs/1802.09077)
+  Pins the growth exponent of the first Grigorchuk group: $\log \log v(n) / \log n \to \alpha_0 \approx 0.7674$. The number to compare a measured `"BallGrowth"` against, and the measure of how hopeless radius 4 is for the purpose.
 
 ## Open problems
 
@@ -131,6 +149,55 @@ One primary reference per row of the repository's open-problem table, plus the t
   A metabelian group of order $2^7 3^2 5 \cdot 7^2 19^2$ refutes it; as with von Neumann, the counterexample is hand-built and no automaton realization is known.
 - <a id="Gillibert2014"></a>**Gillibert2014** — Pierre Gillibert, *The finiteness problem for automaton semigroups is undecidable*, Int. J. Algebra Comput. **24** (2014), 1–9. [10.1142/S0218196714500015](https://doi.org/10.1142/S0218196714500015) · [arXiv:1304.2295](https://arxiv.org/abs/1304.2295)
   The boundary on everything this repository computes: finiteness is undecidable for automaton semigroups, so the paclet's finiteness and order tests are necessarily searches with bounds, not decision procedures.
+
+- <a id="Sanov1940"></a>**Sanov1940** — I. N. Sanov, *Solution of Burnside's problem for exponent 4*, Uchen. Zap. Leningrad. Gos. Univ. Ser. Mat. **10** (1940), 166–170.
+  $B(m, 4)$ is finite. One of the four settled exponents that bound the [smallest-bounded-exponent](OpenProblems.md#BurnsideExponent) question from below. No machine identifier exists.
+- <a id="Hall1958"></a>**Hall1958** — Marshall Hall Jr., *Solution of the Burnside problem for exponent six*, Illinois J. Math. **2** (1958), 764–786. [10.1215/ijm/1255448339](https://doi.org/10.1215/ijm/1255448339)
+  $B(m, 6)$ is finite, completing the settled list $n = 2, 3, 4, 6$ and leaving $n = 5$ as the smallest open case.
+- <a id="Ivanov1994"></a>**Ivanov1994** — Sergei V. Ivanov, *The free Burnside groups of sufficiently large exponents*, Int. J. Algebra Comput. **4** (1994), 1–308. [10.1142/S0218196794000026](https://doi.org/10.1142/S0218196794000026)
+  $B(m, n)$ is infinite for $n \geq 2^{48}$ with $n$ odd or divisible by $2^9$, so the negative answer covers almost all exponents; with [Lysenok1996](#Lysenok1996) it pushes the open window down from the odd $n \geq 665$ of [Adyan1979](#Adyan1979).
+- <a id="Lysenok1996"></a>**Lysenok1996** — I. G. Lysënok, *Infinite Burnside groups of even exponent*, Izv. Math. **60** (1996), 453–654. [10.1070/IM1996v060n03ABEH000077](https://doi.org/10.1070/IM1996v060n03ABEH000077)
+  The even case, $n \geq 8000$ — the other half of the bound that makes $\{5, 7, 8, \ldots\}$ the finite open window rather than an infinite one.
+- <a id="Zelmanov1991"></a>**Zelmanov1991** — E. I. Zel'manov, *Solution of the restricted Burnside problem for groups of odd exponent*, Math. USSR-Izv. **36** (1991), 41–60. [10.1070/IM1991v036n01ABEH001946](https://doi.org/10.1070/IM1991v036n01ABEH001946)
+  With [Zelmanov1992](#Zelmanov1992), the theorem that puts the whole [bounded-exponent entry](OpenProblems.md#BurnsideExponent) out of this formalism's reach: the restricted problem is equivalent to "every finitely generated residually finite group of finite exponent is finite", and automaton groups are residually finite by construction.
+- <a id="Zelmanov1992"></a>**Zelmanov1992** — E. I. Zel'manov, *A solution of the restricted Burnside problem for 2-groups*, Math. USSR-Sb. **72** (1992), 543–565. [10.1070/SM1992v072n02ABEH001272](https://doi.org/10.1070/SM1992v072n02ABEH001272)
+  The 2-group half, which is the half that matters here — the binary alphabet is the paclet's default and the Grigorchuk group is a 2-group.
+- <a id="Gromov1981"></a>**Gromov1981** — Mikhael Gromov, *Groups of polynomial growth and expanding maps* (with an appendix by Jacques Tits), Publ. Math. IHÉS **53** (1981), 53–78. [10.1007/BF02698687](https://doi.org/10.1007/BF02698687)
+  Polynomial growth iff virtually nilpotent — the theorem that makes the lower end of the [gap conjecture](OpenProblems.md#GapConjecture) a sharp dichotomy and lets `AutomatonAbelianQ` plus a ball count discharge the virtually nilpotent candidates.
+- <a id="AAV2013"></a>**AAV2013** — Gideon Amir, Omer Angel, Bálint Virág, *Amenability of linear-activity automaton groups*, 2009. [arXiv:0905.2007](https://arxiv.org/abs/0905.2007)
+  Activity degree 1 implies amenable, extending [BKN2010](#BKN2010) one step up [Sidki2000](#Sidki2000)'s hierarchy. Degree $\geq 2$ is open, which is where the [activity entry](OpenProblems.md#AmenabilityActivity) stops.
+- <a id="JNS2016"></a>**JNS2016** — Kate Juschenko, Volodymyr Nekrashevych, Mikael de la Salle, *Extensions of amenable groups by recurrent groupoids*, 2013. [arXiv:1305.2637](https://arxiv.org/abs/1305.2637)
+  One proof covering Grigorchuk, Basilica, bounded automorphisms and linear activity at once — the unified statement the amenability entries cite rather than four separate ones.
+- <a id="Monod2013"></a>**Monod2013** — Nicolas Monod, *Groups of piecewise projective homeomorphisms*, 2012. [arXiv:1209.5229](https://arxiv.org/abs/1209.5229)
+  Non-amenable and free-subgroup-free by a construction simple enough to check by hand — and torsion-free, unlike [Olshanskii1980](#Olshanskii1980) and [Adyan1983](#Adyan1983), which is what makes it the first [von Neumann](OpenProblems.md#VonNeumannDay) counterexample not immediately excluded from being an automaton group by finite exponent.
+- <a id="LodhaMoore2013"></a>**LodhaMoore2013** — Yash Lodha, Justin Tatch Moore, *A finitely presented group of piecewise projective homeomorphisms*, 2013. [arXiv:1308.4250](https://arxiv.org/abs/1308.4250)
+  The finitely presented, torsion-free refinement of Monod's example.
+- <a id="Austin2009"></a>**Austin2009** — Tim Austin, *Rational group ring elements with kernels having irrational dimension*, 2009. [arXiv:0909.2360](https://arxiv.org/abs/0909.2360)
+  Irrational $L^2$-Betti numbers over $\mathbb{Q}[G]$, so the [Atiyah](OpenProblems.md#Atiyah) question fails far beyond the non-integrality [GLSZ2000](#GLSZ2000) exhibits.
+- <a id="Grabowski2010"></a>**Grabowski2010** — Łukasz Grabowski, *On Turing dynamical systems and the Atiyah problem*, 2010. [arXiv:1004.2030](https://arxiv.org/abs/1004.2030)
+  Every non-negative real is an $L^2$-Betti number, by embedding Turing machines into integral group rings — and the transcendental example uses a triple product of lamplighter groups, so the automaton behind [GLSZ2000](#GLSZ2000) is still the engine.
+- <a id="PSZ2010"></a>**PSZ2010** — Mikaël Pichot, Thomas Schick, Andrzej Żuk, *Closed manifolds with transcendental $L^2$-Betti numbers*, 2010. [arXiv:1005.1147](https://arxiv.org/abs/1005.1147)
+  Austin's method refined to explicit computations, closing the manifold version of the question.
+- <a id="Gillibert2018"></a>**Gillibert2018** — Pierre Gillibert, *An automaton group with undecidable order and Engel problems*, 2017. [arXiv:1710.09733](https://arxiv.org/abs/1710.09733)
+  For every Turing machine and initial configuration, an explicit group element of finite order **iff** the machine halts. This is the theorem that makes the [order problem](OpenProblems.md#Order) undecidable and — since finite order *has* a certificate — makes infinite order the side with no finite certificate at all, which is precisely the side every sweep in this repository searches.
+- <a id="BartholdiMitrofanov2020"></a>**BartholdiMitrofanov2020** — Laurent Bartholdi, Ivan Mitrofanov, *The word and order problems for self-similar and automata groups*, 2017. [arXiv:1710.10109](https://arxiv.org/abs/1710.10109)
+  The order problem is undecidable even for *contracting* automata, and the word problem is undecidable once finite-stateness is dropped (functionally recursive groups) — the two results that fix where the decidability boundary runs in the [triviality entry](OpenProblems.md#Triviality).
+- <a id="SunicVentura2012"></a>**SunicVentura2012** — Zoran Šunić, Enric Ventura, *The conjugacy problem in automaton groups is not solvable*, 2010. [arXiv:1010.1993](https://arxiv.org/abs/1010.1993)
+  Undecidability of [conjugacy](OpenProblems.md#Conjugacy), which is why the level cycle-type comparison is offered as a `Necessary` filter and nothing stronger.
+- <a id="BBSZ2013"></a>**BBSZ2013** — Ievgen V. Bondarenko, Natalia V. Bondarenko, Said N. Sidki, Flavia R. Zapata, *On the conjugacy problem for finite-state automorphisms of regular rooted trees*, 2010. [arXiv:1011.2227](https://arxiv.org/abs/1011.2227)
+  Conjugacy *is* decidable for bounded automata — the positive counterpart, and an algorithm the paclet does not implement, so even the decidable codes get only the filter.
+- <a id="Klimann2013"></a>**Klimann2013** — Ines Klimann, *The finiteness of a group generated by a 2-letter invertible-reversible Mealy automaton is decidable*, 2012. [arXiv:1208.6324](https://arxiv.org/abs/1208.6324)
+  A semigroup generated by a reversible two-state automaton is finite or free of rank 2 — a dichotomy that decides [finiteness](OpenProblems.md#Finiteness) and semigroup [freeness](OpenProblems.md#Freeness) on the smallest classes.
+- <a id="KPS2014"></a>**KPS2014** — Ines Klimann, Matthieu Picantin, Dmytro Savchuk, *A connected 3-state reversible Mealy automaton cannot generate an infinite Burnside group*, 2014. [arXiv:1409.6142](https://arxiv.org/abs/1409.6142)
+  No infinite Burnside group from a connected reversible automaton on 3 states — a negative result about exactly the $(3, 2)$ space this repository sweeps.
+- <a id="GodinKlimann2016"></a>**GodinKlimann2016** — Thibault Godin, Ines Klimann, *Connected reversible Mealy automata of prime size cannot generate infinite Burnside groups*, 2016. [arXiv:1604.03270](https://arxiv.org/abs/1604.03270)
+  The same conclusion for any prime number of states, generalizing [KPS2014](#KPS2014).
+- <a id="DAngeliRodaro2014"></a>**DAngeliRodaro2014** — Daniele D'Angeli, Emanuele Rodaro, *Freeness of automata groups vs boundary dynamics*, 2014. [arXiv:1410.6097](https://arxiv.org/abs/1410.6097)
+  Freeness characterized by the boundary dynamics of the enriched dual transducer, and for bireversible automata non-freeness reduced to a finite Schreier orbit in the dual — the replacement for the word quantifier that no ball search can discharge.
+- <a id="DFRW2020"></a>**DFRW2020** — Daniele D'Angeli, Dominik Francoeur, Emanuele Rodaro, Jan Philipp Wächter, *On the orbits of automaton semigroups and groups*, 2020. [arXiv:2007.10273](https://arxiv.org/abs/2007.10273)
+  A more general form of the [finiteness problem](OpenProblems.md#Finiteness) is undecidable — finiteness of left principal ideals in semigroups generated by complete reversible automata.
+- <a id="DRW2024"></a>**DRW2024** — Daniele D'Angeli, Emanuele Rodaro, Jan Philipp Wächter, *The finiteness problem for automaton semigroups of extended bounded activity*, 2024. [arXiv:2406.20056](https://arxiv.org/abs/2406.20056)
+  Decidability of finiteness for complete automaton semigroups of bounded extended activity — the current positive frontier, and a second place where a *decidable* result is gated on an activity notion the paclet cannot compute.
 
 ## Formalization
 
