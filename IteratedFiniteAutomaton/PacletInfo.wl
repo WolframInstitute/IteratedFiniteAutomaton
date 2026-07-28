@@ -2,7 +2,7 @@ PacletObject[<|
     "Name" -> "WolframInstitute/IteratedFiniteAutomaton",
     "Description" -> "Iterated finite automata and automata groups: evolution, periodicity, state analysis, and conversion between Mealy and wreath recursion formalisms, based on Andrzej Zuk's WSRI26 essay",
     "Creator" -> "Pavel Hajek",
-    "Version" -> "0.2.0",
+    "Version" -> "0.3.0",
     "WolframVersion" -> "14.3+",
     "PublisherID" -> "WolframInstitute",
     "License" -> "MIT",
