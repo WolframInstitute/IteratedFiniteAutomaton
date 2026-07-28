@@ -31,7 +31,7 @@ Needs["WolframInstitute`IteratedFiniteAutomaton`"]
 ```
 
 The paclet is not in the Wolfram Paclet Repository, so it installs from a public cloud object.
-The URL is stable across releases — each one overwrites it — so check `PacletObject["WolframInstitute/IteratedFiniteAutomaton"]["Version"]` to see what you got; it is currently **0.3.0**, which is the first release carrying the Documentation Center pages.
+The URL is stable across releases — each one overwrites it — so check `PacletObject["WolframInstitute/IteratedFiniteAutomaton"]["Version"]` to see what you got; it is currently **0.4.0**, which adds the constructive families of many-state automata and the exercised state subgraph.
 
 ## 📓 Research Notebooks
 
@@ -44,6 +44,7 @@ The URL is stable across releases — each one overwrites it — so check `Pacle
 | Kaplansky zero-divisor conjecture | Zero divisors in the group ring | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Kaplansky.nb) |
 | Sweep of the 3-state binary automata | Which groups survive the zero-divisor test | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/KaplanskySweep.nb) |
 | Open problems, as automaton statements | One runnable test per problem in [`OpenProblems.md`](OpenProblems.md) | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/OpenProblems.nb) |
+| Constructive families of many-state automata | Building automata where the space is too large to enumerate, and what many states buy | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/ManyStateAutomata.nb) |
 
 ## 🧩 Open Problems
 
@@ -83,7 +84,7 @@ The prior art is GAP's [`AutomGrp`](References.md#AutomGrp) and [`FR`](Reference
 
 ## 🔬 Reproducing
 
-[`REPRODUCING.md`](REPRODUCING.md) records the Wolfram version, how to load the paclet from source, how to run the test suite (**102 tests, ~8 s**), and how to reproduce the catalog's test recipes — every instruction executed from a clean checkout before being written down.
+[`REPRODUCING.md`](REPRODUCING.md) records the Wolfram version, how to load the paclet from source, how to run the test suite (**123 tests, ~10 s**), and how to reproduce the catalog's test recipes — every instruction executed from a clean checkout before being written down.
 It also says plainly what this repository does *not* let you re-run: the four exhaustive sweeps and the notebook builds live in a separate private development repository, so their parameters are documented here but their drivers are not.
 
 ## 📐 What is proven, computed, and conjectured
