@@ -24,7 +24,7 @@ The paclet is **not** in the Wolfram Paclet Repository, so that public cloud
 object is the only install route. The URL is stable across releases — each one
 overwrites it — so pinning a version means checking
 `PacletObject["WolframInstitute/IteratedFiniteAutomaton"]["Version"]` after
-installing, currently `0.3.0`.
+installing, currently `0.4.0`.
 
 ## Load from source instead
 
@@ -50,13 +50,14 @@ Prints one line per test file and then `All tests passed`:
 AutomataTests: 9/9
 ConvertersTests: 5/5
 EvolutionTests: 7/7
+FamiliesTests: 14/14
 GroupRingTests: 32/32
 GroupsTests: 23/23
-StateAnalysisTests: 5/5
+StateAnalysisTests: 12/12
 VisualizationTests: 21/21
 ```
 
-**102 tests, all passing, in about 8 seconds** of wall clock on an M-series Mac.
+**123 tests, all passing, in about 10 seconds** of wall clock on an M-series Mac.
 The tests assert mathematics rather than internals, so a failure here is a false
 mathematical statement and not a changed return shape.
 
@@ -67,10 +68,10 @@ archive = CreatePacletArchive["IteratedFiniteAutomaton", $TemporaryDirectory]
 PacletInstall[archive, ForceVersionInstall -> True]
 ```
 
-Produces `WolframInstitute__IteratedFiniteAutomaton-0.3.0.paclet`, **609 500
-bytes**, and installing it gives 42 exports and **43 documentation notebooks**
-— one reference page per export plus the guide. The archive built from this
-checkout is byte-identical to the object at the public install URL.
+Produces `WolframInstitute__IteratedFiniteAutomaton-0.4.0.paclet`, and installing
+it gives 47 exports and **48 documentation notebooks** — one reference page per
+export plus the guide. The archive built from this checkout is byte-identical to
+the object at the public install URL.
 
 ## Reproduce the catalog's test recipes
 

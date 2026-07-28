@@ -1,0 +1,494 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     18240,        485]
+NotebookOptionsPosition[     11684,        347]
+NotebookOutlinePosition[     13538,        391]
+CellTagsIndexPosition[     13459,        386]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["IteratedFiniteAutomatonStateSubgraphFamily", "ObjectName",
+ CellID->948694767,ExpressionUUID->"38448d7d-ff4d-4143-8ba6-99b159daf657"],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo",ExpressionUUID->"071d792b-17ce-4b87-a2c4-6f0203e4e795"],
+ Cell[BoxData[
+  RowBox[{"IteratedFiniteAutomatonStateSubgraphFamily", "[", 
+   StyleBox["rule", "TI"], ",", 
+   StyleBox["s0", "TI"], ",", 
+   StyleBox["n", "TI"], ",", 
+   StyleBox["t", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+  "608a3fd1-b7d6-40fb-a33f-42e70552ea2f"],
+ " \[LineSeparator]",
+ "gives the family of exercised sub-digraphs over all ",
+ Cell[BoxData[
+  SuperscriptBox[
+   StyleBox["k", "TI"], 
+   StyleBox["n", "TI"]]], "InlineFormula",ExpressionUUID->
+  "7af0b90c-f14f-45f8-aafd-286550b0ce9e"],
+ " tapes of length ",
+ Cell[BoxData[
+  StyleBox["n", "TI"]], "InlineFormula",ExpressionUUID->
+  "fd07bda9-73f7-407e-8b81-5585388ae132"],
+ ", as an ",
+ Cell[BoxData[
+  ButtonBox["Association",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Association"]], "InlineFormula",ExpressionUUID->
+  "65c275be-dc12-4af0-8f13-77839cfc7f97"],
+ " sending each traversed edge set to the tapes that traverse it.",
+ "\n",
+ Cell["   ", "ModInfo",ExpressionUUID->"3a07bd10-05d3-4e6b-a861-4636a9c3304d"],
+ Cell[BoxData[
+  RowBox[{"IteratedFiniteAutomatonStateSubgraphFamily", "[", 
+   StyleBox["rule", "TI"], ",", 
+   StyleBox["s0", "TI"], ",", 
+   StyleBox["n", "TI"], "]"}]], "InlineFormula",ExpressionUUID->
+  "a9874380-d0d8-4020-9429-d7eef46a40ce"],
+ " \[LineSeparator]",
+ "uses one step."
+}], "Usage",
+ CellID->258759298,ExpressionUUID->"418c89b8-0bb2-4a04-82b0-c46570c38063"],
+
+Cell[TextData[{
+ "The ",
+ Cell[BoxData[
+  ButtonBox["Length",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Length"]], "InlineFormula",ExpressionUUID->
+  "455866e9-9538-4a3c-a8e3-403222776edb"],
+ " of the result counts the distinct subgraphs, and ",
+ Cell[BoxData[
+  RowBox[{"Union", "@@", 
+   RowBox[{"Keys", "[", 
+    StyleBox["family", "TI"], "]"}]}]], "InlineFormula",ExpressionUUID->
+  "3ac20f03-aa8b-448a-a707-f8f11ce5bb0e"],
+ " gives the edges some tape reaches."
+}], "Notes",
+ CellID->821513215,ExpressionUUID->"174b5fa9-5cdd-4a59-aac1-a33598872904"],
+
+Cell[TextData[{
+ "The family is keyed by edge set rather than by ",
+ Cell[BoxData[
+  ButtonBox["Graph",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Graph"]], "InlineFormula",ExpressionUUID->
+  "1ed3cfe2-aa86-4d90-af3f-a699e370aecf"],
+ ": two graphs with the same edges need not be the same expression, while the \
+sorted edge list is canonical."
+}], "Notes",
+ CellID->152414285,ExpressionUUID->"c28c0302-9049-4b4a-b37d-db57688529d1"],
+
+Cell["\<\
+At one step the family depends only on the transition function, since the \
+outputs decorate edges the transitions have already chosen.\
+\>", "Notes",
+ CellID->680443256,ExpressionUUID->"a0799740-8a96-48c5-afbc-78e2edc7916f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->723573387,ExpressionUUID->"cdb07fcb-9ab6-49ba-ae36-fb366db437c8"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonStateSubgraph",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonStateSubgraph"]], "InlineFormula",ExpressionUUID->
+  "5a255930-07eb-487a-a68c-880231736838"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"8e11f110-6273-4277-bc49-a881001bdb8b"],
+ Cell[BoxData[
+  ButtonBox["IteratedFiniteAutomatonStateGraph",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonStateGraph"]], "InlineFormula",ExpressionUUID->
+  "5a53fef9-efdd-4afb-ae2f-e6826dd8fc4d"],
+ Cell[TextData[StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"]],
+  ExpressionUUID->"f9f451cf-1c0a-4fd0-8a03-077a9e7d46fd"],
+ Cell[BoxData[
+  ButtonBox["AutomatonWindowProgram",
+   BaseStyle->"Link",
+   ButtonData->
+    "paclet:WolframInstitute/IteratedFiniteAutomaton/ref/\
+AutomatonWindowProgram"]], "InlineFormula",ExpressionUUID->
+  "67533f2a-aa37-4506-b4db-75a859c4166d"]
+}], "SeeAlso",
+ CellID->307658532,ExpressionUUID->"ac674b85-3ec2-4b35-b29a-6a38825b28a9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",
+ CellID->638130738,ExpressionUUID->"ab816fd5-b510-4d90-97ae-2a4225fec22d"],
+
+Cell[TextData[ButtonBox["Iterated Finite Automata",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:WolframInstitute/IteratedFiniteAutomaton/guide/\
+IteratedFiniteAutomaton"]], "MoreAbout",
+ CellID->128660412,ExpressionUUID->"f5a73718-9162-46b8-8de7-a9725a0e0680"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->775914328,ExpressionUUID->"e17f3c67-ecca-4a41-b6b2-ac4e14a26143"],
+
+Cell[TextData[ButtonBox["A. Zuk, \"Iterated Finite Automata\", Wolfram \
+Community (WSRI26)",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://community.wolfram.com/groups/-/m/t/3761828"], 
+   None}]], "RelatedLinks",
+ CellID->735422779,ExpressionUUID->"2fc28022-ef8f-4972-b995-4f5fa8229bfe"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples Initialization", "ExamplesInitializationSection",
+ CellID->166389908,ExpressionUUID->"f1eb1cf2-dccd-486f-906b-d0c3b71973dc"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<WolframInstitute`IteratedFiniteAutomaton`\>\"", 
+  "]"}]], "ExampleInitialization",
+ CellID->173270921,ExpressionUUID->"fc3d8fb1-b38f-46cf-870a-11d500d3a7d6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox[
+      RowBox[{"Basic", " ", "Examples"}], "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->326807210,ExpressionUUID->"1b13ac07-bb0c-400b-9e10-7ef9e519d073"],
+
+Cell["\<\
+The family over the sixteen tapes of length four, for a three-state automaton:\
+\>", "ExampleText",
+ CellID->900042572,ExpressionUUID->"dbb77200-0bb9-488c-997e-572ab013fc63"],
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"IteratedFiniteAutomatonStateSubgraphFamily", "[", 
+   RowBox[{
+    RowBox[{"AutomatonRuleFromCode", "[", 
+     RowBox[{"{", 
+      RowBox[{"28126", ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "2"}], "}"}]}], "}"}], "]"}], ",", "1", ",", "4"}], 
+   "]"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->875246623,ExpressionUUID->"75a90d71-c93f-4da9-b57a-137d62884c4a"],
+
+Cell[BoxData["13"], "Output",
+ CellLabel->"Out[1]=",
+ CellID->110952341,ExpressionUUID->"59ba08b0-3d6f-480e-bde0-a8d150db6f97"],
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "\t",ExpressionUUID->"18727c7b-eba0-4623-a460-aa8e23e85188"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->305848430,ExpressionUUID->"19653a8a-b501-4414-bea0-ddc67b740862"],
+
+Cell["The fibers partition tape space:", "ExampleText",
+ CellID->539156038,ExpressionUUID->"2462209b-bbac-495e-88fa-559d6d459f84"],
+
+Cell[BoxData[
+ RowBox[{"Total", "[", 
+  RowBox[{"Length", "/@", 
+   RowBox[{"Values", "[", 
+    RowBox[{"IteratedFiniteAutomatonStateSubgraphFamily", "[", 
+     RowBox[{
+      RowBox[{"AutomatonRuleFromCode", "[", 
+       RowBox[{"{", 
+        RowBox[{"28126", ",", 
+         RowBox[{"{", 
+          RowBox[{"3", ",", "2"}], "}"}]}], "}"}], "]"}], ",", "1", ",", 
+      "4"}], "]"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->381014578,ExpressionUUID->"6271cd63-dee0-4b1e-9cd8-969cc6914d20"],
+
+Cell[BoxData["16"], "Output",
+ CellLabel->"Out[2]=",
+ CellID->747248876,ExpressionUUID->"3efd4d31-322d-4788-8098-73ce6741425b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->765311062,ExpressionUUID->"d74b99b4-6528-49c2-8653-eee949783139"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[
+  "Properties & Relations", "ExampleSection",ExpressionUUID->
+   "da68f99c-e853-4e9a-9c08-2411e17357a0"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->384561053,ExpressionUUID->"70d202b2-ef9f-40ff-95b5-8253618ba3b6"],
+
+Cell["\<\
+The count falls as the step count grows, because every tape saturates toward \
+the whole diagram:\
+\>", "ExampleText",
+ CellID->773441186,ExpressionUUID->"0c153017-cbf6-44c8-8001-a30d254d5d28"],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Length", "[", 
+    RowBox[{"IteratedFiniteAutomatonStateSubgraphFamily", "[", 
+     RowBox[{
+      RowBox[{"AutomatonRuleFromCode", "[", 
+       RowBox[{"{", 
+        RowBox[{"28126", ",", 
+         RowBox[{"{", 
+          RowBox[{"3", ",", "2"}], "}"}]}], "}"}], "]"}], ",", "1", ",", "5", 
+      ",", "t"}], "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "1", ",", "4"}], "}"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->973170246,ExpressionUUID->"78312e85-6028-42d5-b112-7356dd104e2b"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"17", ",", "5", ",", "3", ",", "1"}], "}"}]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->768281537,ExpressionUUID->"40e98b5d-c492-4f7c-aa22-6984819a2040"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->800908956,ExpressionUUID->"d9f02eec-3e25-4e02-868e-35277b7c3c6a"],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["0.4.0", "HistoryData",
+  CellTags->"New",ExpressionUUID->"320cac35-e8fa-4e54-9f4d-48e38b73ca93"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"75759fac-4386-4c8e-bdc4-935dbd296a77"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->
+  "a46c1240-80e9-4a2b-90e2-39e3be9ab66f"]
+}], "History",
+ CellID->619536216,ExpressionUUID->"545b756b-3e73-4a4f-9df5-1b546ef6481b"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->830696059,ExpressionUUID->"1783db49-f67e-46c4-a68d-7a1cfa9c7159"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->540838350,ExpressionUUID->"bbee8295-7f4b-48f1-a124-9f8205e53198"],
+
+Cell["WolframInstitute/IteratedFiniteAutomaton", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->890147700,ExpressionUUID->"57db09b8-468a-4e42-9923-fb2b9af36e2e"],
+
+Cell["WolframInstitute`IteratedFiniteAutomaton`", "Categorization",
+ CellLabel->"Context",
+ CellID->161075058,ExpressionUUID->"4040120a-0cc9-4f71-b38e-9b6f3b7ee7c6"],
+
+Cell["\<\
+WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonStateSubgraphFamily\
+\>", "Categorization",
+ CellLabel->"URI",
+ CellID->603294392,ExpressionUUID->"27f1ce57-e906-4162-8086-61a27c9da760"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->550304273,ExpressionUUID->"bdd179c3-f21b-4917-bcc2-00a6272cf106"],
+
+Cell["exercised subgraph", "Keywords",
+ CellID->906745849,ExpressionUUID->"1ed0dab1-da04-4a59-a9f5-482ad43821aa"],
+
+Cell["tape dependence", "Keywords",
+ CellID->998610448,ExpressionUUID->"0d1c8d53-8c0f-4571-bbb8-83be812b2abc"],
+
+Cell["family", "Keywords",
+ CellID->816914517,ExpressionUUID->"b5851152-05e3-47d9-a441-b0300a202722"]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{900, 800},
+TaggingRules->{
+ "Paclet" -> "WolframInstitute/IteratedFiniteAutomaton", 
+  "Metadata" -> {
+   "context" -> "WolframInstitute`IteratedFiniteAutomaton`", 
+    "history" -> {"0.4.0", "", "", ""}, "index" -> True, 
+    "keywords" -> {"exercised subgraph", "tape dependence", "family"}, 
+    "label" -> "WolframInstitute/ IteratedFiniteAutomaton Symbol", "language" -> 
+    "en", "metadescription" -> "", "paclet" -> 
+    "WolframInstitute/IteratedFiniteAutomaton", "specialkeywords" -> {}, 
+    "status" -> "None", "summary" -> 
+    "IteratedFiniteAutomatonStateSubgraphFamily[rule,s0,n,t] gives the family \
+of exercised sub-digraphs over all kn tapes of length n, as an Association \
+sending each traversed edge set to the tapes that traverse it. \
+IteratedFiniteAutomatonStateSubgraphFamily[rule,s0,n] uses one step.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "IteratedFiniteAutomatonStateSubgraphFamily", "titlemodifier" -> "", 
+    "tutorialcollectionlinks" -> {}, "type" -> "Symbol", "uri" -> 
+    "WolframInstitute/IteratedFiniteAutomaton/ref/\
+IteratedFiniteAutomatonStateSubgraphFamily", "windowtitle" -> 
+    "IteratedFiniteAutomatonStateSubgraphFamily"}},
+CellContext->"Global`",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (May 19, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"e013e512-55f9-47ef-9e4b-a701ec9dc184"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[8281, 243, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"d74b99b4-6528-49c2-8653-eee949783139",
+   CellTags->"ExtendedExamples",
+   CellID->765311062]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 13267, 379}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 139, 1, 70, "ObjectName",ExpressionUUID->"38448d7d-ff4d-4143-8ba6-99b159daf657",
+ CellID->948694767],
+Cell[718, 25, 1478, 38, 70, "Usage",ExpressionUUID->"418c89b8-0bb2-4a04-82b0-c46570c38063",
+ CellID->258759298],
+Cell[2199, 65, 561, 15, 70, "Notes",ExpressionUUID->"174b5fa9-5cdd-4a59-aac1-a33598872904",
+ CellID->821513215],
+Cell[2763, 82, 438, 10, 70, "Notes",ExpressionUUID->"c28c0302-9049-4b4a-b37d-db57688529d1",
+ CellID->152414285],
+Cell[3204, 94, 235, 4, 70, "Notes",ExpressionUUID->"a0799740-8a96-48c5-afbc-78e2edc7916f",
+ CellID->680443256]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3476, 103, 109, 1, 70, "SeeAlsoSection",ExpressionUUID->"cdb07fcb-9ab6-49ba-ae36-fb366db437c8",
+ CellID->723573387],
+Cell[3588, 106, 1181, 27, 70, "SeeAlso",ExpressionUUID->"ac674b85-3ec2-4b35-b29a-6a38825b28a9",
+ CellID->307658532]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4806, 138, 117, 1, 70, "MoreAboutSection",ExpressionUUID->"ab816fd5-b510-4d90-97ae-2a4225fec22d",
+ CellID->638130738],
+Cell[4926, 141, 260, 5, 70, "MoreAbout",ExpressionUUID->"f5a73718-9162-46b8-8de7-a9725a0e0680",
+ CellID->128660412]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5223, 151, 119, 1, 70, "RelatedLinksSection",ExpressionUUID->"e17f3c67-ecca-4a41-b6b2-ac4e14a26143",
+ CellID->775914328],
+Cell[5345, 154, 299, 6, 70, "RelatedLinks",ExpressionUUID->"2fc28022-ef8f-4972-b995-4f5fa8229bfe",
+ CellID->735422779]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5681, 165, 139, 1, 70, "ExamplesInitializationSection",ExpressionUUID->"f1eb1cf2-dccd-486f-906b-d0c3b71973dc",
+ CellID->166389908],
+Cell[5823, 168, 200, 3, 70, "ExampleInitialization",ExpressionUUID->"fc3d8fb1-b38f-46cf-870a-11d500d3a7d6",
+ CellID->173270921]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6060, 176, 442, 12, 70, "PrimaryExamplesSection",ExpressionUUID->"1b13ac07-bb0c-400b-9e10-7ef9e519d073",
+ CellID->326807210],
+Cell[6505, 190, 184, 3, 70, "ExampleText",ExpressionUUID->"dbb77200-0bb9-488c-997e-572ab013fc63",
+ CellID->900042572],
+Cell[6692, 195, 428, 11, 70, "Input",ExpressionUUID->"75a90d71-c93f-4da9-b57a-137d62884c4a",
+ CellID->875246623],
+Cell[7123, 208, 127, 2, 70, "Output",ExpressionUUID->"59ba08b0-3d6f-480e-bde0-a8d150db6f97",
+ CellID->110952341],
+Cell[7253, 212, 218, 4, 70, "ExampleDelimiter",ExpressionUUID->"19653a8a-b501-4414-bea0-ddc67b740862",
+ CellID->305848430],
+Cell[7474, 218, 130, 1, 70, "ExampleText",ExpressionUUID->"2462209b-bbac-495e-88fa-559d6d459f84",
+ CellID->539156038],
+Cell[7607, 221, 507, 13, 70, "Input",ExpressionUUID->"6271cd63-dee0-4b1e-9cd8-969cc6914d20",
+ CellID->381014578],
+Cell[8117, 236, 127, 2, 70, "Output",ExpressionUUID->"3efd4d31-322d-4788-8098-73ce6741425b",
+ CellID->747248876]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8281, 243, 154, 2, 70, "ExtendedExamplesSection",ExpressionUUID->"d74b99b4-6528-49c2-8653-eee949783139",
+ CellTags->"ExtendedExamples",
+ CellID->765311062],
+Cell[CellGroupData[{
+Cell[8460, 249, 258, 5, 70, "ExampleSection",ExpressionUUID->"70d202b2-ef9f-40ff-95b5-8253618ba3b6",
+ CellID->384561053],
+Cell[8721, 256, 203, 4, 70, "ExampleText",ExpressionUUID->"0c153017-cbf6-44c8-8001-a30d254d5d28",
+ CellID->773441186],
+Cell[8927, 262, 570, 15, 70, "Input",ExpressionUUID->"78312e85-6028-42d5-b112-7356dd104e2b",
+ CellID->973170246],
+Cell[9500, 279, 192, 4, 70, "Output",ExpressionUUID->"40e98b5d-c492-4f7c-aa22-6984819a2040",
+ CellID->768281537]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9741, 289, 110, 1, 70, "MetadataSection",ExpressionUUID->"d9f02eec-3e25-4e02-868e-35277b7c3c6a",
+ CellID->800908956],
+Cell[9854, 292, 479, 12, 70, "History",ExpressionUUID->"545b756b-3e73-4a4f-9df5-1b546ef6481b",
+ CellID->619536216],
+Cell[CellGroupData[{
+Cell[10358, 308, 122, 1, 70, "CategorizationSection",ExpressionUUID->"1783db49-f67e-46c4-a68d-7a1cfa9c7159",
+ CellID->830696059],
+Cell[10483, 311, 134, 2, 70, "Categorization",ExpressionUUID->"bbee8295-7f4b-48f1-a124-9f8205e53198",
+ CellID->540838350],
+Cell[10620, 315, 168, 2, 70, "Categorization",ExpressionUUID->"57db09b8-468a-4e42-9923-fb2b9af36e2e",
+ CellID->890147700],
+Cell[10791, 319, 165, 2, 70, "Categorization",ExpressionUUID->"4040120a-0cc9-4f71-b38e-9b6f3b7ee7c6",
+ CellID->161075058],
+Cell[10959, 323, 217, 5, 70, "Categorization",ExpressionUUID->"27f1ce57-e906-4162-8086-61a27c9da760",
+ CellID->603294392]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[11213, 333, 110, 1, 70, "KeywordsSection",ExpressionUUID->"bdd179c3-f21b-4917-bcc2-00a6272cf106",
+ CellID->550304273],
+Cell[11326, 336, 113, 1, 70, "Keywords",ExpressionUUID->"1ed0dab1-da04-4a59-a9f5-482ad43821aa",
+ CellID->906745849],
+Cell[11442, 339, 110, 1, 70, "Keywords",ExpressionUUID->"0d1c8d53-8c0f-4571-bbb8-83be812b2abc",
+ CellID->998610448],
+Cell[11555, 342, 101, 1, 70, "Keywords",ExpressionUUID->"b5851152-05e3-47d9-a441-b0300a202722",
+ CellID->816914517]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
