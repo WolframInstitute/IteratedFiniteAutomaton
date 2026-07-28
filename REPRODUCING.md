@@ -24,7 +24,7 @@ The paclet is **not** in the Wolfram Paclet Repository, so that public cloud
 object is the only install route. The URL is stable across releases — each one
 overwrites it — so pinning a version means checking
 `PacletObject["WolframInstitute/IteratedFiniteAutomaton"]["Version"]` after
-installing, currently `0.2.0`.
+installing, currently `0.3.0`.
 
 ## Load from source instead
 
@@ -59,6 +59,18 @@ VisualizationTests: 21/21
 **102 tests, all passing, in about 8 seconds** of wall clock on an M-series Mac.
 The tests assert mathematics rather than internals, so a failure here is a false
 mathematical statement and not a changed return shape.
+
+## Build and install the paclet from this checkout
+
+```wolfram
+archive = CreatePacletArchive["IteratedFiniteAutomaton", $TemporaryDirectory]
+PacletInstall[archive, ForceVersionInstall -> True]
+```
+
+Produces `WolframInstitute__IteratedFiniteAutomaton-0.3.0.paclet`, **609 500
+bytes**, and installing it gives 42 exports and **43 documentation notebooks**
+— one reference page per export plus the guide. The archive built from this
+checkout is byte-identical to the object at the public install URL.
 
 ## Reproduce the catalog's test recipes
 

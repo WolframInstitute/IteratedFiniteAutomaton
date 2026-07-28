@@ -6,6 +6,12 @@ An iterated finite automaton can be assigned a group.
 Such groups were used in the past to construct counterexamples in group theory, as described in Andrzej Żuk's essay **[Iterated finite automata](https://community.wolfram.com/groups/-/m/t/3761828)**.
 This repository collects the tools and the open problems, so that researchers can attack them systematically — and by systematic exploration of the landscape of small automata.
 
+![The adding machine's evolution on a zero tape, a tree portrait of the Grigorchuk generator b coloured by its sections, and the adding machine's single 32-cycle on level 5](Images/hero.png)
+
+*Left:* the adding machine iterated on a zero tape — the binary counter.
+*Middle:* a tree portrait of the Grigorchuk generator $b$ down to depth 5, each vertex coloured by the section there and enlarged where that section permutes its colours.
+*Right:* the adding machine's action on level 5, a single 32-cycle, which is why its period is $2^L$ from every tape.
+
 ## 🎯 Goals
 
 - Collect tools for the ruliology of iterated finite automata
@@ -25,7 +31,7 @@ Needs["WolframInstitute`IteratedFiniteAutomaton`"]
 ```
 
 The paclet is not in the Wolfram Paclet Repository, so it installs from a public cloud object.
-The URL is stable across releases — each one overwrites it.
+The URL is stable across releases — each one overwrites it — so check `PacletObject["WolframInstitute/IteratedFiniteAutomaton"]["Version"]` to see what you got; it is currently **0.3.0**, which is the first release carrying the Documentation Center pages.
 
 ## 📓 Research Notebooks
 
