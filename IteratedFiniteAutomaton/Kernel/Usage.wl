@@ -51,6 +51,8 @@ AutomatonWordPermutation::usage = "AutomatonWordPermutation[perms, word] gives t
 
 AutomatonWordOrders::usage = "AutomatonWordOrders[automaton, word, levels] gives the order of word in Aut(T_L) for each L in levels. The orders are nondecreasing in L, and constant from some level on exactly when word has finite order.";
 
+AutomatonWordOrder::usage = "AutomatonWordOrder[automaton, word, maxOrder] gives the exact order of word in the automaton group when it is at most maxOrder, and Missing[\"OrderExceeds\", maxOrder] otherwise. Both answers are certified: any level order divides the order in G, so only its multiples up to maxOrder need the word problem, and refuting them all proves the order exceeds the bound.";
+
 AutomatonWordBall::usage = "AutomatonWordBall[automaton, radius] gives the reduced words of length 1 to radius in the free group on the automaton's states, with inverses written as negative state numbers.";
 
 AutomatonGroupBall::usage = "AutomatonGroupBall[automaton, radius, refLevel] gives one shortest word for each distinct nontrivial element of the level-refLevel quotient represented by a word of length at most radius.\nAutomatonGroupBall[automaton, radius] gives one shortest word for each distinct nontrivial element of the automaton group itself, equality decided in G by the word problem.";
@@ -61,7 +63,7 @@ AutomatonElementCount::usage = "AutomatonElementCount[automaton, wordLength, lev
 
 AutomatonAbelianQ::usage = "AutomatonAbelianQ[automaton, level] gives True if the generators commute in the level quotient.\nAutomatonAbelianQ[automaton] decides commutativity in the automaton group itself, certifying every commutator of two generators trivial.";
 
-AutomatonTorsionFreeCandidateQ::usage = "AutomatonTorsionFreeCandidateQ[automaton, wordLength, levels] gives True if some word of length at most wordLength acts nontrivially at the deepest of levels and no word's order has stopped growing there. The condition is necessary but not sufficient for torsion-freeness: orders can plateau and later resume, as they do for the lamplighter group.";
+AutomatonTorsionFreeCandidateQ::usage = "AutomatonTorsionFreeCandidateQ[automaton, wordLength, levels] gives True if some word of length at most wordLength acts nontrivially at the deepest of levels and no word's order has stopped growing there. The condition is necessary but not sufficient for torsion-freeness: orders can plateau and later resume, as they do for the lamplighter group.\nAutomatonTorsionFreeCandidateQ[automaton, wordLength, maxOrder] decides in the automaton group itself: True if the ball contains a nontrivial element and no torsion element of order at most maxOrder. False on found torsion is a certificate that the group has torsion; True remains a filter, since a longer torsion word or a larger order may exist.";
 
 AutomatonGroupFingerprint::usage = "AutomatonGroupFingerprint[automaton, level] gives <|\"Code\", \"Abelian\", \"BallGrowth\"|> for the level quotient, where \"BallGrowth\" counts the elements represented by words of length 1 to 4.\nAutomatonGroupFingerprint[automaton] computes both fields in the automaton group itself.";
 
@@ -88,6 +90,8 @@ AutomatonWordEqualQ::usage = "AutomatonWordEqualQ[automaton, wordA, wordB] decid
 AutomatonRuleFromWord::usage = "AutomatonRuleFromWord[automaton, word] gives word as an automaton in its own right: the states are the section closure words of word, state 1 is word itself, and every function of the paclet consumes the result.";
 
 FindAutomatonRelations::usage = "FindAutomatonRelations[automaton, radius] gives the shortest relators of the automaton group discoverable in the radius ball: all minimal-length nontrivial freely reduced products u . v^-1 of two words of length at most radius that are trivial in G. An empty result is a theorem, not an observation: no relator of length at most 2 radius exists, so the radius ball of the free group embeds in the automaton group.";
+
+FindAutomatonTorsionElements::usage = "FindAutomatonTorsionElements[automaton, radius, maxOrder] gives an Association from each torsion element of the radius ball, one shortest word per element, to its exact order in the automaton group, sorted by word length. An empty result is a theorem: no word of length at most radius has order between 2 and maxOrder.";
 
 (* The group ring. An element is a list of {coefficient, word} pairs, so {} is 0 and
    {{1, {}}} is 1; Modulus -> p computes over F_p and Modulus -> 0 over the integers. *)

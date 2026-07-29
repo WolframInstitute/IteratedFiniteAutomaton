@@ -265,3 +265,54 @@ VerificationTest[
 	{FindAutomatonRelations[{5125, {3, 2}}, 3], Table[AutomatonElementCount[{5125, {3, 2}}, r], {r, 3}]},
 	{{}, {7, 37, 187}}
 ]
+
+(* exact orders in G: both directions are certificates, since level orders divide the order in G
+   and every multiple up to the bound is decided by the word problem *)
+
+VerificationTest[
+	{AutomatonWordOrder[grigorchuk, {1, 2}, 16], AutomatonWordOrder[grigorchuk, {1, 2}, 8], AutomatonWordOrder[grigorchuk, {5}, 4]},
+	{16, Missing["OrderExceeds", 8], 1}
+]
+
+VerificationTest[
+	AutomatonWordOrder[addingMachine, {1}, 16],
+	Missing["OrderExceeds", 16]
+]
+
+VerificationTest[
+	AllTrue[AutomatonWordOrders[grigorchuk, {1, 2}, Range[6]], Divisible[16, #] &],
+	True
+]
+
+(* torsion certified element by element: the Grigorchuk involutions at radius 1, the orders
+   4, 8, 16 of ad, ac, ab at radius 2, and the two lamplighter involutions inside an infinite
+   group; the adding machine's empty result is a theorem *)
+
+VerificationTest[
+	FindAutomatonTorsionElements[grigorchuk, 1, 2],
+	<|{1} -> 2, {2} -> 2, {3} -> 2, {4} -> 2|>
+]
+
+VerificationTest[
+	FindAutomatonTorsionElements[grigorchuk, 2, 16],
+	<|{1} -> 2, {2} -> 2, {3} -> 2, {4} -> 2, {1, 2} -> 16, {1, 3} -> 8, {1, 4} -> 4, {2, 1} -> 16, {3, 1} -> 8, {4, 1} -> 4|>
+]
+
+VerificationTest[
+	FindAutomatonTorsionElements[lamplighter, 2, 4],
+	<|{-1, 2} -> 2, {1, -2} -> 2|>
+]
+
+VerificationTest[
+	{FindAutomatonTorsionElements[addingMachine, 2, 16], FindAutomatonTorsionElements[{5125, {3, 2}}, 2, 16]},
+	{<||>, <||>}
+]
+
+(* the exact overload decides in G: False on found torsion is a certificate *)
+
+VerificationTest[
+	{AutomatonTorsionFreeCandidateQ[addingMachine, 2, 16],
+	 AutomatonTorsionFreeCandidateQ[grigorchuk, 2, 16],
+	 AutomatonTorsionFreeCandidateQ[lamplighter, 2, 4]},
+	{True, False, False}
+]

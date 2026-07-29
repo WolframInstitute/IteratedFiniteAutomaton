@@ -79,6 +79,12 @@ AutomatonTorsionFreeCandidateQ[automaton_, wordLength_Integer, levels_List] :=
 		{orders = Table[Table[PermutationOrder[AutomatonWordPermutation[perms, w]], {perms, permsList}], {w, AutomatonWordBall[automaton, wordLength]}]},
 		AnyTrue[orders, Last[#] > 1 &] && NoneTrue[orders, Last[#] > 1 && Last[#] === #[[-2]] &]]
 
+(* decided in G up to the bounds: the ball contains a nontrivial element and no torsion element
+   of order at most maxOrder; False on found torsion is a certificate, True remains a filter *)
+AutomatonTorsionFreeCandidateQ[automaton_, wordLength_Integer, maxOrder_Integer] :=
+	With[{ball = AutomatonGroupBall[automaton, wordLength]},
+		ball =!= {} && NoneTrue[ball, word |-> IntegerQ @ AutomatonWordOrder[automaton, word, maxOrder]]]
+
 (* commutativity and ball growth of the level quotient, enough to stratify the (3, 2) candidates *)
 AutomatonGroupFingerprint[automaton_, level_Integer] :=
 	<|
@@ -178,9 +184,19 @@ AutomatonWordSectionClosure[automaton_, word_List] :=
 					frontier = Select[Union @@ rows[[All, 2, All, 1]], !KeyExistsQ[closure, #] &]]];
 			closure]]
 
-(* word = 1 in G, decided rather than level-truncated: every section at every tree vertex fixes level 1 *)
+(* word = 1 in G, decided rather than level-truncated: every section at every tree vertex fixes
+   level 1.  The BFS stops at the first active section word -- one is already a certificate of
+   nontriviality -- so the full closure is only ever built for words that are in fact trivial *)
 AutomatonWordIdentityQ[automaton_, word_List] :=
-	AllTrue[Values[AutomatonWordSectionClosure[automaton, word]], row |-> row[[All, 2]] === Range[0, Length[row] - 1]]
+	With[{rule = ToAutomatonRule[automaton]},
+		{sections = AutomatonSectionTable[rule], k = Length[Union[rule[[All, 1, 2]]]]},
+		Catch @ Module[{visited = <||>, frontier = {FreeReducedWord[word]}},
+			While[frontier =!= {},
+				With[{rows = Table[Table[MapAt[FreeReducedWord, AutomatonWordSection[sections, u, x], 1], {x, 0, k - 1}], {u, frontier}]},
+					If[AnyTrue[rows, row |-> row[[All, 2]] =!= Range[0, k - 1]], Throw[False]];
+					AssociateTo[visited, Thread[frontier -> True]];
+					frontier = Select[Union @@ rows[[All, All, 1]], !KeyExistsQ[visited, #] &]]];
+			True]]
 
 (* wordA = wordB in G *)
 AutomatonWordEqualQ[automaton_, wordA_List, wordB_List] :=
@@ -212,6 +228,26 @@ AutomatonWordKey[automaton_, word_List] :=
 				position++];
 			number = First /@ PositionIndex[order];
 			Table[With[{row = closure[representatives[class]]}, {row[[All, 2]], number /@ (classes /@ row[[All, 1]])}], {class, order}]]]
+
+(* exact order of word in G when at most maxOrder, else the certificate that it exceeds it: the
+   order at any level divides the order in G, so only multiples of the level-6 order need the
+   word problem, and refuting every multiple up to maxOrder decides the Missing direction too *)
+AutomatonWordOrder[automaton_, word_List, maxOrder_Integer] :=
+	With[{lowerBound = PermutationOrder[AutomatonWordPermutation[automaton, 6, word]]},
+		If[lowerBound > maxOrder,
+			Missing["OrderExceeds", maxOrder],
+			SelectFirst[Range[lowerBound, maxOrder, lowerBound],
+				m |-> AutomatonWordIdentityQ[automaton, Flatten @ ConstantArray[word, m]],
+				Missing["OrderExceeds", maxOrder]]]]
+
+(* torsion elements of the radius ball, one shortest word per element, with exact orders in G;
+   <||> is a theorem: no word of length <= radius has order between 2 and maxOrder *)
+FindAutomatonTorsionElements[automaton_, radius_Integer, maxOrder_Integer] :=
+	KeySortBy[
+		DeleteMissing @ Association @ Map[
+			word |-> word -> AutomatonWordOrder[automaton, word, maxOrder],
+			AutomatonGroupBall[automaton, radius]],
+		Length]
 
 (* all shortest relators among products u v^-1 of two radius-ball words, each certified in G;
    {} is a theorem: no relator of length <= 2 radius exists, so the radius ball embeds freely *)
