@@ -38,6 +38,7 @@ PackageExport[AutomatonNucleus]
 PackageExport[AutomatonWordSectionClosure]
 PackageExport[AutomatonWordIdentityQ]
 PackageExport[AutomatonWordEqualQ]
+PackageExport[FindAutomatonRelations]
 PackageExport[AutomatonRuleFromWord]
 PackageExport[BGKMNSSNumber]
 

@@ -2,6 +2,7 @@ Package["WolframInstitute`IteratedFiniteAutomaton`"]
 
 PackageScope[ReducedWordQ]
 PackageScope[FreeReducedWord]
+PackageScope[AutomatonWordKey]
 
 (* ===================== Action on the rooted tree ===================== *)
 
@@ -44,10 +45,19 @@ AutomatonGroupBall[automaton_, radius_Integer, refLevel_Integer] :=
 			Select[AutomatonWordBall[automaton, radius], AutomatonWordPermutation[perms, #] =!= identity &],
 			AutomatonWordPermutation[perms, #] &]]
 
+(* one shortest word per distinct nontrivial element of G itself, equality decided by the word problem *)
+AutomatonGroupBall[automaton_, radius_Integer] :=
+	With[{keyed = GroupBy[AutomatonWordBall[automaton, radius], AutomatonWordKey[automaton, #] &, First]},
+		Values @ KeyDrop[keyed, {AutomatonWordKey[automaton, {}]}]]
+
 (* size of the ball of radius wordLength in the level quotient *)
 AutomatonElementCount[automaton_, wordLength_Integer, level_Integer] :=
 	With[{perms = AutomatonLevelPermutations[automaton, level]},
 		Length @ Union @ Table[AutomatonWordPermutation[perms, w], {w, Prepend[AutomatonWordBall[automaton, wordLength], {}]}]]
+
+(* exact ball size in G: dropping the level argument drops the quotient *)
+AutomatonElementCount[automaton_, wordLength_Integer] :=
+	Length[AutomatonGroupBall[automaton, wordLength]] + 1
 
 (* ===================== Group invariants ===================== *)
 
@@ -55,6 +65,11 @@ AutomatonElementCount[automaton_, wordLength_Integer, level_Integer] :=
 AutomatonAbelianQ[automaton_, level_Integer] :=
 	With[{generators = Values[AutomatonLevelPermutations[automaton, level]]},
 		AllTrue[Subsets[generators, {2}], #[[1]][[#[[2]]]] === #[[2]][[#[[1]]]] &]]
+
+(* the generators commute in G: every commutator of two states is certified trivial *)
+AutomatonAbelianQ[automaton_] :=
+	With[{states = Union[ToAutomatonRule[automaton][[All, 1, 1]]]},
+		AllTrue[Subsets[states, {2}], AutomatonWordIdentityQ[automaton, {#[[1]], #[[2]], -#[[1]], -#[[2]]}] &]]
 
 (* necessary condition for torsion-freeness: some word acts nontrivially at the deepest level and no
    word's order has stopped growing there.  Orders can plateau and then resume (the lamplighter does),
@@ -70,6 +85,13 @@ AutomatonGroupFingerprint[automaton_, level_Integer] :=
 		"Code" -> First @ AutomatonCodeFromRule[ToAutomatonRule[automaton]],
 		"Abelian" -> AutomatonAbelianQ[automaton, level],
 		"BallGrowth" -> Table[AutomatonElementCount[automaton, n, level], {n, 4}]
+	|>
+
+AutomatonGroupFingerprint[automaton_] :=
+	<|
+		"Code" -> First @ AutomatonCodeFromRule[ToAutomatonRule[automaton]],
+		"Abelian" -> AutomatonAbelianQ[automaton],
+		"BallGrowth" -> Table[AutomatonElementCount[automaton, n], {n, 4}]
 	|>
 
 (* automaton number of Bondarenko-Grigorchuk-Kravchenko-Muntyan-Nekrashevych-Savchuk-Sunic,
@@ -171,3 +193,30 @@ AutomatonRuleFromWord[automaton_, word_List] :=
 		Join @@ KeyValueMap[
 			{u, row} |-> Table[{index[u], x - 1} -> {index[row[[x, 1]]], row[[x, 2]]}, {x, Length[row]}],
 			closure]]
+
+(* canonical form of the minimal Moore diagram of word, pointed at word: states are the distinct
+   tree automorphisms among its sections, so two words are equal in G iff their keys are equal *)
+AutomatonWordKey[automaton_, word_List] :=
+	With[{closure = AutomatonWordSectionClosure[automaton, word]},
+		Module[{classes, previous = 0, representatives, order, position = 1, number},
+			classes = AssociationMap[u |-> closure[u][[All, 2]], Keys[closure]];
+			While[previous < CountDistinct[Values[classes]],
+				previous = CountDistinct[Values[classes]];
+				classes = With[{signatures = AssociationMap[u |-> {closure[u][[All, 2]], classes /@ closure[u][[All, 1]]}, Keys[closure]]},
+					{index = First /@ PositionIndex[DeleteDuplicates[Values[signatures]]]},
+					index /@ signatures]];
+			representatives = GroupBy[Keys[closure], classes, First];
+			order = {classes[FreeReducedWord[word]]};
+			While[position <= Length[order],
+				order = DeleteDuplicates[Join[order, classes /@ closure[representatives[order[[position]]]][[All, 1]]]];
+				position++];
+			number = First /@ PositionIndex[order];
+			Table[With[{row = closure[representatives[class]]}, {row[[All, 2]], number /@ (classes /@ row[[All, 1]])}], {class, order}]]]
+
+(* all shortest relators among products u v^-1 of two radius-ball words, each certified in G;
+   {} is a theorem: no relator of length <= 2 radius exists, so the radius ball embeds freely *)
+FindAutomatonRelations[automaton_, radius_Integer] :=
+	With[{relator = {u, v} |-> FreeReducedWord[Join[u, -Reverse[v]]]},
+		{buckets = Values @ Select[GroupBy[Prepend[AutomatonWordBall[automaton, radius], {}], AutomatonWordKey[automaton, #] &], Length[#] > 1 &]},
+		{products = Union @@ Map[bucket |-> Flatten[Outer[relator, bucket, bucket, 1], 1], buckets]},
+		MinimalBy[DeleteCases[products, {}], Length]]

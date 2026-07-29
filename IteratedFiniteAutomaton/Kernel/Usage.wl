@@ -53,17 +53,17 @@ AutomatonWordOrders::usage = "AutomatonWordOrders[automaton, word, levels] gives
 
 AutomatonWordBall::usage = "AutomatonWordBall[automaton, radius] gives the reduced words of length 1 to radius in the free group on the automaton's states, with inverses written as negative state numbers.";
 
-AutomatonGroupBall::usage = "AutomatonGroupBall[automaton, radius, refLevel] gives one shortest word for each distinct nontrivial element of the level-refLevel quotient represented by a word of length at most radius.";
+AutomatonGroupBall::usage = "AutomatonGroupBall[automaton, radius, refLevel] gives one shortest word for each distinct nontrivial element of the level-refLevel quotient represented by a word of length at most radius.\nAutomatonGroupBall[automaton, radius] gives one shortest word for each distinct nontrivial element of the automaton group itself, equality decided in G by the word problem.";
 
-AutomatonElementCount::usage = "AutomatonElementCount[automaton, wordLength, level] gives the number of distinct elements of Aut(T_level) represented by words of length at most wordLength.";
+AutomatonElementCount::usage = "AutomatonElementCount[automaton, wordLength, level] gives the number of distinct elements of Aut(T_level) represented by words of length at most wordLength.\nAutomatonElementCount[automaton, wordLength] counts in the automaton group itself, so the result is exact rather than a lower bound.";
 
 (* Group invariants. *)
 
-AutomatonAbelianQ::usage = "AutomatonAbelianQ[automaton, level] gives True if the generators commute in the level quotient.";
+AutomatonAbelianQ::usage = "AutomatonAbelianQ[automaton, level] gives True if the generators commute in the level quotient.\nAutomatonAbelianQ[automaton] decides commutativity in the automaton group itself, certifying every commutator of two generators trivial.";
 
 AutomatonTorsionFreeCandidateQ::usage = "AutomatonTorsionFreeCandidateQ[automaton, wordLength, levels] gives True if some word of length at most wordLength acts nontrivially at the deepest of levels and no word's order has stopped growing there. The condition is necessary but not sufficient for torsion-freeness: orders can plateau and later resume, as they do for the lamplighter group.";
 
-AutomatonGroupFingerprint::usage = "AutomatonGroupFingerprint[automaton, level] gives <|\"Code\", \"Abelian\", \"BallGrowth\"|> for the level quotient, where \"BallGrowth\" counts the elements represented by words of length 1 to 4.";
+AutomatonGroupFingerprint::usage = "AutomatonGroupFingerprint[automaton, level] gives <|\"Code\", \"Abelian\", \"BallGrowth\"|> for the level quotient, where \"BallGrowth\" counts the elements represented by words of length 1 to 4.\nAutomatonGroupFingerprint[automaton] computes both fields in the automaton group itself.";
 
 BGKMNSSNumber::usage = "BGKMNSSNumber[automaton] gives the number of a 3-state binary automaton in the classification of Bondarenko, Grigorchuk, Kravchenko, Muntyan, Nekrashevych, Savchuk and Sunic, arXiv:0803.3555.";
 
@@ -86,6 +86,8 @@ AutomatonWordIdentityQ::usage = "AutomatonWordIdentityQ[automaton, word] decides
 AutomatonWordEqualQ::usage = "AutomatonWordEqualQ[automaton, wordA, wordB] decides whether wordA and wordB are the same element of the automaton group, as triviality of wordA . wordB^-1.";
 
 AutomatonRuleFromWord::usage = "AutomatonRuleFromWord[automaton, word] gives word as an automaton in its own right: the states are the section closure words of word, state 1 is word itself, and every function of the paclet consumes the result.";
+
+FindAutomatonRelations::usage = "FindAutomatonRelations[automaton, radius] gives the shortest relators of the automaton group discoverable in the radius ball: all minimal-length nontrivial freely reduced products u . v^-1 of two words of length at most radius that are trivial in G. An empty result is a theorem, not an observation: no relator of length at most 2 radius exists, so the radius ball of the free group embeds in the automaton group.";
 
 (* The group ring. An element is a list of {coefficient, word} pairs, so {} is 0 and
    {{1, {}}} is 1; Modulus -> p computes over F_p and Modulus -> 0 over the integers. *)

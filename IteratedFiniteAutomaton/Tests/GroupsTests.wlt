@@ -212,3 +212,56 @@ VerificationTest[
 	AutomatonLevelPermutations[AutomatonRuleFromWord[grigorchuk, {1, 2}], 4][1],
 	AutomatonWordPermutation[grigorchuk, 4, {1, 2}]
 ]
+
+(* exact overloads: dropping the level argument answers in G, not in a quotient *)
+
+VerificationTest[
+	Table[AutomatonElementCount[addingMachine, r], {r, 4}],
+	2 Range[4] + 1
+]
+
+VerificationTest[
+	{AutomatonElementCount[addingMachine, 8], AutomatonElementCount[addingMachine, 8, 2]},
+	{17, 4}
+]
+
+VerificationTest[
+	Length @ AutomatonGroupBall[addingMachine, 3],
+	6
+]
+
+VerificationTest[
+	{AutomatonAbelianQ[addingMachine], AutomatonAbelianQ[grigorchuk]},
+	{True, False}
+]
+
+VerificationTest[
+	AutomatonGroupFingerprint[addingMachine],
+	<|"Code" -> 62, "Abelian" -> True, "BallGrowth" -> 2 Range[4] + 1|>
+]
+
+(* shortest certified relators: the adding machine's second state is trivial in G, the Grigorchuk
+   trivial state e, and the lamplighter involution (a b^-1)^2 in its four reduced forms *)
+
+VerificationTest[
+	FindAutomatonRelations[addingMachine, 2],
+	{{-2}, {2}}
+]
+
+VerificationTest[
+	FindAutomatonRelations[grigorchuk, 1],
+	{{-5}, {5}}
+]
+
+VerificationTest[
+	FindAutomatonRelations[lamplighter, 2],
+	{{-2, 1, -2, 1}, {-1, 2, -1, 2}, {1, -2, 1, -2}, {2, -1, 2, -1}}
+]
+
+(* the Aleshin automaton, certified in G: no relator of length <= 6, and ball growth exactly
+   that of F_3 where the level-6 quotient undercounts by 3% at radius 3 *)
+
+VerificationTest[
+	{FindAutomatonRelations[{5125, {3, 2}}, 3], Table[AutomatonElementCount[{5125, {3, 2}}, r], {r, 3}]},
+	{{}, {7, 37, 187}}
+]
