@@ -1,6 +1,7 @@
 Package["WolframInstitute`IteratedFiniteAutomaton`"]
 
 PackageScope[ReducedWordQ]
+PackageScope[FreeReducedWord]
 
 (* ===================== Action on the rooted tree ===================== *)
 
@@ -135,3 +136,38 @@ AutomatonNucleus[automaton_, radius_Integer, depth_Integer, refLevel_Integer] :=
 					Length],
 				AutomatonWordPermutation[perms, #] &],
 			{d, 0, depth}]]
+
+(* ===================== Word problem ===================== *)
+
+FreeReducedWord[word_List] := word //. {pre___, g_, h_, post___} /; h == -g :> {pre, post}
+
+(* Moore diagram of the word as a tree automorphism: each freely reduced word u in the section
+   closure of word maps to {{u at 0: section, image}, ..., {u at k-1: section, image}}.
+   Sections preserve word length, so the closure is finite; word = 1 in G iff every row fixes level 1 *)
+AutomatonWordSectionClosure[automaton_, word_List] :=
+	With[{rule = ToAutomatonRule[automaton]},
+		{sections = AutomatonSectionTable[rule], k = Length[Union[rule[[All, 1, 2]]]]},
+		Module[{closure = <||>, frontier = {FreeReducedWord[word]}},
+			While[frontier =!= {},
+				With[{rows = Table[
+						u -> Table[MapAt[FreeReducedWord, AutomatonWordSection[sections, u, x], 1], {x, 0, k - 1}],
+						{u, frontier}]},
+					AssociateTo[closure, rows];
+					frontier = Select[Union @@ rows[[All, 2, All, 1]], !KeyExistsQ[closure, #] &]]];
+			closure]]
+
+(* word = 1 in G, decided rather than level-truncated: every section at every tree vertex fixes level 1 *)
+AutomatonWordIdentityQ[automaton_, word_List] :=
+	AllTrue[Values[AutomatonWordSectionClosure[automaton, word]], row |-> row[[All, 2]] === Range[0, Length[row] - 1]]
+
+(* wordA = wordB in G *)
+AutomatonWordEqualQ[automaton_, wordA_List, wordB_List] :=
+	AutomatonWordIdentityQ[automaton, Join[wordA, Reverse[-wordB]]]
+
+(* the word as an automaton in its own right: states are the section closure words, state 1 the word itself *)
+AutomatonRuleFromWord[automaton_, word_List] :=
+	With[{closure = AutomatonWordSectionClosure[automaton, word]},
+		{index = First /@ PositionIndex[Keys[closure]]},
+		Join @@ KeyValueMap[
+			{u, row} |-> Table[{index[u], x - 1} -> {index[row[[x, 1]]], row[[x, 2]]}, {x, Length[row]}],
+			closure]]

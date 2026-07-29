@@ -79,6 +79,14 @@ AutomatonSection::usage = "AutomatonSection[automaton, word, treeWord] gives the
 
 AutomatonNucleus::usage = "AutomatonNucleus[automaton, radius, depth, refLevel] gives, for each d = 0, ..., depth, the sections at depth d of the words of length at most radius, kept distinct as automorphisms of T_refLevel. Contraction shows as the counts decreasing to a limit that does not grow when radius grows, and that limit is the nucleus; a list sitting at the size of the radius ball for every depth is the non-contracting case, the sections of the ball being the ball again.";
 
+AutomatonWordSectionClosure::usage = "AutomatonWordSectionClosure[automaton, word] gives the Moore diagram of word as a tree automorphism: an Association sending each freely reduced word in the section closure of word to its list of {section at x, image of x} over the letters x. Sections preserve word length, so the closure is finite.";
+
+AutomatonWordIdentityQ::usage = "AutomatonWordIdentityQ[automaton, word] decides whether word is the identity of the automaton group, not merely of a level quotient: word = 1 in G iff every word in its section closure fixes level 1.";
+
+AutomatonWordEqualQ::usage = "AutomatonWordEqualQ[automaton, wordA, wordB] decides whether wordA and wordB are the same element of the automaton group, as triviality of wordA . wordB^-1.";
+
+AutomatonRuleFromWord::usage = "AutomatonRuleFromWord[automaton, word] gives word as an automaton in its own right: the states are the section closure words of word, state 1 is word itself, and every function of the paclet consumes the result.";
+
 (* The group ring. An element is a list of {coefficient, word} pairs, so {} is 0 and
    {{1, {}}} is 1; Modulus -> p computes over F_p and Modulus -> 0 over the integers. *)
 

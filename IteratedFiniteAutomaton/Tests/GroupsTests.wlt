@@ -149,3 +149,66 @@ VerificationTest[
 	AutomatonGroupFingerprint[addingMachine, 6],
 	<|"Code" -> 62, "Abelian" -> True, "BallGrowth" -> 2 Range[4] + 1|>
 ]
+
+(* the word problem is decided in G, not in a level quotient: a^4 acts trivially on T_2 yet
+   generates 4 Z inside Z = <a> *)
+
+VerificationTest[
+	{AutomatonWordPermutation[addingMachine, 2, ConstantArray[1, 4]] === Range[4],
+	 AutomatonWordIdentityQ[addingMachine, ConstantArray[1, 4]]},
+	{True, False}
+]
+
+VerificationTest[
+	{AutomatonWordIdentityQ[addingMachine, {1, -1}], AutomatonWordIdentityQ[addingMachine, {}], AutomatonWordIdentityQ[addingMachine, {1}]},
+	{True, True, False}
+]
+
+(* Grigorchuk relations become theorems in G: the four involutions, bcd = 1, and |ab| = 16 exactly *)
+
+VerificationTest[
+	Table[AutomatonWordIdentityQ[grigorchuk, {s, s}], {s, 4}],
+	{True, True, True, True}
+]
+
+VerificationTest[
+	AutomatonWordIdentityQ[grigorchuk, {2, 3, 4}],
+	True
+]
+
+VerificationTest[
+	{AutomatonWordIdentityQ[grigorchuk, Flatten @ ConstantArray[{1, 2}, 8]],
+	 AutomatonWordIdentityQ[grigorchuk, Flatten @ ConstantArray[{1, 2}, 16]]},
+	{False, True}
+]
+
+(* equality across words of different lengths: bc = d in the Klein four-group on b, c, d *)
+
+VerificationTest[
+	{AutomatonWordEqualQ[grigorchuk, {2, 3}, {4}], AutomatonWordEqualQ[grigorchuk, {1}, {2}]},
+	{True, False}
+]
+
+(* torsion certified inside an infinite group: the lamplighter's a b^-1 is an involution in G *)
+
+VerificationTest[
+	AutomatonWordIdentityQ[lamplighter, {1, -2, 1, -2}],
+	True
+]
+
+(* the section closure is closed under sections, freely reduced, and no longer than the word *)
+
+VerificationTest[
+	With[{closure = AutomatonWordSectionClosure[grigorchuk, {1, 2}]},
+		{AllTrue[Union @@ Values[closure][[All, All, 1]], KeyExistsQ[closure, #] &],
+		 AllTrue[Keys[closure], word |-> NoneTrue[Partition[word, 2, 1], First[#] == -Last[#] &]],
+		 Max[Length /@ Keys[closure]] <= 2}],
+	{True, True, True}
+]
+
+(* the word as an automaton acts as the word *)
+
+VerificationTest[
+	AutomatonLevelPermutations[AutomatonRuleFromWord[grigorchuk, {1, 2}], 4][1],
+	AutomatonWordPermutation[grigorchuk, 4, {1, 2}]
+]
