@@ -284,6 +284,20 @@ VerificationTest[
 	True
 ]
 
+(* the plateau at the bound: code 4177's first generator has level order 8 at level 6 and 16 from
+   level 8 to level 14, so a shallow lower bound leaves w^8 and w^16 to the word problem; at level
+   16 the order is 32, which refutes order <= 16 outright *)
+
+VerificationTest[
+	AutomatonWordOrders[{4177, {3, 2}}, {1}, {6, 8, 14, 16}],
+	{8, 16, 16, 32}
+]
+
+VerificationTest[
+	AutomatonWordOrder[{4177, {3, 2}}, {1}, 16],
+	Missing["OrderExceeds", 16]
+]
+
 (* torsion certified element by element: the Grigorchuk involutions at radius 1, the orders
    4, 8, 16 of ad, ac, ab at radius 2, and the two lamplighter involutions inside an infinite
    group; the adding machine's empty result is a theorem *)

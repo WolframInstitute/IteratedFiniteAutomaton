@@ -230,10 +230,16 @@ AutomatonWordKey[automaton_, word_List] :=
 			Table[With[{row = closure[representatives[class]]}, {row[[All, 2]], number /@ (classes /@ row[[All, 1]])}], {class, order}]]]
 
 (* exact order of word in G when at most maxOrder, else the certificate that it exceeds it: the
-   order at any level divides the order in G, so only multiples of the level-6 order need the
-   word problem, and refuting every multiple up to maxOrder decides the Missing direction too *)
+   order at any level divides the order in G, so a level order is a certified lower bound and only
+   its multiples up to maxOrder need the word problem, which decides the Missing direction too.
+   Two levels rather than one, because the plateau is the expensive case: a word sitting at order
+   maxOrder through the shallow levels is refuted by a single permutation order on the deepest
+   level a k^L point list allows -- 0.02 s at k = 2 -- where the word problem on w^maxOrder builds
+   the closure of a maxOrder-fold power instead (4.5 s per element on code 4177). *)
 AutomatonWordOrder[automaton_, word_List, maxOrder_Integer] :=
-	With[{lowerBound = PermutationOrder[AutomatonWordPermutation[automaton, 6, word]]},
+	With[{deepLevel = Max[6, Floor @ Log[Length[Union[ToAutomatonRule[automaton][[All, 1, 2]]]], 2^18]]},
+		{shallow = PermutationOrder[AutomatonWordPermutation[automaton, 6, word]]},
+		{lowerBound = If[shallow > maxOrder, shallow, PermutationOrder[AutomatonWordPermutation[automaton, deepLevel, word]]]},
 		If[lowerBound > maxOrder,
 			Missing["OrderExceeds", maxOrder],
 			SelectFirst[Range[lowerBound, maxOrder, lowerBound],
