@@ -117,6 +117,23 @@ VerificationTest[
 	{{2, 2, 2}, {{1, Infinity, Infinity}, {Infinity, 1, Infinity}, {Infinity, Infinity, 1}}}
 ]
 
+(* the two entries that carry an inverse as its own state are right about which state it is:
+   a2 is the inverse of a in Gupta-Sidki, m1 the inverse of m in Brunner-Sidki-Vieira *)
+VerificationTest[
+	{AutomatonWordIdentityQ[AutomatonData["GuptaSidki3"], {1, 2}],
+	 AutomatonWordIdentityQ[AutomatonData["BrunnerSidkiVieira"], {2, 3}]},
+	{True, True}
+]
+
+(* a trivial state is a state of the automaton but not a generator of the group, and the ball
+   functions generate from every state: for the 18 entries that have one it is a relator of
+   length one, so a freeness question has to be asked over the declared generators alone *)
+VerificationTest[
+	With[{grigorchuk = AutomatonData["Grigorchuk"], aleshin = AutomatonData["Aleshin"]},
+		{FindAutomatonRelations[grigorchuk, 1], FindAutomatonRelations[aleshin, 1]}],
+	{{{-5}, {5}}, {}}
+]
+
 (* every entry carries a reference key of References.md and a generator name per generator *)
 VerificationTest[
 	AllTrue[AutomatonData[], name |->
