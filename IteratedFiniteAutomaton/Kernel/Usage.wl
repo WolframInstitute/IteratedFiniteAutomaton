@@ -69,6 +69,12 @@ AutomatonGroupFingerprint::usage = "AutomatonGroupFingerprint[automaton, level] 
 
 BGKMNSSNumber::usage = "BGKMNSSNumber[automaton] gives the number of a 3-state binary automaton in the classification of Bondarenko, Grigorchuk, Kravchenko, Muntyan, Nekrashevych, Savchuk and Sunic, arXiv:0803.3555.";
 
+(* The named library. *)
+
+AutomatonFromWreathString::usage = "AutomatonFromWreathString[\"a = (b, a)(1,2), b = (a, b)\"] gives the Mealy rule list of a wreath recursion written in the notation of the literature: the section list is indexed by the letter read, the trailing permutation gives that letter's image, an omitted permutation is the identity and a section written 1 or left empty is the trivial state. Permutations may be given as cycles (1,2)(3,4), as a 1-based image list {2,1}, or as \[Sigma] for the binary transposition; sections may be delimited by parentheses or by angle brackets. A section that is not a single state, such as an inverse or a product, has no state to be, and the result is Missing[\"NonStateSections\", sections].\nAutomatonFromWreathString[{\"a = ...\", \"b = ...\"}] accepts the entries as a list, so it inverts AutomatonWreathRecursion[automaton, Method -> \"String\"].";
+
+AutomatonData::usage = "AutomatonData[] gives the canonical names of the named automata of the literature.\nAutomatonData[name] gives the Mealy rule list of the named automaton, or Missing[\"NonStateSections\", sections] when the published recursion is not a Mealy machine over its own generators.\nAutomatonData[name, property] gives metadata: \"WreathRecursion\", \"States\", \"Colors\", \"GeneratorNames\", \"Aliases\", \"Reference\" (a key of References.md), \"Notes\" or \"KnownFacts\".\nAutomatonData[name, \"Properties\"] lists the properties. The names of GAP's automgrp and fr resolve as aliases, and an unrecognised name gives Missing[\"UnknownName\", name, nearMatches].";
+
 (* Wreath recursion and sections. *)
 
 AutomatonWreathRecursion::usage = "AutomatonWreathRecursion[automaton] gives the wreath recursion as <|state -> {outputs, sections}, ...|>, the argument IteratedFiniteAutomatonFromWreath consumes.\nAutomatonWreathRecursion[automaton, Method -> \"String\"] gives the printable rendering a = \[Sigma](b, c) instead.";
