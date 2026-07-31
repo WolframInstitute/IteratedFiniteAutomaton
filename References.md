@@ -24,6 +24,8 @@ The other fourteen, each marked below: three carry a permanent Numdam or Math-Ne
 
 - <a id="Nekrashevych2005"></a>**Nekrashevych2005** — Volodymyr Nekrashevych, *Self-Similar Groups*, Mathematical Surveys and Monographs 117, AMS, 2005. [10.1090/surv/117](https://doi.org/10.1090/surv/117)
   The standard reference for the vocabulary every notebook uses — sections, self-similarity, the nucleus, contraction — and the source of the convention that a state acts as an element of $\mathrm{Aut}(T_k)$.
+- <a id="NekrashevychSidki2004"></a>**NekrashevychSidki2004** — Volodymyr Nekrashevych, Said Sidki, *Automorphisms of the binary tree: state-closed subgroups and dynamics of $1/2$-endomorphisms*, in *Groups: Topological, Combinatorial and Arithmetic Aspects*, LMS Lecture Note Series 311, CUP, 2004, 375–404.
+  The correspondence between faithful self-similar actions and virtual endomorphisms with trivial core, and the criterion that the action is finite-state exactly when the endomorphism has spectral radius below 1 — the two facts the Promislow realization is built on. No arXiv preprint or DOI verified here.
 - <a id="GNS2000"></a>**GNS2000** — Rostislav Grigorchuk, Volodymyr Nekrashevych, Vitaly Sushchanskii, *Automata, dynamical systems, and groups*, Proc. Steklov Inst. Math. **231** (2000), 128–203. [mathnet.ru/eng/tm515](https://www.mathnet.ru/eng/tm515)
   The survey the automaton–group dictionary follows line by line: which automaton property translates into which group property, and in which direction the translation is effective.
   No DOI; Math-Net.Ru is the stable locator.
@@ -112,9 +114,11 @@ One primary reference per row of the repository's open-problem table, plus the t
 - <a id="KLM1988"></a>**KLM1988** — Peter Kropholler, Peter Linnell, John Moody, *Applications of a new $K$-theoretic theorem to soluble group rings*, Proc. AMS **104** (1988), 675–684. [10.1090/S0002-9939-1988-0964842-0](https://doi.org/10.1090/S0002-9939-1988-0964842-0)
   Kaplansky holds for torsion-free elementary amenable groups, which covers the solvable sweep classes and pointedly fails for Basilica.
 - <a id="Promislow1988"></a>**Promislow1988** — S. David Promislow, *A simple example of a torsion-free, non unique product group*, Bull. LMS **20** (1988), 302–304. [10.1112/blms/20.4.302](https://doi.org/10.1112/blms/20.4.302)
-  The Promislow (Hantzsche–Wendt) group, in whose group ring Gardam found his unit; whether it is an automaton group is one of the repository's open questions.
+  The Promislow (Hantzsche–Wendt) group, in whose group ring Gardam found his unit; it **is** an automaton group — 25 states on 3 letters, least degree 3 — see the unit entry of [OpenProblems.md](OpenProblems.md#KaplanskyUnit).
 - <a id="Gardam2021"></a>**Gardam2021** — Giles Gardam, *A counterexample to the unit conjecture for group rings*, Ann. of Math. **194** (2021), 967–979. [10.4007/annals.2021.194.3.9](https://doi.org/10.4007/annals.2021.194.3.9) · [arXiv:2102.11818](https://arxiv.org/abs/2102.11818)
   The unit conjecture is false, found by SAT search over $\mathbb{F}_2[P]$ — the methodological precedent for sweeping a finite space of candidates, which is what this repository does over automata.
+- <a id="Gardam2023"></a>**Gardam2023** — Giles Gardam, *Non-trivial units of complex group rings*, preprint. [arXiv:2312.05240](https://arxiv.org/abs/2312.05240) (v2, 29 October 2024); code [10.5281/zenodo.14008425](https://doi.org/10.5281/zenodo.14008425)
+  The same group and the same 21-element support in characteristic zero, over $R = \mathbb{Z}[s, t]/(s^4 + 1, t^4 + 1)$, hence over $\mathbb{F}_{p^2}$ for every prime $p$; this is the unit reverified here inside the automaton group. Found by Gröbner basis rather than SAT, which is why the 121 equations are stated explicitly.
 - <a id="Passman1977"></a>**Passman1977** — Donald Passman, *The Algebraic Structure of Group Rings*, Wiley-Interscience, 1977. ISBN 0-471-02272-1
   The group-ring background the zero-divisor computations assume. No DOI exists.
 - <a id="Burnside1902"></a>**Burnside1902** — William Burnside, *On an unsettled question in the theory of discontinuous groups*, Quart. J. Pure Appl. Math. **33** (1902), 230–238.
