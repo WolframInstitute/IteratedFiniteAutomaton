@@ -101,10 +101,17 @@ would emit one.
 
 ## Read or re-run the research notebooks
 
-The seven notebooks in the README's table are deployed as public cloud objects
+The ten notebooks in the README's table are deployed as public cloud objects
 under `/obj/hajek_pavel/IteratedFiniteAutomaton/Research/`. Each is fully
 evaluated with its outputs embedded, so it reads in a browser with nothing
 installed, and every input cell re-evaluates against the installed paclet.
+
+Two of them, `PromislowAutomaton.nb` and `PromislowNote.nb`, are the exception
+to the last clause: the Promislow group is built there from its own affine
+model, carried in the notebook's own Initialization section, and the paclet
+enters only to cross-check the tree action and the level orders. They therefore
+re-run without the paclet as their engine, and a paclet regression would not
+break them.
 
 ## What this repository does not let you re-run
 
