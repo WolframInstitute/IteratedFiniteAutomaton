@@ -1,5 +1,5 @@
 > ⚠️ **Actively developed, experimental research code.** It undergoes frequent cleanings and refactors, and the API may change without notice.
-> 
+
 # IteratedFiniteAutomaton
 
 Groups associated to iterated finite automata — translation of formalisms, open problems, and tools for ruliological analysis.
@@ -24,6 +24,8 @@ Needs["WolframInstitute`IteratedFiniteAutomaton`"]
 ```
 
 ## 📓 Research Notebooks
+
+> ⚠️ **LLM-generated theory from code.** These notebooks are written by an LLM directly from the repository using [ClaudePluginComputationalResearch](https://github.com/WolframInstitute/ClaudePluginComputationalResearch) as a demonstration of a new form of access to computational knowledge, where the source of truth lies in the code. They are **not revised by a human** by default.
 
 | Notebook | Description | Link |
 |---|---|---|
