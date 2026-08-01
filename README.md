@@ -25,20 +25,22 @@ Needs["WolframInstitute`IteratedFiniteAutomaton`"]
 
 ## 📓 Research Notebooks
 
-> ⚠️ **LLM-generated theory from code.** These notebooks are written by an LLM directly from the repository using [ClaudePluginComputationalResearch](https://github.com/WolframInstitute/ClaudePluginComputationalResearch) as a demonstration of a new form of access to computational knowledge, where the source of truth lies in the code. They are **not revised by a human** by default.
+*Math from code.*
 
-| Notebook | Description | Link |
-|---|---|---|
-| Wolfram and wreath recursion | Converting between the automaton formalisms | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Formalisms.nb) |
-| Periodicity of the iteration | Periods of the evolution and orders of group elements | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Periodicity.nb) |
-| Automata on the rooted tree | Space-time diagrams and tree portraits | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Visualization.nb) |
-| Burnside problem | An infinite torsion group from a 5-state automaton | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Burnside.nb) |
-| Kaplansky zero-divisor conjecture | Zero divisors in the group ring | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Kaplansky.nb) |
-| Sweep of the 3-state binary automata | Which groups survive the zero-divisor test | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/KaplanskySweep.nb) |
-| Open problems, as automaton statements | One runnable test per problem in [`OpenProblems.md`](OpenProblems.md) | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/OpenProblems.nb) |
-| Constructive families of many-state automata | Building automata where the space is too large to enumerate | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/ManyStateAutomata.nb) |
-| Gardam's group is an automaton group | The Promislow group on 25 states and 3 letters, and his unit verified on the tree | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/PromislowAutomaton.nb) |
-| A note on its minimal degree | Why the degree is 3 and not 27, and which parts of the result are already in the literature | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/PromislowNote.nb) |
+> ⚠️ Default authorship is LLM. Notebooks in this table are written directly from the codebase by an LLM (via [ClaudePluginComputationalResearch](https://github.com/WolframInstitute/ClaudePluginComputationalResearch)) — hence there is no warranty of their correctness — unless the Author column names a person. Humans are welcome to publish their versions alongside the LLM one.
+
+| Notebook | Description | Link | Author |
+|---|---|---|---|
+| Wolfram and wreath recursion | Converting between the automaton formalisms | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Formalisms.nb) | LLM |
+| Periodicity of the iteration | Periods of the evolution and orders of group elements | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Periodicity.nb) | LLM |
+| Automata on the rooted tree | Space-time diagrams and tree portraits | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Visualization.nb) | LLM |
+| Burnside problem | An infinite torsion group from a 5-state automaton | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Burnside.nb) | LLM |
+| Kaplansky zero-divisor conjecture | Zero divisors in the group ring | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/Kaplansky.nb) | LLM |
+| Sweep of the 3-state binary automata | Which groups survive the zero-divisor test | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/KaplanskySweep.nb) | LLM |
+| Open problems, as automaton statements | One runnable test per problem in [`OpenProblems.md`](OpenProblems.md) | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/OpenProblems.nb) | LLM |
+| Constructive families of many-state automata | Building automata where the space is too large to enumerate | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/ManyStateAutomata.nb) | LLM |
+| Gardam's group is an automaton group | The Promislow group on 25 states and 3 letters, and his unit verified on the tree | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/PromislowAutomaton.nb) | LLM |
+| A note on its minimal degree | Why the degree is 3 and not 27, and which parts of the result are already in the literature | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/IteratedFiniteAutomaton/Research/PromislowNote.nb) | LLM |
 
 ## 🧩 Open Problems
 
