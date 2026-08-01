@@ -62,4 +62,5 @@ So the tests run to a chosen depth and the torsion check only filters candidates
 
 ## 📄 License
 
-MIT — [`LICENSE`](LICENSE).
+- **Code**: MIT — [`LICENSE`](LICENSE)
+- **Research notebooks and ideas**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
