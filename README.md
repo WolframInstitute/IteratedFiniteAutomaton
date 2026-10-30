@@ -60,7 +60,11 @@ Full version in [`OpenProblems.md`](OpenProblems.md).
 Disclaimer - undecidabity: No algorithm can decide, from an automaton alone, whether the semigroup it generates is finite ([Gillibert](References.md#Gillibert2014)), nor whether a given element has finite order ([Gillibert](References.md#Gillibert2018), [Bartholdi–Mitrofanov](References.md#BartholdiMitrofanov2020)). There is no procedure that always terminates with the right answer.
 So the tests run to a chosen depth and the torsion check only filters candidates; it never certifies one.
 
+## 🙏 Funding
+
+Pavel Hájek's work on this repository was supported by the John Templeton Foundation grant 63655, [Causality, Observers and Computation: A New Approach to Fundamental Physics and Metamathematics](https://www.templeton.org/grant/causality-observers-and-computation-a-new-approach-to-fundamental-physics-and-metamathematics) at the Wolfram Institute. The opinions expressed are those of the author and do not necessarily reflect the views of the John Templeton Foundation.
+
 ## 📄 License
 
-- **Code**: MIT — [`LICENSE`](LICENSE)
-- **Research notebooks and ideas**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- Code: [MIT](LICENSE)
+- Mathematical content (notebooks, papers, notes, figures): [CC BY 4.0](LICENSE-CC-BY-4.0)
